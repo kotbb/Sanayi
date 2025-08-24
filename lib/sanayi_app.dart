@@ -15,9 +15,9 @@ class SanayiApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+          // localizationsDelegates: context.localizationDelegates,
+          // supportedLocales: context.supportedLocales,
+          // locale: context.locale,
           themeMode: ThemeMode.system,
           title: 'Sanayi',
           debugShowCheckedModeBanner: false,

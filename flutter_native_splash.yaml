@@ -1,0 +1,11 @@
+flutter_native_splash:
+  image: assets/images/sanayi_logo.png
+  image_dark: assets/images/sanayi_logo.png
+  color: "#ffffff"
+  color_dark: "#333739"
+
+  android_12:
+    color: "#ffffff"
+    color_dark: "#1C1C1C"
+    image: assets/images/sanayi_logo_android12.png
+    image_dark: assets/images/sanayi_logo_android12.png
