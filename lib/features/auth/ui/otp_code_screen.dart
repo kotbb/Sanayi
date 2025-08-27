@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class OtpCodeScreen extends StatelessWidget {
   const OtpCodeScreen({super.key});
@@ -91,6 +91,10 @@ class OtpCodeScreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       // TODO: Handle continue button press
+                      Navigator.pushReplacementNamed(
+                        context,
+                        Routes.chooseUserTypeScreen,
+                      );
                     },
                     child: Text(
                       "Continue",
