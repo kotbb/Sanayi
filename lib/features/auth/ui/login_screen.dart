@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -84,6 +85,10 @@ class LoginScreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       // TODO: Handle continue button press
+                      Navigator.pushReplacementNamed(
+                        context,
+                        Routes.otpCodeScreen,
+                      );
                     },
                     child: const Text(
                       "Continue",

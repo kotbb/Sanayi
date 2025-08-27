@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/auth/ui/login_screen.dart';
+import 'package:sanayi_app/features/auth/ui/otp_code_screen.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 
 class AppRouters {
@@ -10,6 +11,8 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const OnBoardingScreens());
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.otpCodeScreen:
+        return MaterialPageRoute(builder: (_) => const OtpCodeScreen());
       default:
         return null;
     }
