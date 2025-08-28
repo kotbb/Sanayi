@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
-import 'package:sanayi_app/features/create_account_client/ui/widgets/build_input_field.dart';
+import 'package:sanayi_app/features/create_account_craftman/ui/widgets/build_input_field_craft_man.dart';
 
-class CreateAccountClientScreen extends StatelessWidget {
-  const CreateAccountClientScreen({super.key});
+class CreateAccountCraftmanScreen extends StatelessWidget {
+  const CreateAccountCraftmanScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class CreateAccountClientScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 32.h),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Logo
               Center(
                 child: Image.asset(
                   "assets/images/sanayi_logo.png",
@@ -23,15 +21,17 @@ class CreateAccountClientScreen extends StatelessWidget {
                   height: 250.h,
                 ),
               ),
-
               verticalSpace(32),
 
               // Name field
-              BuildInputField(hint: "Full Name", icon: Icons.person_outline),
+              BuildInputFieldCraftMan(
+                hint: "Full Name",
+                icon: Icons.person_outline,
+              ),
               verticalSpace(16),
 
               // Phone field
-              BuildInputField(
+              BuildInputFieldCraftMan(
                 hint: "Phone Number",
                 icon: Icons.phone_outlined,
                 keyboardType: TextInputType.phone,
@@ -39,10 +39,25 @@ class CreateAccountClientScreen extends StatelessWidget {
               verticalSpace(16),
 
               // Location field
-              BuildInputField(
+              BuildInputFieldCraftMan(
                 hint: "Loaction",
                 icon: Icons.location_on_outlined,
               ),
+              verticalSpace(16),
+
+              // Location field
+              BuildInputFieldCraftMan(
+                hint: "Profession",
+                icon: Icons.work_outline_outlined,
+              ),
+              verticalSpace(16),
+
+              BuildInputFieldCraftMan(
+                hint: "the biography",
+                icon: Icons.article_outlined,
+                maxLines: 5,
+              ),
+
               verticalSpace(32),
 
               // Register Button

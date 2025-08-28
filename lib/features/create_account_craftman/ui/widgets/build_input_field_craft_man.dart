@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuildInputField extends StatelessWidget {
+class BuildInputFieldCraftMan extends StatelessWidget {
   String hint;
   IconData icon;
   TextInputType keyboardType;
-  
-  BuildInputField({
+  int maxLines;
+
+  BuildInputFieldCraftMan({
     super.key,
     required this.hint,
     required this.icon,
     this.keyboardType = TextInputType.text,
+    this.maxLines = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: const Color(0xff102144)),

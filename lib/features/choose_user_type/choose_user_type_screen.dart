@@ -75,7 +75,10 @@ class ChooseUserTypeScreen extends StatelessWidget {
                           height: 90.h,
                         ),
                         onTap: () {
-                          // action for Craftman
+                          Navigator.pushReplacementNamed(
+                            context,
+                            Routes.createAccountCraftmanScreen,
+                          );
                         },
                       ),
                     ),
