@@ -3,4 +3,5 @@ class Routes {
   static const String loginScreen = '/loginScreen';
   static const String otpCodeScreen = '/otpCodeScreen';
   static const String chooseUserTypeScreen = '/chooseUserTypeScreen';
+  static const String createAccountClient = '/createAccountClient';
 }

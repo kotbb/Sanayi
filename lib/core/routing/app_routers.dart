@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/auth/ui/login_screen.dart';
 import 'package:sanayi_app/features/auth/ui/otp_code_screen.dart';
-import 'package:sanayi_app/features/create_account/ui/choose_user_type_screen.dart';
+import 'package:sanayi_app/features/choose_user_type/choose_user_type_screen.dart';
+import 'package:sanayi_app/features/create_account_client/ui/create_account_client_screen.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 
 class AppRouters {
@@ -16,6 +17,8 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const OtpCodeScreen());
       case Routes.chooseUserTypeScreen:
         return MaterialPageRoute(builder: (_) => const ChooseUserTypeScreen());
+              case Routes.createAccountClient:
+        return MaterialPageRoute(builder: (_) => const CreateAccountClientScreen());
       default:
         return null;
     }

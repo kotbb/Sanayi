@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/features/choose_user_type/widgets/build_animated_choose_card.dart';
 
 class ChooseUserTypeScreen extends StatelessWidget {
   const ChooseUserTypeScreen({super.key});
@@ -43,7 +45,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
                   Expanded(
                     child: SizedBox(
                       height: 220.h,
-                      child: _buildAnimatedCard(
+                      child: BuildAnimatedChooseCard(
                         title: "Client",
                         description: "Looking for a craftman?",
                         image: Image.asset(
@@ -52,7 +54,10 @@ class ChooseUserTypeScreen extends StatelessWidget {
                           height: 90.h,
                         ),
                         onTap: () {
-                          // action for Client
+                          Navigator.pushReplacementNamed(
+                            context,
+                            Routes.createAccountClient,
+                          );
                         },
                       ),
                     ),
@@ -61,7 +66,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
                   Expanded(
                     child: SizedBox(
                       height: 220.h,
-                      child: _buildAnimatedCard(
+                      child: BuildAnimatedChooseCard(
                         title: "Craftman",
                         description: "Provide your services",
                         image: SvgPicture.asset(
@@ -88,66 +93,6 @@ class ChooseUserTypeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildAnimatedCard({
-    required String title,
-    required String description,
-    required Widget image,
-    required VoidCallback onTap,
-  }) {
-    return TweenAnimationBuilder(
-      duration: const Duration(milliseconds: 200),
-      tween: Tween<double>(begin: 1.0, end: 1.0),
-      builder: (context, double scale, child) {
-        return GestureDetector(
-          onTapDown: (_) {
-            // عمل Scale صغير عند الضغط
-            (context as Element).markNeedsBuild();
-          },
-          onTapUp: (_) {
-            onTap();
-          },
-          child: Transform.scale(
-            scale: scale,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.r),
-              ),
-              elevation: 4,
-              shadowColor: Colors.grey.withOpacity(0.3),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 12.w),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    image,
-                    verticalSpace(16),
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff102144),
-                      ),
-                    ),
-                    verticalSpace(12),
-                    Text(
-                      description,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }
