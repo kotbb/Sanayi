@@ -5,4 +5,5 @@ class Routes {
   static const String chooseUserTypeScreen = '/chooseUserTypeScreen';
   static const String createAccountClient = '/createAccountClient';
   static const String createAccountCraftmanScreen = '/createAccountCraftmanScreen';
+  static const String appLayout = '/appLayout';
 }

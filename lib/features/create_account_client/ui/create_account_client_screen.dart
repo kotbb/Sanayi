@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/create_account_client/ui/widgets/build_input_field.dart';
 
 class CreateAccountClientScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class CreateAccountClientScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: Implement registration logic
+                    Navigator.pushReplacementNamed(context, Routes.appLayout);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14.h),
