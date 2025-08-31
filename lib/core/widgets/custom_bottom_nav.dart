@@ -30,22 +30,22 @@ class CustomBottomNav extends StatelessWidget {
         children: [
           BuildBottomNavItem(
             label: 'Home',
-            onTap: () {},
-            isActive: true,
+            onTap: () => onTap(0),
+            isActive: currentIndex == 0,
             activeIcon: Icons.home,
             unActiveIcon: Icons.home_outlined,
           ),
           BuildBottomNavItem(
             label: 'Reservations',
-            onTap: () {},
-            isActive: false,
+            onTap: () => onTap(1),
+            isActive: currentIndex == 1,
             activeIcon: Icons.calendar_month,
             unActiveIcon: Icons.calendar_month_outlined,
           ),
           BuildBottomNavItem(
             label: 'profile',
-            onTap: () {},
-            isActive: false,
+            onTap: () => onTap(2),
+            isActive: currentIndex == 2,
             activeIcon: Icons.person,
             unActiveIcon: Icons.person_2_outlined,
           ),
