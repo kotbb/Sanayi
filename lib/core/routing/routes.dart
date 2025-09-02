@@ -6,4 +6,5 @@ class Routes {
   static const String createAccountClient = '/createAccountClient';
   static const String createAccountCraftmanScreen = '/createAccountCraftmanScreen';
   static const String appLayout = '/appLayout';
+  static const String notificationsScreen = '/notificationsScreen';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/categories/categories_list_view_builder.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/search_widget.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/services/services_list_view_builder.dart';
@@ -50,7 +51,12 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.notificationsScreen,
+                            );
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
