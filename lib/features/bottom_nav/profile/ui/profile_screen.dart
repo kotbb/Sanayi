@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/account_data_widget.dart';
-import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/log_out_bottom_sheet.dart';
+import 'package:sanayi_app/features/settings/ui/widgets/log_out_bottom_sheet.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -30,10 +31,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   Routes.notificationsScreen,
-                      // );
+                      Navigator.pushNamed(context, Routes.settingsScreen);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -80,50 +78,6 @@ class ProfileScreen extends StatelessWidget {
                     label: "Location",
                     value: "Gaza, AzZawayda",
                   ),
-                  verticalSpace(36),
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: SvgPicture.asset(
-                      'assets/images/svg/logout.svg',
-                      width: 24.w,
-                      height: 24.h,
-                    ),
-                    title: Text(
-                      "LogOut",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(25.0),
-                          ),
-                        ),
-                        builder: (context) {
-                          return LogOutBottomSheet();
-                        },
-                      );
-                    },
-                  ),
-                  // ElevatedButton(
-                  //   onPressed: () {},
-                  //   style: ElevatedButton.styleFrom(
-                  //     minimumSize: Size(double.infinity, 50.h),
-                  //     backgroundColor: Color(0xfff102144),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(8.r),
-                  //     ),
-                  //   ),
-                  //   child: Text(
-                  //     "LogOut",
-                  //     style: TextStyle(fontSize: 18.sp, color: Colors.white),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

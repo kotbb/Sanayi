@@ -10,6 +10,7 @@ import 'package:sanayi_app/features/create_account_craftman/ui/create_account_cr
 import 'package:sanayi_app/features/notifications/ui/notifications_screen.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sanayi_app/features/settings/ui/settings_screen.dart';
 
 class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -39,6 +40,8 @@ class AppRouters {
         );
       case Routes.notificationsScreen:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
+      case Routes.settingsScreen:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
       default:
         return null;
     }

@@ -7,4 +7,5 @@ class Routes {
   static const String createAccountCraftmanScreen = '/createAccountCraftmanScreen';
   static const String appLayout = '/appLayout';
   static const String notificationsScreen = '/notificationsScreen';
+  static const String settingsScreen = '/settingsScreen';
 }
