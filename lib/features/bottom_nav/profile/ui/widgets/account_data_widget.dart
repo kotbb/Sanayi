@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:sanayi_app/core/helpers/spacing.dart';
+
+class AccountDataWidget extends StatelessWidget {
+  String label;
+  String value;
+
+  AccountDataWidget({super.key, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: TextStyle(fontSize: 18.sp)),
+        verticalSpace(8),
+        TextFormField(
+          enabled: false,
+          style: TextStyle(color: Colors.black, fontSize: 16.sp),
+          controller: TextEditingController(text: value),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Color(0xfffEBF0F4),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 12.w,
+              vertical: 14.h,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
