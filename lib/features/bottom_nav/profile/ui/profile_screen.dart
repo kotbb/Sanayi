@@ -25,13 +25,42 @@ class ProfileScreen extends StatelessWidget {
                   bottomRight: Radius.circular(100),
                 ),
               ),
-              child: Center(
-                child: CircleAvatar(
-                  radius: 70,
-                  backgroundImage: NetworkImage(
-                    'https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   Routes.notificationsScreen,
+                      // );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.settings,
+                            color: const Color(0xff102144),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Center(
+                    child: CircleAvatar(
+                      radius: 70,
+                      backgroundImage: NetworkImage(
+                        'https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg',
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             verticalSpace(24),
