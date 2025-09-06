@@ -79,7 +79,9 @@ class SettingsScreen extends StatelessWidget {
                         leading: Icon(Icons.language),
                         title: "Language",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.languageScreen);
+                        },
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.sunny),
