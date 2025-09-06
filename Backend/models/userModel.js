@@ -1,0 +1,108 @@
+const mongoose = require("mongoose");
+const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
+const isObject = require("../utils/validators/isObject");
+const bcrypt = require("bcrypt");
+
+const userSchema = new mongoose.Schema(
+  {
+    phoneNumber: {
+      type: String,
+      required: [true, "Please tell us your phone number!"],
+      unique: true,
+      validate: [isValidPhoneNumber, "Please provide a valid phone number!"],
+    },
+    name: {
+      type: String,
+      required: [true, "Please tell us your name!"],
+    },
+    role: {
+      type: String,
+      enum: ["client", "craftsman", "admin"],
+      required: [true, "Please specify user role!"],
+      default: "client",
+    },
+    profilePicture: {
+      type: String,
+      default: "default.jpg",
+    },
+
+    location: {
+      type: Object,
+      validate: {
+        validator: function (value) {
+          return isObject(value);
+        },
+        message: "Location must be an object!",
+      },
+      country: {
+        type: String,
+        default: "Egypt",
+        //required: [true, "Please provide your country!"],
+      },
+      city: {
+        type: String,
+        default: "Cairo",
+        //required: [true, "Please provide your city!"],
+      },
+      area: {
+        type: String,
+        //required: [true, "Please provide your area!"],
+      },
+      manualLocation: {
+        type: String,
+        //required: [true, "Please provide a location description!"],
+      },
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: String,
+      select: false,
+      minlength: 8,
+    },
+  },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
+
+userSchema.index({ phoneNumber: 1 }, { unique: true });
+userSchema.index({ role: 1 });
+
+userSchema.virtual("craftsman", {
+  ref: "Craftsman",
+  localField: "_id",
+  foreignField: "user",
+  justOne: true,
+});
+
+userSchema.pre(/^find/, function (next) {
+  this.select("-__v");
+  this.find({ isActive: { $ne: false } });
+  next();
+});
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+userSchema.methods.correctPassword = async function (
+  inputPassword,
+  userPassword
+) {
+  return await bcrypt.compare(inputPassword, userPassword);
+};
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
