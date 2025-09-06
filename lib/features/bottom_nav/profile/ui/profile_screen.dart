@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/account_data_widget.dart';
-import 'package:sanayi_app/features/settings/ui/widgets/log_out_bottom_sheet.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
