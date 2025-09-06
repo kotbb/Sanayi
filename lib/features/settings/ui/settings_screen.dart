@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/settings/ui/widgets/log_out_bottom_sheet.dart';
 import 'package:sanayi_app/features/settings/ui/widgets/list_tile_widget.dart';
 
@@ -39,7 +40,12 @@ class SettingsScreen extends StatelessWidget {
                         leading: Icon(Icons.edit),
                         title: "Edit Profile",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.editProfileScreen,
+                          );
+                        },
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.phone),

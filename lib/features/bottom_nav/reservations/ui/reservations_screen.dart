@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sanayi_app/features/bottom_nav/reservations/ui/reservation_item_widget.dart';
+import 'package:sanayi_app/features/bottom_nav/reservations/ui/widgets/reservation_item_widget.dart';
 
 class ReservationsScreen extends StatelessWidget {
   const ReservationsScreen({super.key});
