@@ -12,4 +12,5 @@ class Routes {
   static const String languageScreen = '/languageScreen';
   static const String categoriesScreen = '/CategoriesScreen';
   static const String servicesScreen = '/servicesScreen';
+  static const String craftmanDetailsScreen = '/craftmanDetailsScreen';
 }

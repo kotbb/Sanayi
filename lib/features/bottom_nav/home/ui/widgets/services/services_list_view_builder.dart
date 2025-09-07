@@ -41,7 +41,9 @@ class ServicesListViewBuilder extends StatelessWidget {
                 name: "Feras AZ",
                 service: "Cleaner",
                 rating: "4.9",
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.craftmanDetailsScreen);
+                },
               );
             },
           ),
