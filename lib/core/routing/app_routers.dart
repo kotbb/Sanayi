@@ -4,6 +4,7 @@ import 'package:sanayi_app/features/auth/ui/login_screen.dart';
 import 'package:sanayi_app/features/auth/ui/otp_code_screen.dart';
 import 'package:sanayi_app/features/bottom_nav/app_layout.dart';
 import 'package:sanayi_app/features/bottom_nav/cubit/app_cubit.dart';
+import 'package:sanayi_app/features/categories/ui/categories_screen.dart';
 import 'package:sanayi_app/features/choose_user_type/choose_user_type_screen.dart';
 import 'package:sanayi_app/features/create_account_client/ui/create_account_client_screen.dart';
 import 'package:sanayi_app/features/create_account_craftman/ui/create_account_craftman_screen.dart';
@@ -46,8 +47,10 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case Routes.editProfileScreen:
         return MaterialPageRoute(builder: (_) => const EditProfileScreen());
-              case Routes.languageScreen:
+      case Routes.languageScreen:
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
+      case Routes.categoriesScreen:
+        return MaterialPageRoute(builder: (_) => const CategoriesScreen());
       default:
         return null;
     }

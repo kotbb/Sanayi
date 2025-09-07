@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:sanayi_app/core/helpers/spacing.dart';
-
-class CategoriesListViewItem extends StatelessWidget {
+    
+class CategoriesGridViewItem extends StatelessWidget {
   String image;
   String label;
   Function()? onTap;
-  CategoriesListViewItem({super.key, required this.image, required this.label, required this.onTap});
-
+  CategoriesGridViewItem({ super.key, required this.image, required this.label, required this.onTap });
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
