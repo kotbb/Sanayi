@@ -13,6 +13,7 @@ import 'package:sanayi_app/features/language/ui/language_screen.dart';
 import 'package:sanayi_app/features/notifications/ui/notifications_screen.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sanayi_app/features/services/ui/services_screen.dart';
 import 'package:sanayi_app/features/settings/ui/settings_screen.dart';
 
 class AppRouters {
@@ -51,6 +52,8 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
       case Routes.categoriesScreen:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+      case Routes.servicesScreen:
+        return MaterialPageRoute(builder: (_) => const ServicesScreen());
       default:
         return null;
     }

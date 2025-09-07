@@ -8,21 +8,21 @@ class ServicesListViewItem extends StatelessWidget {
   String name;
   String service;
   String rating;
+  Function()? onTap;
 
- ServicesListViewItem({
+  ServicesListViewItem({
     super.key,
     required this.image,
     required this.name,
     required this.service,
     required this.rating,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        //TODO: adding logic here
-      },
+      onTap: onTap,
       child: Container(
         width: 160.w,
         height: 174.h,

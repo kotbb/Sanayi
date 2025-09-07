@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/services/services_list_view_item.dart';
 
 class ServicesListViewBuilder extends StatelessWidget {
@@ -18,7 +19,7 @@ class ServicesListViewBuilder extends StatelessWidget {
               Text("Services", style: TextStyle(fontSize: 16.sp)),
               GestureDetector(
                 onTap: () {
-                  //TODO: adding logic here
+                  Navigator.pushNamed(context, Routes.servicesScreen);
                 },
                 child: Icon(Icons.arrow_forward),
               ),
@@ -40,6 +41,7 @@ class ServicesListViewBuilder extends StatelessWidget {
                 name: "Feras AZ",
                 service: "Cleaner",
                 rating: "4.9",
+                onTap: () {},
               );
             },
           ),
