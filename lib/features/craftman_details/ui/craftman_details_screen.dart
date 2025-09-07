@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class CraftmanDetailsScreen extends StatelessWidget {
   const CraftmanDetailsScreen({super.key});
@@ -61,7 +62,12 @@ class CraftmanDetailsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          Routes.bookingCraftmanScreen,
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff102144),
                         padding: EdgeInsets.symmetric(vertical: 14.h),
@@ -71,7 +77,7 @@ class CraftmanDetailsScreen extends StatelessWidget {
                         elevation: 3,
                       ),
                       child: Text(
-                        "Reservation",
+                        "Book Now",
                         style: TextStyle(fontSize: 16.sp, color: Colors.white),
                       ),
                     ),
