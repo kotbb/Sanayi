@@ -15,6 +15,7 @@ import 'package:sanayi_app/features/language/ui/language_screen.dart';
 import 'package:sanayi_app/features/notifications/ui/notifications_screen.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sanayi_app/features/see_craftman_profile/ui/see_craftman_profile_screen.dart';
 import 'package:sanayi_app/features/services/ui/services_screen.dart';
 import 'package:sanayi_app/features/settings/ui/settings_screen.dart';
 
@@ -60,6 +61,10 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const CraftmanDetailsScreen());
       case Routes.bookingCraftmanScreen:
         return MaterialPageRoute(builder: (_) => const BookingCraftmanScreen());
+      case Routes.seeCraftmanProfileScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SeeCraftmanProfileScreen(),
+        );
       default:
         return null;
     }
