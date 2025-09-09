@@ -92,9 +92,7 @@ class WorkGalleryDetailsScreen extends StatelessWidget {
                   Text(
                     "This project involved fixing electrical wiring and replacing old switches. "
                     "I ensured all safety measures were taken, and the client was satisfied "
-                    "with the results. The work was completed within 2 days. "
-                    "\n\nExtra details here to make scrolling possible and show how "
-                    "the description can extend to multiple lines if needed.",
+                    "with the results. The work was completed within 2 days. ",
                     style: TextStyle(fontSize: 16.sp, height: 1.5),
                   ),
                   verticalSpace(24),

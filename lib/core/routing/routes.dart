@@ -17,5 +17,5 @@ class Routes {
   static const String seeCraftmanProfileScreen = '/seeCraftmanProfileScreen';
   static const String worksGalleryScreen = '/worksGalleryScreen';
   static const String workGalleryDetailsScreen = '/workGalleryDetailsScreen';
-  
+  static const String successBookingScreen = '/successBookingScreen';
 }

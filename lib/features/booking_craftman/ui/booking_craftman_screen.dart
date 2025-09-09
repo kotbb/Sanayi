@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/booking_craftman/ui/widgets/build_section_widget.dart';
 
 class BookingCraftmanScreen extends StatelessWidget {
@@ -113,6 +114,7 @@ class BookingCraftmanScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   //todo: Handle booking logic here
+                  Navigator.pushNamed(context, Routes.successBookingScreen);
                   final snackBar = SnackBar(
                     content: Text('Appointment booked successfully!'),
                     backgroundColor: Color(0xff102144),
