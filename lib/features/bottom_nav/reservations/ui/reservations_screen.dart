@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/reservations/ui/widgets/reservation_item_widget.dart';
 
 class ReservationsScreen extends StatelessWidget {
@@ -20,6 +21,7 @@ class ReservationsScreen extends StatelessWidget {
                 subTitle: 'Reservation Details',
                 onTap: () {
                   //TODO: Navigate to reservation details from ReservationItemWidget
+                  Navigator.pushNamed(context, Routes.bookingDetailsScreen);
                 },
               ),
             );

@@ -3,6 +3,7 @@ import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/auth/ui/login_screen.dart';
 import 'package:sanayi_app/features/auth/ui/otp_code_screen.dart';
 import 'package:sanayi_app/features/booking_craftman/ui/success_booking_screen.dart';
+import 'package:sanayi_app/features/booking_details/ui/booking_details_screen.dart';
 import 'package:sanayi_app/features/bottom_nav/app_layout.dart';
 import 'package:sanayi_app/features/bottom_nav/cubit/app_cubit.dart';
 import 'package:sanayi_app/features/categories/ui/categories_screen.dart';
@@ -72,8 +73,10 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const WorksGalleryScreen());
       case Routes.workGalleryDetailsScreen:
         return MaterialPageRoute(builder: (_) => WorkGalleryDetailsScreen());
-              case Routes.successBookingScreen:
+      case Routes.successBookingScreen:
         return MaterialPageRoute(builder: (_) => const SuccessBookingScreen());
+      case Routes.bookingDetailsScreen:
+        return MaterialPageRoute(builder: (_) => const BookingDetailsScreen());
       default:
         return null;
     }

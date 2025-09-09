@@ -18,4 +18,5 @@ class Routes {
   static const String worksGalleryScreen = '/worksGalleryScreen';
   static const String workGalleryDetailsScreen = '/workGalleryDetailsScreen';
   static const String successBookingScreen = '/successBookingScreen';
+  static const String bookingDetailsScreen = '/bookingDetailsScreen';
 }
