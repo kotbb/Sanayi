@@ -18,6 +18,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sanayi_app/features/see_craftman_profile/ui/see_craftman_profile_screen.dart';
 import 'package:sanayi_app/features/services/ui/services_screen.dart';
 import 'package:sanayi_app/features/settings/ui/settings_screen.dart';
+import 'package:sanayi_app/features/work_gallery_details/ui/work_gallery_details_screen.dart';
+import 'package:sanayi_app/features/works_gallery/ui/works_gallery_screen.dart';
 
 class AppRouters {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -65,6 +67,10 @@ class AppRouters {
         return MaterialPageRoute(
           builder: (_) => const SeeCraftmanProfileScreen(),
         );
+      case Routes.worksGalleryScreen:
+        return MaterialPageRoute(builder: (_) => const WorksGalleryScreen());
+      case Routes.workGalleryDetailsScreen:
+        return MaterialPageRoute(builder: (_) => WorkGalleryDetailsScreen());
       default:
         return null;
     }

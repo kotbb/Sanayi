@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/see_craftman_profile/ui/widgets/build_info_tile.dart';
 
 class SeeCraftmanProfileScreen extends StatelessWidget {
@@ -72,7 +73,12 @@ class SeeCraftmanProfileScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.worksGalleryScreen,
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff102144),
                   padding: EdgeInsets.symmetric(vertical: 16.h),

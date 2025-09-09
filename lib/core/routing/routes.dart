@@ -13,6 +13,9 @@ class Routes {
   static const String categoriesScreen = '/CategoriesScreen';
   static const String servicesScreen = '/servicesScreen';
   static const String craftmanDetailsScreen = '/craftmanDetailsScreen';
-   static const String bookingCraftmanScreen = '/bookingCraftmanScreen';
-   static const String seeCraftmanProfileScreen = '/seeCraftmanProfileScreen';
+  static const String bookingCraftmanScreen = '/bookingCraftmanScreen';
+  static const String seeCraftmanProfileScreen = '/seeCraftmanProfileScreen';
+  static const String worksGalleryScreen = '/worksGalleryScreen';
+  static const String workGalleryDetailsScreen = '/workGalleryDetailsScreen';
+  
 }
