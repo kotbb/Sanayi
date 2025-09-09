@@ -69,6 +69,20 @@ class BookingDetailsScreen extends StatelessWidget {
             verticalSpace(24),
             ContactAndCancelBtns(),
             verticalSpace(12),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xff102144),
+                padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 32.w),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onPressed: () {},
+              child: Text(
+                "Rate Craftman",
+                style: TextStyle(fontSize: 16.sp, color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

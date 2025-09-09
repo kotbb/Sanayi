@@ -14,6 +14,7 @@ class AppLayout extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: cubit.bottomScreens[cubit.currentIndex],
           bottomNavigationBar: CustomBottomNav(
             currentIndex: cubit.currentIndex,

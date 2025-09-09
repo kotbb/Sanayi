@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/account_data_widget.dart';
@@ -60,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             verticalSpace(24),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

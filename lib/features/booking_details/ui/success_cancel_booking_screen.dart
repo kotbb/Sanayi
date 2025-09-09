@@ -4,8 +4,8 @@ import 'package:lottie/lottie.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 
-class SuccessBookingScreen extends StatelessWidget {
-  const SuccessBookingScreen({super.key});
+class SuccessCancelBookingScreen extends StatelessWidget {
+  const SuccessCancelBookingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class SuccessBookingScreen extends StatelessWidget {
               ),
               verticalSpace(23),
               Text(
-                "Your booking is successful",
+                "Your booking is cancelled successful",
                 style: Theme.of(
                   context,
                 ).textTheme.displayLarge?.copyWith(fontSize: 20.sp),
@@ -42,7 +42,7 @@ class SuccessBookingScreen extends StatelessWidget {
               verticalSpace(17),
               Text(
                 textAlign: TextAlign.center,
-                "You have successfully booked the craftman. The craftman will contact you soon.",
+                "You have successfully cancelled the booking",
                 style: Theme.of(
                   context,
                 ).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
@@ -63,10 +63,7 @@ class SuccessBookingScreen extends StatelessWidget {
                 ),
                 child: Text(
                   "Done",
-                  style: TextStyle(
-                    color: Color(0xff102144),
-                    fontSize: 16.sp,
-                  ),
+                  style: TextStyle(color: Color(0xff102144), fontSize: 16.sp),
                 ),
               ),
             ],

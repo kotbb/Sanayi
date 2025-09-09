@@ -20,7 +20,7 @@ class ReservationsScreen extends StatelessWidget {
                 title: 'Reservation',
                 subTitle: 'Reservation Details',
                 onTap: () {
-                  //TODO: Navigate to reservation details from ReservationItemWidget
+                  //todo: Navigate to reservation details from ReservationItemWidget
                   Navigator.pushNamed(context, Routes.bookingDetailsScreen);
                 },
               ),
