@@ -21,4 +21,5 @@ class Routes {
   static const String bookingDetailsScreen = '/bookingDetailsScreen';
   static const String successCancelBookingScreen = '/successCancelBookingScreen';
   static const String contactWithCraftmanScreen = '/contactWithCraftmanScreen';
+    static const String rateCraftmanScreen = '/rateCraftmanScreen';
 }

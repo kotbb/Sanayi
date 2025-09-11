@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/booking_details/ui/widgets/build_info_card.dart';
 import 'package:sanayi_app/features/booking_details/ui/widgets/contact_and_cancel_btns.dart';
 
@@ -77,7 +78,9 @@ class BookingDetailsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.rateCraftmanScreen);
+              },
               child: Text(
                 "Rate Craftman",
                 style: TextStyle(fontSize: 16.sp, color: Colors.white),
