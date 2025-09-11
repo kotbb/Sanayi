@@ -4,6 +4,10 @@ import 'package:sanayi_app/features/auth/ui/login_screen.dart';
 import 'package:sanayi_app/features/auth/ui/otp_code_screen.dart';
 import 'package:sanayi_app/features/booking_craftman/ui/success_booking_screen.dart';
 import 'package:sanayi_app/features/booking_details/ui/booking_details_screen.dart';
+import 'package:sanayi_app/features/change_number/new_number/ui/new_number_screen.dart';
+import 'package:sanayi_app/features/change_number/new_otp/ui/new_otp_screen.dart';
+import 'package:sanayi_app/features/change_number/old_number/ui/old_number_screen.dart';
+import 'package:sanayi_app/features/change_number/old_otp/ui/old_otp_screen.dart';
 import 'package:sanayi_app/features/contact_with_craftman/ui/contact_with_craftman_screen.dart';
 import 'package:sanayi_app/features/booking_details/ui/success_cancel_booking_screen.dart';
 import 'package:sanayi_app/features/bottom_nav/app_layout.dart';
@@ -90,6 +94,14 @@ class AppRouters {
         );
       case Routes.rateCraftmanScreen:
         return MaterialPageRoute(builder: (_) => const RateCraftmanScreen());
+      case Routes.oldNumberScreen:
+        return MaterialPageRoute(builder: (_) => const OldNumberScreen());
+      case Routes.oldOtpScreen:
+        return MaterialPageRoute(builder: (_) => const OldOtpScreen());
+              case Routes.newNumberScreen:
+        return MaterialPageRoute(builder: (_) => const NewNumberScreen());
+      case Routes.newOtpScreen:
+        return MaterialPageRoute(builder: (_) => const NewOtpScreen());
       default:
         return null;
     }

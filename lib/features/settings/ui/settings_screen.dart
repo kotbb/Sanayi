@@ -51,7 +51,9 @@ class SettingsScreen extends StatelessWidget {
                         leading: Icon(Icons.phone),
                         title: "Change Phone Number",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.oldNumberScreen);
+                        },
                       ),
                     ],
                   ),
