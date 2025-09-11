@@ -26,7 +26,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sanayi_app/features/rate_craftman/ui/rate_craftman_screen.dart';
 import 'package:sanayi_app/features/see_craftman_profile/ui/see_craftman_profile_screen.dart';
 import 'package:sanayi_app/features/services/ui/services_screen.dart';
+import 'package:sanayi_app/features/settings/ui/contact_us/contact_us_screen.dart';
+import 'package:sanayi_app/features/settings/ui/privacy_and_policies/privacy_and_policies_screen.dart';
 import 'package:sanayi_app/features/settings/ui/settings_screen.dart';
+import 'package:sanayi_app/features/settings/ui/who_are_we/who_are_we_screen.dart';
 import 'package:sanayi_app/features/work_gallery_details/ui/work_gallery_details_screen.dart';
 import 'package:sanayi_app/features/works_gallery/ui/works_gallery_screen.dart';
 
@@ -98,10 +101,16 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const OldNumberScreen());
       case Routes.oldOtpScreen:
         return MaterialPageRoute(builder: (_) => const OldOtpScreen());
-              case Routes.newNumberScreen:
+      case Routes.newNumberScreen:
         return MaterialPageRoute(builder: (_) => const NewNumberScreen());
       case Routes.newOtpScreen:
         return MaterialPageRoute(builder: (_) => const NewOtpScreen());
+      case Routes.whoAreWeScreen:
+        return MaterialPageRoute(builder: (_) => const WhoAreWeScreen());
+      case Routes.contactUsScreen:
+        return MaterialPageRoute(builder: (_) => const ContactUsScreen());
+      case Routes.privacyAndPoliciesScreen:
+        return MaterialPageRoute(builder: (_) => const PrivacyAndPoliciesScreen());
       default:
         return null;
     }

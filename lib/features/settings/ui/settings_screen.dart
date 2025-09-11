@@ -111,21 +111,30 @@ class SettingsScreen extends StatelessWidget {
                         leading: Icon(
                           Icons.attachment_rounded,
                         ), //TODO: Change the Icon
-                        title: "Who Are We ?",
+                        title: "Who Are We",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.whoAreWeScreen);
+                        },
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.wechat_outlined),
                         title: "Contact Us",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.contactUsScreen);
+                        },
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.policy_outlined),
                         title: "Privacy & Policies",
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.privacyAndPoliciesScreen,
+                          );
+                        },
                       ),
                     ],
                   ),
