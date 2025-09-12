@@ -2,18 +2,39 @@ const catchAsync = require("../utils/api/catchAsync");
 const Booking = require("../models/bookingModel");
 const factory = require("./handlerFactory");
 const filterObj = require("../utils/filterObject");
+const AppError = require("../utils/appError");
 //---------------------------------------------------
-
-const getAllBookings = factory.getAll(Booking);
-const getBooking = (req, res, next) => {
-  res.status(200).json({
-    status: "success",
-    data: {
-      booking: req.doc,
+const popOptions = [
+  {
+    path: "craftsman",
+    select: "user specializations",
+    populate: {
+      path: "user",
+      select: "name profilePicture phoneNumber",
     },
+  },
+  {
+    path: "client",
+    select: "name profilePicture phoneNumber",
+  },
+];
+
+const getAllBookings = factory.getAll(Booking, popOptions);
+const getBooking = factory.getOne(Booking, popOptions);
+const createBooking = catchAsync(async (req, res, next) => {
+  if (req.user.role === "client") {
+    if (req.body.client !== req.user.id) {
+      return next(
+        new AppError("You cannot create bookings for other clients", 400)
+      );
+    }
+  }
+  const newBooking = await Booking.create(req.body);
+  res.status(201).json({
+    status: "success",
+    data: { booking: newBooking },
   });
-};
-const createBooking = factory.createOne(Booking);
+});
 
 const updateBooking = catchAsync(async (req, res, next) => {
   const filteredBody = filterObj(req.body, "status", "date", "time");

@@ -74,7 +74,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.index({ phoneNumber: 1 }, { unique: true });
 userSchema.index({ role: 1 });
 
 userSchema.virtual("craftsman", {

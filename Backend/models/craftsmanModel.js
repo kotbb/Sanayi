@@ -85,6 +85,17 @@ const craftsmanSchema = new mongoose.Schema(
       default: 0,
       min: [0, "Hourly rate cannot be negative"],
     },
+    ratingsAverage: {
+      type: Number,
+      default: 0,
+      min: [0, "Rating must be above 0"],
+      max: [5, "Rating must be below 5.0"],
+      set: (val) => Math.round(val * 10) / 10,
+    },
+    ratingsQuantity: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
@@ -93,7 +104,6 @@ const craftsmanSchema = new mongoose.Schema(
   }
 );
 
-craftsmanSchema.index({ user: 1 });
 craftsmanSchema.index({ specializations: 1 });
 craftsmanSchema.index({ hourlyRate: 1 });
 
@@ -114,16 +124,6 @@ craftsmanSchema.pre("findOneAndDelete", async function (next) {
     next(err);
   }
 });
-
-craftsmanSchema.virtual("averageRating").get(function () {
-  if (!this.reviews || this.reviews.length === 0) return 0;
-  return (
-    this.reviews.reduce((sum, review) => sum + review.rating, 0) /
-    this.reviews.length
-  );
-});
-
-// We need to see if the isActive will work
 
 craftsmanSchema.index({ user: 1 });
 

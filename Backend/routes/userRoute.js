@@ -2,6 +2,7 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const reviewController = require("../controllers/reviewController");
+const bookingController = require("../controllers/bookingController");
 const bookingRoute = require("./bookingRoute");
 const router = express.Router();
 
@@ -15,12 +16,22 @@ router
     userController.getMe,
     userController.getUser
   );
-router.use(
-  "/me/reviews",
-  authController.restrictTo("client", "craftsman"),
-  authController.loadCraftsmanProfile,
-  reviewController.getMyReviews
-);
+router
+  .route("/me/reviews")
+  .get(
+    authController.restrictTo("client", "craftsman"),
+    authController.loadCraftsmanProfile,
+    reviewController.getMyReviews
+  );
+
+router
+  .route("/me/bookings")
+  .get(
+    authController.restrictTo("client", "craftsman"),
+    authController.loadCraftsmanProfile,
+    authController.setLoggedId,
+    bookingController.getAllBookings
+  );
 router
   .route("/updateMe")
   .patch(

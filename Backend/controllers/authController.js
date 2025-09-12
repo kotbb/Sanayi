@@ -115,6 +115,15 @@ const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
   next();
 });
 
+const setLoggedId = (req, res, next) => {
+  if (req.user.role === "client") {
+    req.params.clientId = req.user.id;
+  } else if (req.user.role === "craftsman") {
+    req.params.craftsmanId = req.craftsman.id;
+  }
+  next();
+};
+
 //------------------------------------------------------
 
 const restrictTo = (...roles) => {
@@ -162,22 +171,23 @@ const protect = catchAsync(async (req, res, next) => {
 
 const checkOwnerShip = (Model, userFieldNames) => {
   return catchAsync(async (req, res, next) => {
-    // 1) Get the document
     const doc = await Model.findById(req.params.id);
     if (!doc) {
       return next(new AppError("No document found with that ID", 404));
     }
 
-    // 2) Check if the document belongs to the admin
+    console.log(doc);
+    // 3) Check if the document belongs to the admin
     if (req.user.role === "admin") {
       req.doc = doc;
       return next();
     }
     let isOwner = false;
     if (req.user.role === "craftsman" && userFieldNames.includes("craftsman")) {
-      isOwner = doc.craftsman.user.id?.toString() === req.user.id;
+      const craftsman = await Craftsman.findOne({ user: req.user.id });
+      isOwner = doc.craftsman?.toString() === craftsman.id;
     } else {
-      isOwner = doc.client.id?.toString() === req.user.id;
+      isOwner = doc.client?.toString() === req.user.id;
     }
     if (!isOwner) {
       return next(
@@ -200,4 +210,5 @@ module.exports = {
   completeRegister,
   checkOwnerShip,
   loadCraftsmanProfile,
+  setLoggedId,
 };

@@ -12,8 +12,11 @@ router.use("/:bookingId/reviews", reviewRoute);
 
 router
   .route("/")
-  .get(bookingController.getAllBookings)
-  .post(authController.restrictTo("client"), bookingController.createBooking);
+  .get(authController.restrictTo("admin"), bookingController.getAllBookings)
+  .post(
+    authController.restrictTo("client", "admin"),
+    bookingController.createBooking
+  );
 
 router
   .route("/:id")

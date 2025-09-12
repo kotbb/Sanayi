@@ -1,7 +1,7 @@
 const Craftsman = require("../models/craftsmanModel");
 const factory = require("./handlerFactory");
 //---------------------------------------------------
-const popOptions = [
+let popOptions = [
   {
     path: "specializations",
     select: "name",

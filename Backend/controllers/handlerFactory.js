@@ -76,7 +76,6 @@ const getAll = (Model, popOptions) =>
     }
 
     console.log(filter);
-
     let query = Model.find(filter);
     if (popOptions) query = query.populate(popOptions);
 

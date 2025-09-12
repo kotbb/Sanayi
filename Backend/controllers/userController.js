@@ -16,11 +16,6 @@ const getMe = (req, res, next) => {
   next();
 };
 
-const getMyReviews = (req, res, next) => {
-  req.params.id = req.user.id;
-  next();
-};
-
 // Name, location, specializations, hourlyRate, workSchedule, portfolio are allowed to be updated
 const updateMe = catchAsync(async (req, res, next) => {
   const userFilteredBody = filterObj(req.body, "name", "location");
@@ -112,7 +107,6 @@ module.exports = {
   getMe,
   updateMe,
   deleteMe,
-  getMyReviews,
   sendUpdatePhoneOTP,
   verifyUpdatePhoneOTP,
   createUser,

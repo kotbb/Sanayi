@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Craftsman = require("./craftsmanModel");
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -40,6 +41,44 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 reviewSchema.index({ craftsman: 1, createdAt: -1 });
+
+reviewSchema.statics.calcAverageRatings = async function (craftsmanId) {
+  const stats = await this.aggregate([
+    {
+      $match: { craftsman: craftsmanId },
+    },
+    {
+      $group: {
+        _id: "$craftsman",
+        numOfRatings: { $sum: 1 },
+        avgRating: { $avg: "$rating" },
+      },
+    },
+  ]);
+  if (stats.length > 0) {
+    await Craftsman.findByIdAndUpdate(
+      craftsmanId,
+      {
+        ratingsQuantity: stats[0].numOfRatings,
+        ratingsAverage: stats[0].avgRating,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  }
+};
+
+reviewSchema.post("save", function () {
+  this.constructor.calcAverageRatings(this.craftsman);
+});
+
+reviewSchema.post(/^findOneAnd/, async function (doc) {
+  if (doc) {
+    await doc.constructor.calcAverageRatings(doc.craftsman);
+  }
+});
 
 const Review = mongoose.model("Review", reviewSchema);
 
