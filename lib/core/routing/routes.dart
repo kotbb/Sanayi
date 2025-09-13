@@ -29,4 +29,5 @@ class Routes {
   static const String whoAreWeScreen = '/whoAreWeScreen';
   static const String contactUsScreen = '/contactUsScreen';
   static const String privacyAndPoliciesScreen = '/privacyAndPoliciesScreen';
+  static const String appLayoutCraftman = '/appLayoutCraftman';
 }
