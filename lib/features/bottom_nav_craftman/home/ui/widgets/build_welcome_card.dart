@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class BuildWelcomeCard extends StatelessWidget {
   List<Map<String, dynamic>> newRequests;
@@ -51,7 +52,7 @@ class BuildWelcomeCard extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.notifications),
                         onPressed: () {
-                          // Navigate to notifications screen
+                          Navigator.pushNamed(context, Routes.notificationsScreen);
                         },
                       ),
                     ],

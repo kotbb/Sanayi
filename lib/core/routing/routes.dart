@@ -30,4 +30,5 @@ class Routes {
   static const String contactUsScreen = '/contactUsScreen';
   static const String privacyAndPoliciesScreen = '/privacyAndPoliciesScreen';
   static const String appLayoutCraftman = '/appLayoutCraftman';
+  static const String requestsScreen = '/requestsScreen';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class BuildSectionHeader extends StatelessWidget {
   String title;
@@ -21,7 +22,7 @@ class BuildSectionHeader extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            // Handle "See All" tap
+            Navigator.pushNamed(context, Routes.requestsScreen);
           },
           child: Chip(
             label: Text(count.toString()),
