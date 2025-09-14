@@ -31,4 +31,5 @@ class Routes {
   static const String privacyAndPoliciesScreen = '/privacyAndPoliciesScreen';
   static const String appLayoutCraftman = '/appLayoutCraftman';
   static const String requestsScreen = '/requestsScreen';
+  static const String requestsDetailsScreen = '/requestsDetailsScreen';
 }
