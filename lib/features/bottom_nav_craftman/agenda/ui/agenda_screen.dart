@@ -13,9 +13,11 @@ class AgendaScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Work Schedule & Services',
+            'Agenda',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
           ),
+          centerTitle: true,
+          leading: SizedBox(),
           bottom: TabBar(
             labelColor: const Color(0xff102144),
             indicatorColor: const Color(0xff102144),

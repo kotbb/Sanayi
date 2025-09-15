@@ -66,7 +66,7 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.appLayout);
+                    Navigator.pushReplacementNamed(context, Routes.appLayoutCraftman);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14.h),
