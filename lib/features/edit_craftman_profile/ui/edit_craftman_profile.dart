@@ -4,10 +4,11 @@ import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/edit_profile/ui/widgets/Image_widget.dart';
 import 'package:sanayi_app/features/edit_profile/ui/widgets/change_data_widget.dart';
+    
+class EditCraftmanProfile extends StatelessWidget {
 
-class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
-
+  const EditCraftmanProfile({ super.key });
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +33,9 @@ class EditProfileScreen extends StatelessWidget {
                     verticalSpace(24),
                     ChangeDataWidget(label: "Loaction"),
                     verticalSpace(24),
-                    ChangeDataWidget(label: "Email"),
+                    ChangeDataWidget(label: "Profession"),
                     verticalSpace(40),
+                    ChangeDataWidget(label: "biography"),
                     // Register Button
                     SizedBox(
                       width: double.infinity,
