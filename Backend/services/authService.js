@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const Craftsman = require("../models/craftsmanModel");
 const AppError = require("../utils/appError");
 const Category = require("../models/categoryModel");
+const craftsmanService = require("./craftsmanService");
 
 const registerUserTransaction = async (userData, phoneNumber) => {
   const { role, name, location, specializations, hourlyRate, profilePicture } =
@@ -29,16 +30,9 @@ const registerUserTransaction = async (userData, phoneNumber) => {
       { session }
     );
     if (role === "craftsman") {
-      let specializationIds = [];
-      for (const specialization of specializations) {
-        const specializationId = await Category.findOne({
-          name: specialization,
-        });
-        if (!specializationId) {
-          throw new AppError("Specialization not found", 404);
-        }
-        specializationIds.push(specializationId._id);
-      }
+      const specializationIds =
+        await craftsmanService.convertSpecializationsToIds(specializations);
+
       await Craftsman.create(
         [
           {

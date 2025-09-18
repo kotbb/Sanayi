@@ -1,6 +1,6 @@
-const catchAsync = require("../utils/api/catchAsync");
+const catchAsync = require("../middlewares/catchAsync");
 const AppError = require("../utils/appError");
-const APIFeatures = require("../utils/api/apiFeatures");
+const APIFeatures = require("../middlewares/apiFeatures");
 //---------------------------------------------------
 
 const createOne = (Model) =>
@@ -63,8 +63,6 @@ const getOne = (Model, popOptions) =>
 
 const getAll = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    // to allow for nested routes
-
     let filter = {};
     if (req.user.role !== "admin") {
       if (req.params.clientId) filter.client = req.params.clientId;
@@ -75,7 +73,6 @@ const getAll = (Model, popOptions) =>
       }
     }
 
-    console.log(filter);
     let query = Model.find(filter);
     if (popOptions) query = query.populate(popOptions);
 

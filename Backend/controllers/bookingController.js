@@ -1,4 +1,4 @@
-const catchAsync = require("../utils/api/catchAsync");
+const catchAsync = require("../middlewares/catchAsync");
 const Booking = require("../models/bookingModel");
 const factory = require("./handlerFactory");
 const filterObj = require("../utils/filterObject");

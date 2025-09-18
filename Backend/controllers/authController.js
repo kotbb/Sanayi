@@ -1,12 +1,12 @@
 const AppError = require("../utils/appError");
-const catchAsync = require("../utils/api/catchAsync");
+const catchAsync = require("../middlewares/catchAsync");
 const authService = require("../services/authService");
-const createOTP = require("../utils/auth/createOTP");
-const verifyOTP = require("../utils/auth/verifyOTP");
+const createOTP = require("../utils/createOTP");
+const verifyOTP = require("../utils/verifyOTP");
 const User = require("../models/userModel");
 const Craftsman = require("../models/craftsmanModel");
 const jwt = require("jsonwebtoken");
-const { signToken, createSendToken } = require("../utils/auth/jwtUtils");
+const { signToken, createSendToken } = require("../utils/jwtUtils");
 const { promisify } = require("util");
 const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
 

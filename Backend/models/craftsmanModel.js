@@ -1,6 +1,54 @@
 const mongoose = require("mongoose");
-const isObject = require("../utils/validators/isObject");
 const User = require("./userModel");
+
+const portfolioSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    //required: true,
+  },
+  description: {
+    type: String,
+    //required: true,
+  },
+  images: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+});
+
+const workScheduleSchema = new mongoose.Schema({
+  day: {
+    type: String,
+    enum: [
+      "saturday",
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+    ],
+    required: true,
+  },
+  available: {
+    type: Boolean,
+    default: true,
+  },
+  startTime: {
+    type: String,
+    required: function () {
+      return this.available;
+    },
+  },
+  endTime: {
+    type: String,
+    required: function () {
+      return this.available;
+    },
+  },
+});
 
 const craftsmanSchema = new mongoose.Schema(
   {
@@ -16,69 +64,8 @@ const craftsmanSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    workSchedule: [
-      {
-        type: Object,
-        validate: {
-          validator: function (value) {
-            return isObject(value);
-          },
-        },
-        day: {
-          type: String,
-          enum: [
-            "saturday",
-            "sunday",
-            "monday",
-            "tuesday",
-            "wednesday",
-            "thursday",
-            "friday",
-          ],
-          required: true,
-        },
-        available: {
-          type: Boolean,
-          default: true,
-        },
-        startTime: {
-          type: String,
-          required: function () {
-            return this.available;
-          },
-        },
-        endTime: {
-          type: String,
-          required: function () {
-            return this.available;
-          },
-        },
-      },
-    ],
-    portfolio: [
-      {
-        type: Object,
-        validate: {
-          validator: function (value) {
-            return isObject(value);
-          },
-        },
-        title: {
-          type: String,
-          required: true,
-        },
-        description: {
-          type: String,
-          required: true,
-        },
-        images: [
-          {
-            type: String,
-            required: true,
-          },
-        ],
-      },
-    ],
+    workSchedule: [workScheduleSchema],
+    portfolio: [portfolioSchema],
     hourlyRate: {
       type: Number,
       //required: true,

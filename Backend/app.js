@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
@@ -8,14 +9,17 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const helmet = require("helmet");
 const globalErrorHandler = require("./controllers/errorController");
+const globalRouteHandler = require("./middlewares/globalRouteHandler");
 const userRoute = require("./routes/userRoute");
 const craftsmanRoute = require("./routes/craftsmanRoute");
+const profileRoute = require("./routes/profileRoute");
 const bookingRoute = require("./routes/bookingRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const authRoute = require("./routes/authRoute");
-const globalRouteHandler = require("./middlewares/globalRouteHandler");
 //----------------------------------------------------------------------
+
+app.use(express.static(path.join(__dirname, "public")));
 
 // Cors
 app.use(cors());
@@ -62,6 +66,7 @@ app.use(express.static(`${__dirname}/public`));
 // Routes
 app.use("/api/users", userRoute);
 app.use("/api/craftsmen", craftsmanRoute);
+app.use("/api/profiles", profileRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/bookings", bookingRoute);
 app.use("/api/reviews", reviewRoute);

@@ -44,13 +44,9 @@ const userSchema = new mongoose.Schema(
         default: "Cairo",
         //required: [true, "Please provide your city!"],
       },
-      area: {
+      address: {
         type: String,
-        //required: [true, "Please provide your area!"],
-      },
-      manualLocation: {
-        type: String,
-        //required: [true, "Please provide a location description!"],
+        //required: [true, "Please provide a address description!"],
       },
     },
     isActive: {
