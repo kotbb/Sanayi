@@ -4,7 +4,8 @@ class Routes {
   static const String otpCodeScreen = '/otpCodeScreen';
   static const String chooseUserTypeScreen = '/chooseUserTypeScreen';
   static const String createAccountClient = '/createAccountClient';
-  static const String createAccountCraftmanScreen = '/createAccountCraftmanScreen';
+  static const String createAccountCraftmanScreen =
+      '/createAccountCraftmanScreen';
   static const String appLayout = '/appLayout';
   static const String notificationsScreen = '/notificationsScreen';
   static const String settingsScreen = '/settingsScreen';
@@ -19,7 +20,8 @@ class Routes {
   static const String workGalleryDetailsScreen = '/workGalleryDetailsScreen';
   static const String successBookingScreen = '/successBookingScreen';
   static const String bookingDetailsScreen = '/bookingDetailsScreen';
-  static const String successCancelBookingScreen = '/successCancelBookingScreen';
+  static const String successCancelBookingScreen =
+      '/successCancelBookingScreen';
   static const String contactWithCraftmanScreen = '/contactWithCraftmanScreen';
   static const String rateCraftmanScreen = '/rateCraftmanScreen';
   static const String oldNumberScreen = '/oldNumberScreen';
@@ -32,4 +34,5 @@ class Routes {
   static const String appLayoutCraftman = '/appLayoutCraftman';
   static const String requestsScreen = '/requestsScreen';
   static const String requestsDetailsScreen = '/requestsDetailsScreen';
+  static const String searchScreen = '/searchScreen';
 }

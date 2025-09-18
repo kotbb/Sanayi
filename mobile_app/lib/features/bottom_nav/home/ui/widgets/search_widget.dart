@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/routing/routes.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -9,7 +10,7 @@ class SearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //TODO: adding logic here
+        Navigator.pushNamed(context, Routes.searchScreen);
       },
       child: Container(
         width: double.infinity,
@@ -25,7 +26,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xfffEBF0F4),
+                  color: Color(0xfffebf0f4),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

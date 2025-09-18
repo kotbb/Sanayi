@@ -27,6 +27,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sanayi_app/features/rate_craftman/ui/rate_craftman_screen.dart';
 import 'package:sanayi_app/features/requests/ui/requests_screen.dart';
 import 'package:sanayi_app/features/requests_details/ui/requests_details_screen.dart';
+import 'package:sanayi_app/features/search/ui/search_screen.dart';
 import 'package:sanayi_app/features/see_craftman_profile/ui/see_craftman_profile_screen.dart';
 import 'package:sanayi_app/features/services/ui/services_screen.dart';
 import 'package:sanayi_app/features/settings/ui/contact_us/contact_us_screen.dart';
@@ -127,6 +128,8 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => RequestsScreen());
       case Routes.requestsDetailsScreen:
         return MaterialPageRoute(builder: (_) => RequestsDetailsScreen());
+      case Routes.searchScreen:
+        return MaterialPageRoute(builder: (_) => SearchScreen());
       default:
         return null;
     }

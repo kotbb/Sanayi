@@ -11,7 +11,7 @@ class NewNumberScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color(0xfffEBF0F4)),
+      appBar: AppBar(backgroundColor: Color(0xfffebf0f4)),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -20,7 +20,7 @@ class NewNumberScreen extends StatelessWidget {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.35,
               decoration: const BoxDecoration(
-                color: Color(0xfffEBF0F4),
+                color: Color(0xfffebf0f4),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
@@ -74,7 +74,7 @@ class NewNumberScreen extends StatelessWidget {
                         ],
                       ),
                       filled: true,
-                      fillColor: Color(0xfffEBF0F4),
+                      fillColor: Color(0xfffebf0f4),
                       contentPadding: const EdgeInsets.symmetric(vertical: 16),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/on_boarding/widgets/build_service_item.dart';
 

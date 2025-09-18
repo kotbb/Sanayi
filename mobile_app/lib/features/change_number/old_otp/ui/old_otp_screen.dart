@@ -10,7 +10,7 @@ class OldOtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color(0xfffEBF0F4)),
+      appBar: AppBar(backgroundColor: Color(0xfffebf0f4)),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -20,7 +20,7 @@ class OldOtpScreen extends StatelessWidget {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.45,
                 decoration: const BoxDecoration(
-                  color: Color(0xfffEBF0F4),
+                  color: Color(0xfffebf0f4),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(100),
                     bottomRight: Radius.circular(100),

@@ -22,7 +22,7 @@ class AccountDataWidget extends StatelessWidget {
           controller: TextEditingController(text: value),
           decoration: InputDecoration(
             filled: true,
-            fillColor: Color(0xfffEBF0F4),
+            fillColor: Color(0xfffebf0f4),
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8.r),

@@ -20,7 +20,7 @@ class CategoriesGridViewItem extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xfffEBF0F4),
+                color: Color(0xfffebf0f4),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),

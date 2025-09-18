@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: Color(0xfffEBF0F4), // لون الخلفية
+        statusBarColor: Color(0xfffebf0f4), // لون الخلفية
         statusBarIconBrightness:
             Brightness.dark, // لون الأيقونات (Light = أبيض, Dark = أسود)
       ),
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.33,
               decoration: const BoxDecoration(
-                color: Color(0xfffEBF0F4),
+                color: Color(0xfffebf0f4),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),

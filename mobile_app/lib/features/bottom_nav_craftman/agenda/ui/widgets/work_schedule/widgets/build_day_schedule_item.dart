@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/helpers/spacing.dart';
 
 class BuildDayScheduleItem extends StatelessWidget {
   Map<String, dynamic> daySchedule;
@@ -27,7 +29,174 @@ class BuildDayScheduleItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Switch(value: daySchedule['active'], onChanged: (value) {}),
-          IconButton(icon: Icon(Icons.edit, size: 20), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.edit, size: 20),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(25.0),
+                  ),
+                ),
+                builder: (context) {
+                  TimeOfDay? startTime;
+                  TimeOfDay? endTime;
+
+                  return StatefulBuilder(
+                    builder: (context, setState) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: 24,
+                          right: 24,
+                          top: 16,
+                          bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Container(
+                                width: 50.w,
+                                height: 6.h,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[400],
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                            ),
+                            verticalSpace(16),
+                            Text(
+                              "Edit ${daySchedule['day']} Schedule",
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            verticalSpace(12),
+
+                            // Active switch
+                            SwitchListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: const Text("Active"),
+                              value: daySchedule['active'],
+                              onChanged: (value) {
+                                setState(() {
+                                  daySchedule['active'] = value;
+                                });
+                              },
+                            ),
+
+                            verticalSpace(12),
+                            Text(
+                              "Set working hours",
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+
+                            verticalSpace(12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () async {
+                                      final picked = await showTimePicker(
+                                        context: context,
+                                        initialTime:
+                                            startTime ?? TimeOfDay.now(),
+                                      );
+                                      if (picked != null) {
+                                        setState(() => startTime = picked);
+                                      }
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 14.h,
+                                        horizontal: 12.w,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        borderRadius: BorderRadius.circular(
+                                          6.r,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        startTime != null
+                                            ? startTime!.format(context)
+                                            : "Start Time",
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () async {
+                                      final picked = await showTimePicker(
+                                        context: context,
+                                        initialTime: endTime ?? TimeOfDay.now(),
+                                      );
+                                      if (picked != null) {
+                                        setState(() => endTime = picked);
+                                      }
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 14,
+                                        horizontal: 12,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      child: Text(
+                                        endTime != null
+                                            ? endTime!.format(context)
+                                            : "End Time",
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            verticalSpace(24),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(double.infinity, 50.h),
+                                backgroundColor: const Color(0xff102144),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                              ),
+                              onPressed: () {
+                                // todo: handle save
+                                Navigator.pop(context, {
+                                  "active": daySchedule['active'],
+                                  "startTime": startTime,
+                                  "endTime": endTime,
+                                });
+                              },
+                              child: Text(
+                                "Save",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          ),
         ],
       ),
     );

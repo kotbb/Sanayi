@@ -13,7 +13,7 @@ class EditCraftmanProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfffEBF0F4),
+        backgroundColor: Color(0xfffebf0f4),
         title: const Text('Edit Profile'),
       ),
       body: SafeArea(

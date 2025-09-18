@@ -4,8 +4,11 @@ import 'package:sanayi_app/core/helpers/spacing.dart';
 
 class BuildMyServiceItem extends StatelessWidget {
   Map<String, dynamic> service;
+  final TextEditingController titleController ;
+  final TextEditingController descriptionController;
+  final TextEditingController priceController;
 
-  BuildMyServiceItem({super.key, required this.service});
+  BuildMyServiceItem({super.key, required this.service, required this.titleController, required this.descriptionController, required this.priceController});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,124 @@ class BuildMyServiceItem extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.edit, size: 18.sp),
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(25.0),
+                            ),
+                          ),
+                          builder: (context) {
+                            return StatefulBuilder(
+                              builder: (context, setState) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 24,
+                                    right: 24,
+                                    top: 16,
+                                    bottom:
+                                        MediaQuery.of(
+                                          context,
+                                        ).viewInsets.bottom +
+                                        16,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                        child: Container(
+                                          width: 50.w,
+                                          height: 6.h,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[400],
+                                            borderRadius: BorderRadius.circular(
+                                              10.r,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      verticalSpace(16),
+                                      Text(
+                                        "Edit ${service['title']} Service",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                      verticalSpace(12),
+                                      TextField(
+                                        controller: titleController,
+                                        decoration: InputDecoration(
+                                          labelText: 'Service Title',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      verticalSpace(12),
+                                      TextField(
+                                        controller: descriptionController,
+                                        decoration: InputDecoration(
+                                          labelText: 'Category',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      verticalSpace(12),
+                                      TextField(
+                                        controller: descriptionController,
+                                        decoration: InputDecoration(
+                                          labelText: 'Price',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      verticalSpace(12),
+                                      TextField(
+                                        controller: descriptionController,
+                                        decoration: InputDecoration(
+                                          labelText: 'Description',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                        maxLines: 3,
+                                      ),
+                                      verticalSpace(24),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          minimumSize: Size(
+                                            double.infinity,
+                                            50.h,
+                                          ),
+                                          backgroundColor: const Color(
+                                            0xff102144,
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              8.r,
+                                            ),
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          // todo: handle save
+                                        },
+                                        child: Text(
+                                          "Save",
+                                          style: TextStyle(
+                                            fontSize: 16.sp,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        );
+                      },
                     ),
                     IconButton(
                       icon: Icon(Icons.delete, size: 18.sp, color: Colors.red),
@@ -58,12 +178,6 @@ class BuildMyServiceItem extends StatelessWidget {
                   backgroundColor: Colors.blue[100],
                 ),
                 horizontalSpace(6),
-                Icon(Icons.access_time, size: 16, color: Colors.grey),
-                horizontalSpace(2),
-                Text(
-                  service['duration'],
-                  style: TextStyle(fontSize: 12.sp, color: Colors.grey),
-                ),
                 horizontalSpace(6),
                 Icon(Icons.attach_money, size: 16, color: Colors.green),
                 horizontalSpace(2),

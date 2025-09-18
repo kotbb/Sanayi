@@ -12,24 +12,25 @@ class MyServicesTab extends StatelessWidget {
       'description':
           'Installation and repair of electrical cables for buildings',
       'price': 'Start from 200 NIS',
-      'duration': '2-4h',
       'category': 'Electrical',
     },
     {
       'title': 'Plumbing Services',
       'description': 'Installation and repair of water pipes and fixtures',
       'price': 'Start from 150 NIS',
-      'duration': '1-3h',
       'category': 'Plumbing',
     },
     {
       'title': 'Maintenance Services',
       'description': 'General maintenance and repair services',
       'price': 'Start from 100 NIS',
-      'duration': '1-2h',
       'category': 'Maintenance',
     },
   ];
+
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,12 @@ class MyServicesTab extends StatelessWidget {
                   ),
                   Divider(),
                   ...services.map(
-                    (service) => BuildMyServiceItem(service: service),
+                    (service) => BuildMyServiceItem(
+                      service: service,
+                      titleController: titleController,
+                      descriptionController: descriptionController,
+                      priceController: priceController,
+                    ),
                   ),
                 ],
               ),
@@ -67,7 +73,112 @@ class MyServicesTab extends StatelessWidget {
           ),
           verticalSpace(22),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(25.0),
+                  ),
+                ),
+                builder: (context) {
+                  return StatefulBuilder(
+                    builder: (context, setState) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: 24,
+                          right: 24,
+                          top: 16,
+                          bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Container(
+                                width: 50.w,
+                                height: 6.h,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[400],
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                            ),
+                            verticalSpace(16),
+                            Text(
+                              "Add New Service",
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            verticalSpace(12),
+                            TextField(
+                              controller: titleController,
+                              decoration: InputDecoration(
+                                labelText: 'Service Title',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            verticalSpace(12),
+                            TextField(
+                              controller: descriptionController,
+                              decoration: InputDecoration(
+                                labelText: 'Category',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            verticalSpace(12),
+                            TextField(
+                              controller: descriptionController,
+                              decoration: InputDecoration(
+                                labelText: 'Price',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            verticalSpace(12),
+                            TextField(
+                              controller: descriptionController,
+                              decoration: InputDecoration(
+                                labelText: 'Description',
+                                border: OutlineInputBorder(),
+                              ),
+                              maxLines: 3,
+                            ),
+                            verticalSpace(24),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(double.infinity, 50.h),
+                                backgroundColor: const Color(0xff102144),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                              ),
+                              onPressed: () {
+                                // todo: handle add
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Service added successfully'),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Add",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
+            },
             icon: Icon(Icons.add),
             label: Text('Add New Service'),
             style: ElevatedButton.styleFrom(

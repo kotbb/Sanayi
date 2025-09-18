@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 
 class LogOutBottomSheet extends StatelessWidget {
-  const LogOutBottomSheet({Key? key}) : super(key: key);
+  const LogOutBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

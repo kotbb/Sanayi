@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
-import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/rate_craftman/ui/widgets/rating_card.dart';
 
 class RateCraftmanScreen extends StatefulWidget {

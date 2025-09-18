@@ -18,7 +18,7 @@ class CraftmanProfileScreen extends StatelessWidget {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.33,
               decoration: const BoxDecoration(
-                color: Color(0xfffEBF0F4),
+                color: Color(0xfffebf0f4),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
