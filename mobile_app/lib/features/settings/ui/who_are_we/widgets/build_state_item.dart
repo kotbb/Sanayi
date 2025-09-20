@@ -28,7 +28,7 @@ class BuildStateItem extends StatelessWidget {
         verticalSpace(6),
         Text(
           label,
-          style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
+          style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
         ),
       ],
     );

@@ -88,7 +88,7 @@ class WhoAreWeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BuildStateItem(number: '500+', label: 'Skilled CM'),
+                BuildStateItem(number: '500+', label: 'Skilled CraftMen'),
                 BuildStateItem(number: '5,000+', label: 'Satisfied Customers'),
                 BuildStateItem(number: '10,000+', label: 'Completed Services'),
               ],

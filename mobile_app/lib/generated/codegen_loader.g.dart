@@ -1,4 +1,20 @@
-{
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters, constant_identifier_names
+
+import 'dart:ui';
+
+import 'package:easy_localization/easy_localization.dart' show AssetLoader;
+
+class CodegenLoader extends AssetLoader{
+  const CodegenLoader();
+
+  @override
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
+    return Future.value(mapLocales[locale.toString()]);
+  }
+
+  static const Map<String,dynamic> _ar = {
   "onBoarding": {
     "welcome": "مرحبًا بك في صناعي",
     "body": "تطبيق يوصلك بالحرفيين في منطقتك",
@@ -239,4 +255,248 @@
       }
     }
   }
+};
+static const Map<String,dynamic> _en = {
+  "onBoarding": {
+    "welcome": "Welcome to Sanayi",
+    "body": "An app that connects you to craftsmen in your area",
+    "sanayi": "Sanayi",
+    "choose": "Choose the service you need and book easily.",
+    "contractor": "Contractor",
+    "Cooker": "Cooker",
+    "builder": "Builder",
+    "mechanical": "Mechanical",
+    "cleaner": "Cleaner",
+    "deliveryDriver": "Delivery Driver"
+  },
+  "login": {
+    "body": "Enter your phone number",
+    "hintText": "Phone Number",
+    "subTxt": "We will send you a verification code via SMS"
+  },
+  "continueBtn": "Continue",
+  "otp": {
+    "verificationCode": "Verification Code",
+    "body": "Enter the code sent to your phone number",
+    "reciveCode": "Didn't receive the code?",
+    "resendbtn": "Resend"
+  },
+  "userType": {
+    "title": "You entered the app as a ...",
+    "body": "Choose whether you are a client searching for\nservices or a craftman offering services.",
+    "clientCardTitle": "Client",
+    "clientCardBody": "Looking for a craftman?",
+    "craftmanCardTitle": "Craftman",
+    "craftmanCardBody": "Provide your services",
+    "subTxt": "You can change your role later in settings."
+  },
+  "createAccount": {
+    "nameHint": "Full Name",
+    "phoneHint": "Phone Number",
+    "locationHint": "Location",
+    "profession": "Profession",
+    "biography": "The Biography",
+    "createBtn": "Create Account"
+  },
+  "btmNav": {
+    "home": "Home",
+    "bookings": "Bookings",
+    "profile": "Profile",
+    "agenda": "Agenda"
+  },
+  "clientHome": {
+    "hey": "Hey,",
+    "body": "We are here to facilitate your services ...",
+    "search": "Search Here ...",
+    "categories": "Categories",
+    "services": "Services"
+  },
+  "notifications": "Notifications",
+  "craftmanHome": {
+    "hello": "Hello",
+    "bodyPart1": "You Have",
+    "bodyPart2": "new requests today",
+    "progress": "In Progress",
+    "rating": "Rating",
+    "completed": "Completed",
+    "revenue": "Revenue",
+    "newRequests": "New Requests",
+    "new": "New",
+    "requests": "Requests",
+    "bookingDetails": {
+      "title": "Booking Details",
+      "clientInfo": "Clinet Information",
+      "requestDetails": "Request Details",
+      "estimatedTime": "Estimated Time",
+      "estimatedcost": "Estimated Cost",
+      "hours": "Hours",
+      "nis": "NIS",
+      "serviceDetails": "Service Details",
+      "requestNumber": "Request Number",
+      "date": "Date",
+      "time": "Time",
+      "acceptBtn": "Accept",
+      "RejectBtn": "Reject",
+      "addNotes": "Add Notes to Request"
+    }
+  },
+  "resrvation": {
+    "bookingDetails": {
+      "title": "Booking Details",
+      "location": "Location",
+      "data": "Date",
+      "time": "Time",
+      "notes": "Notes",
+      "statue": "Status",
+      "contact": "Contact",
+      "cancel": "Cancel",
+      "rateCraftman": "Rate Craftman",
+      "contactScreen": {
+        "title": "Contact With Craftman",
+        "whatsappNumber": "WhatsApp Number",
+        "copy": "Copy",
+        "workingHours": "Working Hours",
+        "subText": "You can contact the craftman via WhatsApp or copy the number to your clipboard. Please respect his working hours when reaching out."
+      },
+      "cancelBtmSheet": {
+        "title": "Cancel Booking",
+        "subTitle": "Are you sure you want to cancel the booking?",
+        "yesBtn": "Yes",
+        "noBtn": "No",
+        "successCancel": {
+          "title": "Your booking is cancelled successful",
+          "body": "You have successfully cancelled the booking",
+          "doneBtn": "Done"
+        }
+      },
+      "rateScreen": {
+        "title": "Rate Service",
+        "subTitle": "Your feedback will be published after review.",
+        "cardTitle": "How was the service?",
+        "cardBody": "share your experience with us",
+        "rateServiceTxt": "Rate the service",
+        "noRating": "No Rating Yet",
+        "yourRate": "Your Rate",
+        "stars": "starts",
+        "enterComntLabel": "Enter your comment",
+        "enterComntHint": "Enter Your Commet Here ...",
+        "sendBtn": "Send Review"
+      }
+    }
+  },
+  "agenda": {
+    "workSchedule": {
+      "tabName": "Work Schedule",
+      "title": "Weekly Work Schedule",
+      "subTitle": "Set your available working hours",
+      "schedule": "Schedule",
+      "active": "Active",
+      "setWorkHours": "Set Working Hours",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "saveBtn": "Save",
+      "saveScheduleBtn": "Save Schedule",
+      "snackBarTxt": "Work schedule saved successfully"
+    },
+    "edit": "Edit",
+    "myServices": {
+      "tabName": "My Services",
+      "subTitle": "Manage your offered services",
+      "startFrom": "Start From",
+      "service": "Service",
+      "addNew": "Add New Service",
+      "serviceTitle": "Service Title",
+      "category": "Category",
+      "price": "Price",
+      "description": "Description",
+      "addBtn": "Add",
+      "snackBarTxt": "service Added successfully"
+    }
+  },
+  "profile": {
+    "nameLabel": "Name",
+    "numLabel": "Phone Number",
+    "locationLabel": "Location",
+    "profLabel": "Profession",
+    "bioLabel": "biography",
+    "settings": {
+      "title": "Settings",
+      "editProfile": "Edit Profile",
+      "changeNum": "Change Phone Number",
+      "oldNumTxt": "Enter your old phone number",
+      "newNumTxt": "Enter your new phone number",
+      "general": "General",
+      "notifications": "Notifications",
+      "lang": "Language",
+      "en": "English",
+      "ar": "Arabic",
+      "mode": "Mode",
+      "aboutUs": "About Us",
+      "whoAreWe": {
+        "title": "Who Are We",
+        "ourValues": "Our Values",
+        "qualityAndExcellence": "Quality & Excellence",
+        "qualityTxt": "We ensure high-quality services through skilled and certified craftsmen.",
+        "reliability": "Reliability",
+        "reliabilityTxt": "We build strong trust between craftsmen and customers through full transparency.",
+        "completeSatisfaction": "Complete Satisfaction",
+        "completeSatisfactionTxt": "We aim to achieve customer satisfaction through exceptional service and unique experience.",
+        "OurNumbers": "Our Numbers",
+        "skilledCrafman": "Skilled CraftMen",
+        "satisfiedCustomers": "Satisfied Customers",
+        "completedServices": "Completed Services",
+        "rights": "©2025 Final Project Code. All rights reserved."
+      },
+      "contactUs": {
+        "title": "Contact Us",
+        "weAreHere": "We're Here to Help!",
+        "getInTouch": "Get in touch with us through WhatsApp",
+        "whatsCardTxt": "WhatsApp Link",
+        "whatsCardBody": "Click the button below to start a conversation with us on WhatsApp",
+        "openWhatsBtn": "Open WhatsApp Chat",
+        "responsetime": "Response Time",
+        "responseTxt": "We typically respond within 1-2 hours",
+        "workingHours": "Working Hours",
+        "workingHoursTxt": "Sunday - Thursday, 8:00 AM - 6:00 PM",
+        "needHelp": "Need Help?",
+        "needHelpTxt": "Feel free to ask us anything",
+        "subTxt": "For quick assistance, WhatsApp is the fastest way to reach us. We're happy to help with any questions or concerns you may have."
+      },
+      "privacyAndPolicy": {
+        "title": "Privacy & Policies",
+        "terms": "Terms of Use & Privacy Policy",
+        "lastUpdate": "Last updated: September 20, 2025",
+        "acceptableTitle": "1. Acceptable Use",
+        "acceptableBody": "Users may use the Sanayai application only for personal and non-commercial purposes, with the aim of searching for craft and maintenance service providers or providing these services. Any illegal, fraudulent, or harmful use aimed at harassing service providers or users is strictly prohibited.",
+        "suspensionTitle": "2. Account Suspension'",
+        "suspensionBody": "If any violation of these terms is discovered, the application administration has the right to suspend or terminate the account without prior notice.",
+        "responsibilitiesTitle": "3. User Responsibilities",
+        "responsibilitiesBody": "Users are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.",
+        "guidelinesTitle": "4. Content Guidelines",
+        "guidelinesBody": "Users must not post content that is illegal, offensive, defamatory, infringing, or otherwise inappropriate. The administration reserves the right to remove any content that violates these guidelines.",
+        "protectionTitle": "5. Privacy & Data Protection",
+        "protectionBody": "We are committed to protecting your personal information. We collect only necessary data to provide and improve our services, and we do not share your information with third parties without your consent, except as required by law.",
+        "modificationsTitle": "6. Service Modifications",
+        "modificationsBody": "We reserve the right to modify or discontinue any service or feature at any time without prior notice.",
+        "limitationTitle": "7. Limitation of Liability",
+        "limitationBody": "The application shall not be liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use the service.",
+        "agreePrivacyPolicy": "By using our application, you agree to our Terms of Use and Privacy Policy"
+      },
+      "myAccount": "My Account",
+      "logOut": {
+        "title": "LogOut",
+        "body": "Are you sure you want to log out?",
+        "yesBtn": "Yes, Logout",
+        "noBtn": "No, Cancel"
+      },
+      "delete": {
+        "title": "Delete Account",
+        "body": "Are you sure you want to delete your account?",
+        "yesBtn": "Yes, delete",
+        "noBtn": "No, Cancel"
+      }
+    }
+  }
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }
