@@ -12,6 +12,8 @@ router
   .route("/update-phone/verify-otp")
   .patch(userController.verifyUpdatePhoneOTP);
 
+router.route("/:id").get(userController.getUser);
+
 //--- Admin Routes ---
 router.use(authController.restrictTo("admin"));
 router
@@ -20,7 +22,6 @@ router
   .post(userController.createUser);
 router
   .route("/:id")
-  .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 

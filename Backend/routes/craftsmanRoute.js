@@ -9,7 +9,13 @@ router.use(authController.protect);
 
 router.use("/:craftsmanId/reviews", reviewRoute);
 
-router.route("/").get(craftsmanController.getAllCraftsmen);
+router
+  .route("/")
+  .get(craftsmanController.getAllCraftsmen)
+  .post(
+    authController.restrictTo("admin"),
+    craftsmanController.createCraftsman
+  );
 
 router
   .route("/:id")
