@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildWelcomeCard extends StatelessWidget {
   List<Map<String, dynamic>> newRequests;
@@ -42,7 +44,7 @@ class BuildWelcomeCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Hello Feras',
+                        '${LocaleKeys.craftmanHome_hello.tr()} Feras',
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
@@ -59,7 +61,7 @@ class BuildWelcomeCard extends StatelessWidget {
                   ),
                   verticalSpace(6),
                   Text(
-                    'You have ${newRequests.length} new requests today',
+                    '${LocaleKeys.craftmanHome_bodyPart1.tr()} ${newRequests.length} ${LocaleKeys.craftmanHome_bodyPart2.tr()}',
                     style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
                   ),
                 ],

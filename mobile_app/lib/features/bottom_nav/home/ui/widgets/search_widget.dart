@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -35,7 +37,7 @@ class SearchWidget extends StatelessWidget {
               ),
               horizontalSpace(12),
               Text(
-                "Search here ...",
+                LocaleKeys.clientHome_search.tr(),
                 style: TextStyle(color: Color(0xff102144)),
               ),
             ],

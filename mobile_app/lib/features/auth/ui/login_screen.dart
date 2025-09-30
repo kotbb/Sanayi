@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -39,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Enter your phone number",
+                    LocaleKeys.login_body.tr(),
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
@@ -49,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                   TextFormField(
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                      hintText: "Phone Number",
+                      hintText: LocaleKeys.login_hintText.tr(),
                       prefixIcon: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -83,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                   verticalSpace(36),
                   SizedBox(
                     width: double.infinity,
-                    height: 50,
+                    height: 50.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff102144),
@@ -95,16 +97,16 @@ class LoginScreen extends StatelessWidget {
                         // TODO: Handle continue button press
                         Navigator.pushNamed(context, Routes.otpCodeScreen);
                       },
-                      child: const Text(
-                        "Continue",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      child: Text(
+                        LocaleKeys.continueBtn.tr(),
+                        style: TextStyle(fontSize: 16.sp, color: Colors.white),
                       ),
                     ),
                   ),
                   verticalSpace(12),
                   Center(
-                    child: const Text(
-                      "We will send you a verification code via SMS",
+                    child: Text(
+                      LocaleKeys.login_subTxt.tr(),
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),

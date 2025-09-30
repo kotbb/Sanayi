@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class LogOutBottomSheet extends StatelessWidget {
   const LogOutBottomSheet({super.key});
@@ -20,14 +22,14 @@ class LogOutBottomSheet extends StatelessWidget {
           ),
           verticalSpace(8),
           Text(
-            "LogOut",
+            LocaleKeys.profile_settings_logOut_title.tr(),
             style: Theme.of(
               context,
             ).textTheme.displayLarge?.copyWith(fontSize: 24.sp),
           ),
           verticalSpace(16),
           Text(
-            "Are you sure you want to log out?",
+            LocaleKeys.profile_settings_logOut_body.tr(),
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
@@ -37,16 +39,15 @@ class LogOutBottomSheet extends StatelessWidget {
               minimumSize: Size(double.infinity, 48.h),
               backgroundColor: Colors.red,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(6.r),
               ),
             ),
             onPressed: () {},
             child: Text(
-              "yes, LogOut",
+              LocaleKeys.profile_settings_logOut_yesBtn.tr(),
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 16,
-                fontFamily: "NeoSansArabicMedium",
+                fontSize: 16.sp,
               ),
             ),
           ),
@@ -56,16 +57,15 @@ class LogOutBottomSheet extends StatelessWidget {
               minimumSize: Size(double.infinity, 48.h),
               backgroundColor: Colors.grey,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(6.r),
               ),
             ),
             onPressed: () => Navigator.pop(context),
             child: Text(
-              "No, Cancel",
+              LocaleKeys.profile_settings_logOut_noBtn.tr(),
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
-                fontFamily: "NeoSansArabicMedium",
+                fontSize: 16.sp,
               ),
             ),
           ),

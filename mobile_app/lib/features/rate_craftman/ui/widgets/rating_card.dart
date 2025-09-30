@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class RatingCard extends StatelessWidget {
   const RatingCard({super.key});
@@ -18,7 +20,7 @@ class RatingCard extends StatelessWidget {
           Icon(Icons.star_rate_rounded, size: 50, color: Colors.amber[700]),
           verticalSpace(16),
           Text(
-            'How was the service?',
+            LocaleKeys.resrvation_bookingDetails_rateScreen_cardTitle.tr(),
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
@@ -28,7 +30,7 @@ class RatingCard extends StatelessWidget {
           ),
           verticalSpace(10),
           Text(
-            'share your experience with us',
+            LocaleKeys.resrvation_bookingDetails_rateScreen_cardBody.tr(),
             style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
             textAlign: TextAlign.center,
           ),

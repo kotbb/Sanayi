@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
@@ -10,7 +12,7 @@ class LanguageScreen extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        title: const Text('Lanuage'),
+        title: Text(LocaleKeys.profile_settings_lang.tr()),
       ),
       body: SafeArea(
         child: Padding(
@@ -20,11 +22,11 @@ class LanguageScreen extends StatelessWidget {
               Container(
                 color: Colors.white,
                 child: ListTile(
-                  title: const Text('English'),
+                  title: Text(LocaleKeys.profile_settings_en.tr()),
                   trailing: Radio(
                     value: 'en',
                     onChanged: (value) {
-                      // Handle language change
+                      //todo Handle language change
                     },
                   ),
                 ),
@@ -33,11 +35,11 @@ class LanguageScreen extends StatelessWidget {
               Container(
                 color: Colors.white,
                 child: ListTile(
-                  title: const Text('Arabic'),
+                  title: Text(LocaleKeys.profile_settings_ar.tr()),
                   trailing: Radio(
                     value: 'ar',
                     onChanged: (value) {
-                      // Handle language change
+                      //todo Handle language change
                     },
                   ),
                 ),

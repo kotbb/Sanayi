@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/categories/categories_list_view_builder.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/search_widget.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/services/services_list_view_builder.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Hey, Feras",
+                          "${LocaleKeys.clientHome_hey.tr()} Feras",
                           style: TextStyle(
                             color: const Color(0xff102144),
                             fontSize: 24.sp,
@@ -78,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     verticalSpace(24),
                     Text(
-                      "We are here to facilitate your services ...",
+                      LocaleKeys.clientHome_body.tr(),
                       style: TextStyle(fontSize: 16.sp),
                     ),
                     verticalSpace(36),

@@ -67,6 +67,10 @@
     "requests": "طلبات",
     "bookingDetails": {
       "title": "تفاصيل الحجز",
+      "pending":"قيد الانتظار",
+      "accepted":"مقبول",
+      "rejected":"مرفوض",
+      "completed":"مكتمل",
       "clientInfo": "معلومات العميل",
       "requestDetails": "تفاصيل الطلب",
       "estimatedTime": "الوقت المقدر",

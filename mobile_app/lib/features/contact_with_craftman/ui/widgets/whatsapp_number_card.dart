@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
@@ -63,7 +65,7 @@ class WhatsappNumberCard extends StatelessWidget {
                 Icon(Icons.phone, color: Colors.green[700], size: 28),
                 horizontalSpace(10),
                 Text(
-                  'WhatsApp Number',
+                  LocaleKeys.resrvation_bookingDetails_contactScreen_whatsappNumber.tr(),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -89,7 +91,7 @@ class WhatsappNumberCard extends StatelessWidget {
                   onPressed: () => _launchWhatsApp(context),
                   icon: Icon(Icons.chat, size: 24, color: Colors.white),
                   label: Text(
-                    'Contact',
+                    LocaleKeys.resrvation_bookingDetails_contact.tr(),
                     style: TextStyle(fontSize: 16.sp, color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -106,7 +108,7 @@ class WhatsappNumberCard extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: () => _copyToClipboard(context),
                   icon: Icon(Icons.copy, size: 20),
-                  label: Text('Copy', style: TextStyle(fontSize: 16.sp)),
+                  label: Text(LocaleKeys.resrvation_bookingDetails_contactScreen_copy.tr(), style: TextStyle(fontSize: 16.sp)),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.green,
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),

@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildRequestCard extends StatelessWidget {
   Map<String, dynamic> request;
@@ -46,7 +48,7 @@ class BuildRequestCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Text(
-                        'New',
+                        LocaleKeys.craftmanHome_new.tr(),
                         style: TextStyle(
                           fontSize: 12.sp,
                           color: Colors.green[800],
@@ -74,13 +76,13 @@ class BuildRequestCard extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.check_circle, color: Colors.green),
                         onPressed: () {
-                          // Accept request
+                          // todo: Accept request
                         },
                       ),
                       IconButton(
                         icon: Icon(Icons.cancel, color: Colors.red),
                         onPressed: () {
-                          // Reject request
+                          // todo: Reject request
                         },
                       ),
                     ],

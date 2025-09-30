@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ContactAndCancelBtns extends StatelessWidget {
   const ContactAndCancelBtns({super.key});
@@ -26,7 +28,7 @@ class ContactAndCancelBtns extends StatelessWidget {
               );
             },
             child: Text(
-              "Contact",
+              LocaleKeys.resrvation_bookingDetails_contact.tr(),
               style: TextStyle(fontSize: 16.sp, color: Colors.white),
             ),
           ),
@@ -75,14 +77,14 @@ class ContactAndCancelBtns extends StatelessWidget {
                         ),
                         verticalSpace(16),
                         Text(
-                          "Cancel Booking",
+                          LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_title.tr(),
                           style: Theme.of(
                             context,
                           ).textTheme.displayLarge?.copyWith(fontSize: 24.sp),
                         ),
                         verticalSpace(16),
                         Text(
-                          "Are you sure you want to cancel the booking?",
+                          LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_subTitle.tr(),
                           style: Theme.of(context).textTheme.bodyMedium,
                           textAlign: TextAlign.center,
                         ),
@@ -103,7 +105,7 @@ class ContactAndCancelBtns extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            "yes",
+                            LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_yesBtn.tr(),
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
@@ -118,7 +120,7 @@ class ContactAndCancelBtns extends StatelessWidget {
                           ),
                           onPressed: () => Navigator.pop(context),
                           child: Text(
-                            "No",
+                            LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_noBtn.tr(),
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
                         ),
@@ -129,7 +131,7 @@ class ContactAndCancelBtns extends StatelessWidget {
               );
             },
             child: Text(
-              "Cancel",
+              LocaleKeys.resrvation_bookingDetails_cancel.tr(),
               style: TextStyle(fontSize: 16.sp, color: Colors.white),
             ),
           ),

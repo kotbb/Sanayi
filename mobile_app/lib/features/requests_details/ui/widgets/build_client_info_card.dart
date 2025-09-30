@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildClientInfoCard extends StatelessWidget {
   Map<String, dynamic> requestDetails;
@@ -37,7 +39,7 @@ class BuildClientInfoCard extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(bottom: 8),
           child: Text(
-            "Clinet Information",
+            LocaleKeys.craftmanHome_bookingDetails_clientInfo.tr(),
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,

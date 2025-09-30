@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildDayScheduleItem extends StatelessWidget {
   Map<String, dynamic> daySchedule;
@@ -69,7 +71,7 @@ class BuildDayScheduleItem extends StatelessWidget {
                             ),
                             verticalSpace(16),
                             Text(
-                              "Edit ${daySchedule['day']} Schedule",
+                              "${LocaleKeys.agenda_edit.tr()} ${daySchedule['day']} ${LocaleKeys.agenda_workSchedule_schedule.tr()}",
                               style: Theme.of(context).textTheme.titleLarge
                                   ?.copyWith(fontWeight: FontWeight.bold),
                             ),
@@ -78,7 +80,7 @@ class BuildDayScheduleItem extends StatelessWidget {
                             // Active switch
                             SwitchListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: const Text("Active"),
+                              title: Text(LocaleKeys.agenda_workSchedule_active.tr()),
                               value: daySchedule['active'],
                               onChanged: (value) {
                                 setState(() {
@@ -89,7 +91,7 @@ class BuildDayScheduleItem extends StatelessWidget {
 
                             verticalSpace(12),
                             Text(
-                              "Set working hours",
+                              LocaleKeys.agenda_workSchedule_setWorkHours.tr(),
                               style: TextStyle(fontSize: 14.sp),
                             ),
 
@@ -124,7 +126,7 @@ class BuildDayScheduleItem extends StatelessWidget {
                                       child: Text(
                                         startTime != null
                                             ? startTime!.format(context)
-                                            : "Start Time",
+                                            : LocaleKeys.agenda_workSchedule_startTime.tr(),
                                       ),
                                     ),
                                   ),
@@ -155,7 +157,7 @@ class BuildDayScheduleItem extends StatelessWidget {
                                       child: Text(
                                         endTime != null
                                             ? endTime!.format(context)
-                                            : "End Time",
+                                            : LocaleKeys.agenda_workSchedule_endTime.tr(),
                                       ),
                                     ),
                                   ),
@@ -175,13 +177,13 @@ class BuildDayScheduleItem extends StatelessWidget {
                               onPressed: () {
                                 // todo: handle save
                                 Navigator.pop(context, {
-                                  "active": daySchedule['active'],
-                                  "startTime": startTime,
-                                  "endTime": endTime,
+                                  LocaleKeys.agenda_workSchedule_active.tr(): daySchedule['active'],
+                                  LocaleKeys.agenda_workSchedule_startTime.tr(): startTime,
+                                  LocaleKeys.agenda_workSchedule_endTime.tr(): endTime,
                                 });
                               },
                               child: Text(
-                                "Save",
+                                LocaleKeys.agenda_workSchedule_saveBtn.tr(),
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   color: Colors.white,

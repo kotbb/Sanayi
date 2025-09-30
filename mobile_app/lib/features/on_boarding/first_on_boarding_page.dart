@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class FirstOnBoardingPage extends StatelessWidget {
   const FirstOnBoardingPage({super.key});
@@ -17,7 +19,7 @@ class FirstOnBoardingPage extends StatelessWidget {
           children: [
             verticalSpace(30),
             Text(
-              'Welcome to Sanayi',
+              LocaleKeys.onBoarding_welcome.tr(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             verticalSpace(20),
@@ -28,7 +30,7 @@ class FirstOnBoardingPage extends StatelessWidget {
             ),
             verticalSpace(20),
             Text(
-              'An app that connects you to craftsmen in your area',
+              LocaleKeys.onBoarding_body.tr(),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(30),

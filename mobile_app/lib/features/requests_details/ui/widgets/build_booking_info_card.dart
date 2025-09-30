@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_booking_info_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildBookingInfoCard extends StatelessWidget {
   Map<String, dynamic> requestDetails;
@@ -18,7 +20,7 @@ class BuildBookingInfoCard extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(bottom: 8),
           child: Text(
-            "Service Details",
+            LocaleKeys.craftmanHome_bookingDetails_serviceDetails.tr(),
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
@@ -37,17 +39,17 @@ class BuildBookingInfoCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 BuildBookingInfoItem(
-                  title: 'Request Number',
+                  title: LocaleKeys.craftmanHome_bookingDetails_requestNumber.tr(),
                   value: requestDetails['requestNumber'],
                   icon: Icons.confirmation_number,
                 ),
                 BuildBookingInfoItem(
-                  title: 'Date',
+                  title: LocaleKeys.craftmanHome_bookingDetails_date.tr(),
                   value: requestDetails['date'],
                   icon: Icons.calendar_today,
                 ),
                 BuildBookingInfoItem(
-                  title: 'Time',
+                  title: LocaleKeys.craftmanHome_bookingDetails_time.tr(),
                   value: requestDetails['time'],
                   icon: Icons.access_time,
                 ),

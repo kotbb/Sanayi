@@ -62,6 +62,10 @@ abstract class  LocaleKeys {
   static const craftmanHome_new = 'craftmanHome.new';
   static const craftmanHome_requests = 'craftmanHome.requests';
   static const craftmanHome_bookingDetails_title = 'craftmanHome.bookingDetails.title';
+  static const craftmanHome_bookingDetails_pending = 'craftmanHome.bookingDetails.pending';
+  static const craftmanHome_bookingDetails_accepted = 'craftmanHome.bookingDetails.accepted';
+  static const craftmanHome_bookingDetails_rejected = 'craftmanHome.bookingDetails.rejected';
+  static const craftmanHome_bookingDetails_completed = 'craftmanHome.bookingDetails.completed';
   static const craftmanHome_bookingDetails_clientInfo = 'craftmanHome.bookingDetails.clientInfo';
   static const craftmanHome_bookingDetails_requestDetails = 'craftmanHome.bookingDetails.requestDetails';
   static const craftmanHome_bookingDetails_estimatedTime = 'craftmanHome.bookingDetails.estimatedTime';

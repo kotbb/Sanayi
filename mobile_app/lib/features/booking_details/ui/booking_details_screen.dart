@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/booking_details/ui/widgets/build_info_card.dart';
 import 'package:sanayi_app/features/booking_details/ui/widgets/contact_and_cancel_btns.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
   const BookingDetailsScreen({super.key});
@@ -13,7 +15,7 @@ class BookingDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Booking Details"),
+        title: Text(LocaleKeys.resrvation_bookingDetails_title.tr()),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
@@ -40,31 +42,31 @@ class BookingDetailsScreen extends StatelessWidget {
             verticalSpace(24),
             BuildInfoCard(
               icon: Icons.location_on,
-              label: "Locaiton",
+              label: LocaleKeys.resrvation_bookingDetails_location.tr(),
               value: "Gaza - AzZawayda",
             ),
             verticalSpace(12),
             BuildInfoCard(
               icon: Icons.calendar_today,
-              label: "Date",
+              label: LocaleKeys.resrvation_bookingDetails_data.tr(),
               value: "15/9/2025",
             ),
             verticalSpace(12),
             BuildInfoCard(
               icon: Icons.access_time,
-              label: "Time",
+              label: LocaleKeys.resrvation_bookingDetails_time.tr(),
               value: "7:23 PM",
             ),
             verticalSpace(12),
             BuildInfoCard(
               icon: Icons.notes,
-              label: "Notes",
+              label: LocaleKeys.resrvation_bookingDetails_notes.tr(),
               value: "Please bring required tools and materials.",
             ),
             verticalSpace(12),
             BuildInfoCard(
               icon: Icons.info_outline,
-              label: "Status",
+              label: LocaleKeys.resrvation_bookingDetails_statue.tr(),
               value: "Pending",
             ),
             verticalSpace(24),
@@ -75,14 +77,14 @@ class BookingDetailsScreen extends StatelessWidget {
                 backgroundColor: const Color(0xff102144),
                 padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 32.w),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Routes.rateCraftmanScreen);
               },
               child: Text(
-                "Rate Craftman",
+                LocaleKeys.resrvation_bookingDetails_rateCraftman.tr(),
                 style: TextStyle(fontSize: 16.sp, color: Colors.white),
               ),
             ),

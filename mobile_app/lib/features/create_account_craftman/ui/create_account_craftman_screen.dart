@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/create_account_craftman/ui/widgets/build_input_field_craft_man.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class CreateAccountCraftmanScreen extends StatelessWidget {
   const CreateAccountCraftmanScreen({super.key});
@@ -26,14 +28,14 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
 
               // Name field
               BuildInputFieldCraftMan(
-                hint: "Full Name",
+                hint: LocaleKeys.createAccount_nameHint.tr(),
                 icon: Icons.person_outline,
               ),
               verticalSpace(16),
 
               // Phone field
               BuildInputFieldCraftMan(
-                hint: "Phone Number",
+                hint: LocaleKeys.createAccount_phoneHint.tr(),
                 icon: Icons.phone_outlined,
                 keyboardType: TextInputType.phone,
               ),
@@ -41,20 +43,20 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
 
               // Location field
               BuildInputFieldCraftMan(
-                hint: "Loaction",
+                hint: LocaleKeys.createAccount_locationHint.tr(),
                 icon: Icons.location_on_outlined,
               ),
               verticalSpace(16),
 
               // Location field
               BuildInputFieldCraftMan(
-                hint: "Profession",
+                hint: LocaleKeys.createAccount_profession.tr(),
                 icon: Icons.work_outline_outlined,
               ),
               verticalSpace(16),
 
               BuildInputFieldCraftMan(
-                hint: "the biography",
+                hint: LocaleKeys.createAccount_biography.tr(),
                 icon: Icons.article_outlined,
                 maxLines: 5,
               ),
@@ -77,7 +79,7 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
                     elevation: 4,
                   ),
                   child: Text(
-                    "Create Account",
+                    LocaleKeys.createAccount_createBtn.tr(),
                     style: TextStyle(
                       fontSize: 16.sp,
                       color: Colors.white,

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/account_data_widget.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -65,15 +67,15 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AccountDataWidget(label: "Name", value: "Feras Abu Zayed"),
+                  AccountDataWidget(label: LocaleKeys.profile_nameLabel.tr(), value: "Feras Abu Zayed"),
                   verticalSpace(24),
                   AccountDataWidget(
-                    label: "Phone Number",
+                    label: LocaleKeys.profile_numLabel.tr(),
                     value: "+97059123456",
                   ),
                   verticalSpace(24),
                   AccountDataWidget(
-                    label: "Location",
+                    label: LocaleKeys.profile_locationLabel.tr(),
                     value: "Gaza, AzZawayda",
                   ),
                 ],

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/features/notifications/ui/widgets/notifications_card_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -9,7 +11,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
+        title: Text(LocaleKeys.notifications.tr()),
         elevation: 0,
         scrolledUnderElevation: 0.0,
         backgroundColor: Colors.transparent,

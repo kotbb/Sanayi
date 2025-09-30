@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/on_boarding/widgets/build_service_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SecondOnBoardingPage extends StatelessWidget {
   const SecondOnBoardingPage({super.key});
@@ -15,10 +17,10 @@ class SecondOnBoardingPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             verticalSpace(30),
-            Text('Sanayi', style: Theme.of(context).textTheme.titleLarge),
+            Text(LocaleKeys.onBoarding_sanayi.tr(), style: Theme.of(context).textTheme.titleLarge),
             verticalSpace(60),
             Text(
-              'Choose the service you need and book easily.',
+              LocaleKeys.onBoarding_choose.tr(),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(30),
@@ -28,27 +30,27 @@ class SecondOnBoardingPage extends StatelessWidget {
               mainAxisSpacing: 14.h,
               children: [
                 BuildServiceItem(
-                  title: 'Contractor',
+                  title:  LocaleKeys.onBoarding_contractor.tr(),
                   assetPath: 'assets/images/svg/contractor.svg',
                 ),
                 BuildServiceItem(
-                  title: 'Cooker',
+                  title: LocaleKeys.onBoarding_Cooker.tr(),
                   assetPath: 'assets/images/svg/cooking.svg',
                 ),
                 BuildServiceItem(
-                  title: 'Builder',
+                  title: LocaleKeys.onBoarding_builder.tr(),
                   assetPath: 'assets/images/svg/building.svg',
                 ),
                 BuildServiceItem(
-                  title: 'mechanical',
+                  title: LocaleKeys.onBoarding_mechanical.tr(),
                   assetPath: 'assets/images/svg/optimizing.svg',
                 ),
                 BuildServiceItem(
-                  title: 'Cleaner',
+                  title: LocaleKeys.onBoarding_cleaner.tr(),
                   assetPath: 'assets/images/svg/cleaner.svg',
                 ),
                 BuildServiceItem(
-                  title: 'Delivery Driver',
+                  title: LocaleKeys.onBoarding_deliveryDriver.tr(),
                   assetPath: 'assets/images/svg/delivery_driver.svg',
                 ),
               ],

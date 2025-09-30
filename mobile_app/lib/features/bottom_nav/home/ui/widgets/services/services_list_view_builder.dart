@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/services/services_list_view_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ServicesListViewBuilder extends StatelessWidget {
   const ServicesListViewBuilder({super.key});
@@ -16,7 +18,7 @@ class ServicesListViewBuilder extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Services", style: TextStyle(fontSize: 16.sp)),
+              Text(LocaleKeys.clientHome_services.tr(), style: TextStyle(fontSize: 16.sp)),
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, Routes.servicesScreen);

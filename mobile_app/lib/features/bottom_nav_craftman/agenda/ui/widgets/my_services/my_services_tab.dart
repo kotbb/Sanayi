@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/agenda/ui/widgets/my_services/widgets/build_my_service_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class MyServicesTab extends StatelessWidget {
   MyServicesTab({super.key});
@@ -50,13 +52,13 @@ class MyServicesTab extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.build, color: const Color(0xff102144)),
                     title: Text(
-                      'My Services',
+                      LocaleKeys.agenda_myServices_tabName.tr(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.sp,
                       ),
                     ),
-                    subtitle: Text('Manage your offered services'),
+                    subtitle: Text(LocaleKeys.agenda_myServices_subTitle.tr()),
                   ),
                   Divider(),
                   ...services.map(
@@ -108,7 +110,7 @@ class MyServicesTab extends StatelessWidget {
                             ),
                             verticalSpace(16),
                             Text(
-                              "Add New Service",
+                              LocaleKeys.agenda_myServices_addNew.tr(),
                               style: Theme.of(context).textTheme.titleLarge
                                   ?.copyWith(fontWeight: FontWeight.bold),
                             ),
@@ -116,7 +118,7 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: titleController,
                               decoration: InputDecoration(
-                                labelText: 'Service Title',
+                                labelText: LocaleKeys.agenda_myServices_serviceTitle.tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -124,7 +126,7 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: 'Category',
+                                labelText: LocaleKeys.agenda_myServices_category.tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -132,7 +134,7 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: 'Price',
+                                labelText: LocaleKeys.agenda_myServices_price.tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -140,7 +142,7 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: 'Description',
+                                labelText: LocaleKeys.agenda_myServices_description.tr(),
                                 border: OutlineInputBorder(),
                               ),
                               maxLines: 3,
@@ -158,13 +160,13 @@ class MyServicesTab extends StatelessWidget {
                                 // todo: handle add
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Service added successfully'),
+                                    content: Text(LocaleKeys.agenda_myServices_snackBarTxt.tr()),
                                     backgroundColor: Colors.green,
                                   ),
                                 );
                               },
                               child: Text(
-                                "Add",
+                                LocaleKeys.agenda_myServices_addBtn.tr(),
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   color: Colors.white,
@@ -180,7 +182,7 @@ class MyServicesTab extends StatelessWidget {
               );
             },
             icon: Icon(Icons.add),
-            label: Text('Add New Service'),
+            label: Text(LocaleKeys.agenda_myServices_addNew.tr()),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xff102144),
               foregroundColor: Colors.white,

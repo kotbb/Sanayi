@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/rate_craftman/ui/widgets/rating_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class RateCraftmanScreen extends StatefulWidget {
   const RateCraftmanScreen({super.key});
@@ -58,7 +60,7 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'Rate Service',
+          LocaleKeys.resrvation_bookingDetails_rateScreen_title.tr(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
         ),
       ),
@@ -68,14 +70,14 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Your feedback will be published after review.',
+              LocaleKeys.resrvation_bookingDetails_rateScreen_subTitle.tr(),
               style: TextStyle(fontSize: 14, color: Colors.grey[600]),
             ),
             verticalSpace(24),
             RatingCard(),
             verticalSpace(40),
             Text(
-              'Rate the service',
+              LocaleKeys.resrvation_bookingDetails_rateScreen_rateServiceTxt.tr(),
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
@@ -101,8 +103,8 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
             verticalSpace(12),
             Text(
               _rating == 0
-                  ? 'No rating yet'
-                  : 'Your Rate: ${_rating.toStringAsFixed(1)} stars',
+                  ? LocaleKeys.resrvation_bookingDetails_rateScreen_noRating.tr()
+                  : '${LocaleKeys.resrvation_bookingDetails_rateScreen_yourRate.tr()}: ${_rating.toStringAsFixed(1)} ${LocaleKeys.resrvation_bookingDetails_rateScreen_stars.tr()}',
               style: TextStyle(
                 fontSize: 16.sp,
                 color: _rating == 0 ? Colors.grey : Colors.amber[700],
@@ -111,7 +113,7 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
             ),
             verticalSpace(40),
             Text(
-              'Enter your comment',
+              LocaleKeys.resrvation_bookingDetails_rateScreen_enterComntLabel.tr(),
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
@@ -136,7 +138,7 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
                 focusNode: _commentFocusNode,
                 maxLines: 5,
                 decoration: InputDecoration(
-                  hintText: 'Enter your comment here ...',
+                  hintText: LocaleKeys.resrvation_bookingDetails_rateScreen_enterComntHint.tr(),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
@@ -163,7 +165,7 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    'Send Review',
+                    LocaleKeys.resrvation_bookingDetails_rateScreen_sendBtn.tr(),
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),

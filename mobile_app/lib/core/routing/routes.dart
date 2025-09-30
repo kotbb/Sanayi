@@ -24,7 +24,6 @@ class Routes {
       '/successCancelBookingScreen';
   static const String contactWithCraftmanScreen = '/contactWithCraftmanScreen';
   static const String rateCraftmanScreen = '/rateCraftmanScreen';
-  static const String oldNumberScreen = '/oldNumberScreen';
   static const String oldOtpScreen = '/oldOtpScreen';
   static const String newNumberScreen = '/newNumberScreen';
   static const String newOtpScreen = '/newOtpScreen';

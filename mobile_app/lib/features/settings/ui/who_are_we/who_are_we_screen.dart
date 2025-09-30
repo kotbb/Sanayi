@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/settings/ui/who_are_we/widgets/build_state_item.dart';
 import 'package:sanayi_app/features/settings/ui/who_are_we/widgets/build_value_item.dart';
 import 'package:sanayi_app/features/settings/ui/who_are_we/widgets/who_are_we_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class WhoAreWeScreen extends StatelessWidget {
   const WhoAreWeScreen({super.key});
@@ -14,7 +16,7 @@ class WhoAreWeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Who We Are',
+          LocaleKeys.profile_settings_whoAreWe_title.tr(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
         ),
       ),
@@ -49,7 +51,7 @@ class WhoAreWeScreen extends StatelessWidget {
             WhoAreWeCard(),
             verticalSpace(26),
             Text(
-              'Our Values',
+              LocaleKeys.profile_settings_whoAreWe_ourValues.tr(),
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -59,25 +61,25 @@ class WhoAreWeScreen extends StatelessWidget {
             verticalSpace(16),
             BuildValueItem(
               icon: Icons.verified_user,
-              title: 'Quality & Excellence',
+              title: LocaleKeys.profile_settings_whoAreWe_qualityAndExcellence.tr(),
               description:
-                  'We ensure high-quality services through skilled and certified craftsmen.',
+                  LocaleKeys.profile_settings_whoAreWe_qualityTxt.tr(),
             ),
             BuildValueItem(
               icon: Icons.accessibility,
-              title: 'Reliability',
+              title: LocaleKeys.profile_settings_whoAreWe_reliability.tr(),
               description:
-                  'We build strong trust between craftsmen and customers through full transparency.',
+                  LocaleKeys.profile_settings_whoAreWe_reliabilityTxt.tr(),
             ),
             BuildValueItem(
               icon: Icons.thumb_up,
-              title: 'Complete Satisfaction',
+              title: LocaleKeys.profile_settings_whoAreWe_completeSatisfaction.tr(),
               description:
-                  'We aim to achieve customer satisfaction through exceptional service and unique experience.',
+                  LocaleKeys.profile_settings_whoAreWe_completeSatisfactionTxt.tr(),
             ),
             verticalSpace(26),
             Text(
-              'Our Numbers',
+              LocaleKeys.profile_settings_whoAreWe_OurNumbers.tr(),
               style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -88,15 +90,15 @@ class WhoAreWeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BuildStateItem(number: '500+', label: 'Skilled CraftMen'),
-                BuildStateItem(number: '5,000+', label: 'Satisfied Customers'),
-                BuildStateItem(number: '10,000+', label: 'Completed Services'),
+                BuildStateItem(number: '500+', label: LocaleKeys.profile_settings_whoAreWe_skilledCrafman.tr()),
+                BuildStateItem(number: '5,000+', label: LocaleKeys.profile_settings_whoAreWe_satisfiedCustomers.tr()),
+                BuildStateItem(number: '10,000+', label: LocaleKeys.profile_settings_whoAreWe_completedServices.tr()),
               ],
             ),
             verticalSpace(30),
             Center(
               child: Text(
-                '©2025 Final Project Code. All rights reserved.',
+                LocaleKeys.profile_settings_whoAreWe_rights.tr(),
                 style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
               ),
             ),

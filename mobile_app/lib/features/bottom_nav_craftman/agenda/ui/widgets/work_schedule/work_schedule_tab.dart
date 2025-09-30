@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/agenda/ui/widgets/work_schedule/widgets/build_day_schedule_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class WorkScheduleTab extends StatelessWidget {
   WorkScheduleTab({super.key});
@@ -37,13 +39,13 @@ class WorkScheduleTab extends StatelessWidget {
                       color: const Color(0xff102144),
                     ),
                     title: Text(
-                      'Weekly Work Schedule',
+                      LocaleKeys.agenda_workSchedule_title.tr(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.sp,
                       ),
                     ),
-                    subtitle: Text('Set your available working hours'),
+                    subtitle: Text(LocaleKeys.agenda_workSchedule_subTitle.tr()),
                   ),
                   Divider(),
                   ...workSchedule.map(
@@ -60,13 +62,13 @@ class WorkScheduleTab extends StatelessWidget {
               // Save schedule functionality
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Work schedule saved successfully'),
+                  content: Text(LocaleKeys.agenda_workSchedule_snackBarTxt.tr()),
                   backgroundColor: Colors.green,
                 ),
               );
             },
             icon: Icon(Icons.save),
-            label: Text('Save Schedule'),
+            label: Text(LocaleKeys.agenda_workSchedule_saveScheduleBtn.tr()),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xff102144),
               foregroundColor: Colors.white,

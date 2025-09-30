@@ -67,6 +67,10 @@
         "requests":"Requests",
         "bookingDetails":{
             "title":"Booking Details",
+            "pending":"Pending",
+            "accepted":"Accepted",
+            "rejected":"Rejected",
+            "completed":"Completed",
             "clientInfo":"Clinet Information",
             "requestDetails":"Request Details",
             "estimatedTime":"Estimated Time",

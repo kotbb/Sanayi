@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
     
 class NewNumberScreen extends StatelessWidget {
 
@@ -41,7 +43,7 @@ class NewNumberScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Enter your New phone number",
+                    LocaleKeys.profile_settings_newNumTxt.tr(),
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
@@ -51,7 +53,7 @@ class NewNumberScreen extends StatelessWidget {
                   TextFormField(
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                      hintText: "Phone Number",
+                      hintText: LocaleKeys.profile_numLabel.tr(),
                       prefixIcon: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -94,19 +96,19 @@ class NewNumberScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        // TODO: Handle continue button press
+                        // todo: Handle continue button press
                         Navigator.pushNamed(context, Routes.newOtpScreen);
                       },
-                      child: const Text(
-                        "Continue",
+                      child: Text(
+                        LocaleKeys.continueBtn.tr(),
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   ),
                   verticalSpace(12),
                   Center(
-                    child: const Text(
-                      "We will send you a verification code via SMS",
+                    child: Text(
+                      LocaleKeys.login_subTxt.tr(),
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),

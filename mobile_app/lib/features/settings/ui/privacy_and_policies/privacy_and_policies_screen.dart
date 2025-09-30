@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/build_policy_section.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/privacy_icon_widget.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/title_and_last_update_widget.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class PrivacyAndPoliciesScreen extends StatelessWidget {
   const PrivacyAndPoliciesScreen({super.key});
@@ -15,7 +17,7 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         title: Text(
-          'Privacy & Policies',
+          LocaleKeys.profile_settings_privacyAndPolicy_title.tr(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
         ),
       ),
@@ -30,45 +32,45 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
             TitleAndLastUpdateWidget(),
             verticalSpace(30),
             BuildPolicySection(
-              title: '1. Acceptable Use',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_acceptableTitle.tr(),
               content:
-                  'Users may use the "Sanaai" application only for personal and non-commercial purposes, with the aim of searching for craft and maintenance service providers or providing these services. Any illegal, fraudulent, or harmful use aimed at harassing service providers or users is strictly prohibited.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_acceptableBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '2. Account Suspension',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_suspensionTitle.tr(),
               content:
-                  'If any violation of these terms is discovered, the application administration has the right to suspend or terminate the account without prior notice.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_suspensionBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '3. User Responsibilities',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_responsibilitiesTitle.tr(),
               content:
-                  'Users are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_responsibilitiesBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '4. Content Guidelines',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_guidelinesTitle.tr(),
               content:
-                  'Users must not post content that is illegal, offensive, defamatory, infringing, or otherwise inappropriate. The administration reserves the right to remove any content that violates these guidelines.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_guidelinesBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '5. Privacy & Data Protection',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_protectionTitle.tr(),
               content:
-                  'We are committed to protecting your personal information. We collect only necessary data to provide and improve our services, and we do not share your information with third parties without your consent, except as required by law.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_protectionBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '6. Service Modifications',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_modificationsTitle.tr(),
               content:
-                  'We reserve the right to modify or discontinue any service or feature at any time without prior notice.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_modificationsBody.tr(),
             ),
 
             BuildPolicySection(
-              title: '7. Limitation of Liability',
+              title: LocaleKeys.profile_settings_privacyAndPolicy_limitationTitle.tr(),
               content:
-                  'The application shall not be liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use the service.',
+                  LocaleKeys.profile_settings_privacyAndPolicy_limitationBody.tr(),
             ),
             verticalSpace(30),
             Card(
@@ -88,7 +90,7 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
                     horizontalSpace(12),
                     Expanded(
                       child: Text(
-                        'By using our application, you agree to our Terms of Use and Privacy Policy',
+                        LocaleKeys.profile_settings_privacyAndPolicy_agreePrivacyPolicy.tr(),
                         style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                       ),
                     ),

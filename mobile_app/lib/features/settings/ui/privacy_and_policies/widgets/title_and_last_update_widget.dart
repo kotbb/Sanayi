@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class TitleAndLastUpdateWidget extends StatelessWidget {
   const TitleAndLastUpdateWidget({super.key});
@@ -11,7 +13,7 @@ class TitleAndLastUpdateWidget extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            'Terms of Use & Privacy Policy',
+            LocaleKeys.profile_settings_privacyAndPolicy_terms.tr(),
             style: TextStyle(
               fontSize: 24.sp,
               fontWeight: FontWeight.bold,
@@ -23,7 +25,7 @@ class TitleAndLastUpdateWidget extends StatelessWidget {
         verticalSpace(10),
         Center(
           child: Text(
-            'Last updated: September 11, 2025',
+            LocaleKeys.profile_settings_privacyAndPolicy_lastUpdate.tr(),
             style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
           ),
         ),

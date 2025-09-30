@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/choose_user_type/widgets/build_animated_choose_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ChooseUserTypeScreen extends StatelessWidget {
   const ChooseUserTypeScreen({super.key});
@@ -18,7 +20,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'You entered the app as a ...',
+                LocaleKeys.userType_title.tr(),
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
@@ -28,12 +30,12 @@ class ChooseUserTypeScreen extends StatelessWidget {
               ),
               verticalSpace(12),
               Text(
-                "Choose whether you are a client searching for\nservices or a craftman offering services.",
+                LocaleKeys.userType_body.tr(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: Colors.grey[700],
-                  height: 1.4,
+                  height: 1.4.h,
                 ),
               ),
               verticalSpace(48),
@@ -46,8 +48,8 @@ class ChooseUserTypeScreen extends StatelessWidget {
                     child: SizedBox(
                       height: 220.h,
                       child: BuildAnimatedChooseCard(
-                        title: "Client",
-                        description: "Looking for a craftman?",
+                        title: LocaleKeys.userType_clientCardTitle.tr(),
+                        description: LocaleKeys.userType_clientCardBody.tr(),
                         image: Image.asset(
                           "assets/images/user.png",
                           width: 90.w,
@@ -67,8 +69,8 @@ class ChooseUserTypeScreen extends StatelessWidget {
                     child: SizedBox(
                       height: 220.h,
                       child: BuildAnimatedChooseCard(
-                        title: "Craftman",
-                        description: "Provide your services",
+                        title: LocaleKeys.userType_craftmanCardTitle.tr(),
+                        description: LocaleKeys.userType_craftmanCardBody.tr(),
                         image: SvgPicture.asset(
                           "assets/images/svg/on_boarding1.svg",
                           width: 90.w,
@@ -87,7 +89,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
               ),
               verticalSpace(32),
               Text(
-                "You can change your role later in settings.",
+                LocaleKeys.userType_subTxt.tr(),
                 style: TextStyle(fontSize: 13.sp, color: Colors.grey[600]),
                 textAlign: TextAlign.center,
               ),

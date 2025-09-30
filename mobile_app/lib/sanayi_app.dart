@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/routing/app_routers.dart';
+import 'package:sanayi_app/core/styles/themes.dart';
 import 'package:sanayi_app/features/on_boarding/on_boarding_screens.dart';
 
 class SanayiApp extends StatelessWidget {
@@ -19,7 +20,9 @@ class SanayiApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           themeMode: ThemeMode.system,
-          title: 'Sanayi',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          title: 'Sanayai',
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouters.onGenerateRoute,
           // initialRoute: isLoggedInUser? Routes.appLayoutScreen : Routes.loginScreen,

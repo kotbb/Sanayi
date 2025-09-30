@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class OtpCodeScreen extends StatelessWidget {
   const OtpCodeScreen({super.key});
@@ -43,7 +45,7 @@ class OtpCodeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Verification Code",
+                          LocaleKeys.otp_verificationCode.tr(),
                           style: TextStyle(
                             fontSize: 16.sp,
                             color: Colors.black,
@@ -61,7 +63,7 @@ class OtpCodeScreen extends StatelessWidget {
                     ),
                     verticalSpace(16),
                     Text(
-                      "Enter the code sent to your phone number",
+                      LocaleKeys.otp_body.tr(),
                       style: TextStyle(fontSize: 12.sp, color: Colors.grey),
                     ),
                     verticalSpace(22),
@@ -105,7 +107,7 @@ class OtpCodeScreen extends StatelessWidget {
                           );
                         },
                         child: Text(
-                          "Continue",
+                          LocaleKeys.continueBtn.tr(),
                           style: TextStyle(
                             fontSize: 16.sp,
                             color: Colors.white,
@@ -118,7 +120,7 @@ class OtpCodeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Didn't receive the code? ",
+                          "${LocaleKeys.otp_reciveCode.tr()} ",
                           style: Theme.of(
                             context,
                           ).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
@@ -126,7 +128,7 @@ class OtpCodeScreen extends StatelessWidget {
                         TextButton(
                           onPressed: () {},
                           child: Text(
-                            "Resend",
+                            LocaleKeys.otp_resendbtn.tr(),
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(
                                   fontSize: 14.sp,

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/widgets/build_bottom_nav_item.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class CustomBottomNav extends StatelessWidget {
   final int currentIndex;
@@ -29,21 +31,21 @@ class CustomBottomNav extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           BuildBottomNavItem(
-            label: 'Home',
+            label: LocaleKeys.btmNav_home.tr(),
             onTap: () => onTap(0),
             isActive: currentIndex == 0,
             activeIcon: Icons.home,
             unActiveIcon: Icons.home_outlined,
           ),
           BuildBottomNavItem(
-            label: 'Reservations',
+            label: LocaleKeys.btmNav_bookings.tr(),
             onTap: () => onTap(1),
             isActive: currentIndex == 1,
             activeIcon: Icons.calendar_month,
             unActiveIcon: Icons.calendar_month_outlined,
           ),
           BuildBottomNavItem(
-            label: 'profile',
+            label: LocaleKeys.btmNav_profile.tr(),
             onTap: () => onTap(2),
             isActive: currentIndex == 2,
             activeIcon: Icons.person,

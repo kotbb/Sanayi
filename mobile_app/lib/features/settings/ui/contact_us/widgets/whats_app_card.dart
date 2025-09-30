@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WhatsAppCard extends StatelessWidget {
@@ -39,7 +41,7 @@ class WhatsAppCard extends StatelessWidget {
                 Icon(Icons.wechat_sharp, color: Colors.green, size: 28),
                 horizontalSpace(10),
                 Text(
-                  'WhatsApp Link',
+                  LocaleKeys.profile_settings_contactUs_whatsCardTxt.tr(),
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
@@ -50,7 +52,7 @@ class WhatsAppCard extends StatelessWidget {
             ),
             verticalSpace(16),
             Text(
-              'Click the button below to start a conversation with us on WhatsApp',
+              LocaleKeys.profile_settings_contactUs_whatsCardBody.tr(),
               style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
               textAlign: TextAlign.center,
             ),
@@ -63,7 +65,7 @@ class WhatsAppCard extends StatelessWidget {
                 label: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: Text(
-                    'Open WhatsApp Chat',
+                    LocaleKeys.profile_settings_contactUs_openWhatsBtn.tr(),
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.bold,

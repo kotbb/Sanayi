@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/create_account_client/ui/widgets/build_input_field.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class CreateAccountClientScreen extends StatelessWidget {
   const CreateAccountClientScreen({super.key});
@@ -28,12 +30,12 @@ class CreateAccountClientScreen extends StatelessWidget {
               verticalSpace(32),
 
               // Name field
-              BuildInputField(hint: "Full Name", icon: Icons.person_outline),
+              BuildInputField(hint: LocaleKeys.createAccount_nameHint.tr(), icon: Icons.person_outline),
               verticalSpace(16),
 
               // Phone field
               BuildInputField(
-                hint: "Phone Number",
+                hint: LocaleKeys.createAccount_phoneHint.tr(),
                 icon: Icons.phone_outlined,
                 keyboardType: TextInputType.phone,
               ),
@@ -41,7 +43,7 @@ class CreateAccountClientScreen extends StatelessWidget {
 
               // Location field
               BuildInputField(
-                hint: "Loaction",
+                hint: LocaleKeys.createAccount_locationHint.tr(),
                 icon: Icons.location_on_outlined,
               ),
               verticalSpace(32),
@@ -62,7 +64,7 @@ class CreateAccountClientScreen extends StatelessWidget {
                     elevation: 4,
                   ),
                   child: Text(
-                    "Create Account",
+                    LocaleKeys.createAccount_createBtn.tr(),
                     style: TextStyle(
                       fontSize: 16.sp,
                       color: Colors.white,

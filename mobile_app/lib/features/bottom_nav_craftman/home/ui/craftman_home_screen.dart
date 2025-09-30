@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_in_progress_card.dart';
@@ -5,6 +6,7 @@ import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_re
 import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_section_header.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_stats_row.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_welcome_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class CraftmanHomeScreen extends StatelessWidget {
   CraftmanHomeScreen({super.key});
@@ -47,7 +49,7 @@ class CraftmanHomeScreen extends StatelessWidget {
               BuildStatsRow(),
               verticalSpace(22),
               BuildSectionHeader(
-                title: 'New Requests',
+                title: LocaleKeys.craftmanHome_newRequests.tr(),
                 count: _newRequests.length,
               ),
               verticalSpace(12),
@@ -55,7 +57,7 @@ class CraftmanHomeScreen extends StatelessWidget {
                 (request) => BuildRequestCard(request: request, isNew: true),
               ),
               BuildSectionHeader(
-                title: 'In Progress',
+                title: LocaleKeys.craftmanHome_progress.tr(),
                 count: _inProgress.length,
               ),
               verticalSpace(12),
@@ -67,14 +69,6 @@ class CraftmanHomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add new service or request
-        },
-        backgroundColor: const Color(0xff102144),
-        child: Icon(Icons.add, color: Colors.white),
       ),
     );
   }

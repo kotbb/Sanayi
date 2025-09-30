@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +6,7 @@ import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/settings/ui/widgets/log_out_bottom_sheet.dart';
 import 'package:sanayi_app/features/settings/ui/widgets/list_tile_widget.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -15,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        title: const Text('Settings'),
+        title: Text(LocaleKeys.profile_settings_title.tr()),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -24,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Edit", style: TextStyle(fontSize: 18.sp)),
+                Text(LocaleKeys.agenda_edit.tr(), style: TextStyle(fontSize: 18.sp)),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -38,7 +40,7 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       ListTileWidget(
                         leading: Icon(Icons.edit),
-                        title: "Edit Profile",
+                        title: LocaleKeys.profile_settings_editProfile.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(
@@ -49,17 +51,18 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.phone),
-                        title: "Change Phone Number",
+                        title: LocaleKeys.profile_settings_changeNum.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
-                          Navigator.pushNamed(context, Routes.oldNumberScreen);
+                          //todo
+                          Navigator.pushNamed(context, Routes.oldOtpScreen);
                         },
                       ),
                     ],
                   ),
                 ),
                 verticalSpace(33),
-                Text("General", style: TextStyle(fontSize: 18.sp)),
+                Text(LocaleKeys.profile_settings_general.tr(), style: TextStyle(fontSize: 18.sp)),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -73,13 +76,13 @@ class SettingsScreen extends StatelessWidget {
                     children: [
                       ListTileWidget(
                         leading: Icon(Icons.notifications),
-                        title: "Notifications",
+                        title: LocaleKeys.profile_settings_notifications.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {},
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.language),
-                        title: "Language",
+                        title: LocaleKeys.profile_settings_lang.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(context, Routes.languageScreen);
@@ -87,7 +90,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.sunny),
-                        title: "Mode",
+                        title: LocaleKeys.profile_settings_mode.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {},
                       ),
@@ -95,7 +98,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(33),
-                Text("About Us", style: TextStyle(fontSize: 18.sp)),
+                Text(LocaleKeys.profile_settings_aboutUs.tr(), style: TextStyle(fontSize: 18.sp)),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -110,8 +113,8 @@ class SettingsScreen extends StatelessWidget {
                       ListTileWidget(
                         leading: Icon(
                           Icons.attachment_rounded,
-                        ), //TODO: Change the Icon
-                        title: "Who Are We",
+                        ), //todo: Change the Icon
+                        title: LocaleKeys.profile_settings_whoAreWe_title.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(context, Routes.whoAreWeScreen);
@@ -119,7 +122,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.wechat_outlined),
-                        title: "Contact Us",
+                        title: LocaleKeys.profile_settings_contactUs_title.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(context, Routes.contactUsScreen);
@@ -127,7 +130,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.policy_outlined),
-                        title: "Privacy & Policies",
+                        title: LocaleKeys.profile_settings_privacyAndPolicy_title.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(
@@ -140,7 +143,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(33),
-                Text("My Account", style: TextStyle(fontSize: 18.sp)),
+                Text(LocaleKeys.profile_settings_myAccount.tr(), style: TextStyle(fontSize: 18.sp)),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -156,7 +159,7 @@ class SettingsScreen extends StatelessWidget {
                         leading: SvgPicture.asset(
                           "assets/images/svg/logout.svg",
                         ),
-                        title: "LogOut",
+                        title: LocaleKeys.profile_settings_logOut_title.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           showModalBottomSheet(
@@ -175,7 +178,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.delete, color: Colors.red),
-                        title: "Delete Account",
+                        title: LocaleKeys.profile_settings_delete_title.tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {},
                       ),

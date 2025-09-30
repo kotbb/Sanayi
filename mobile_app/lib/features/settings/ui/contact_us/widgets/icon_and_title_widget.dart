@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class IconAndTitleWidget extends StatelessWidget {
   const IconAndTitleWidget({super.key});
@@ -27,7 +29,7 @@ class IconAndTitleWidget extends StatelessWidget {
         ),
         verticalSpace(30),
         Text(
-          'We\'re Here to Help!',
+          LocaleKeys.profile_settings_contactUs_weAreHere.tr(),
           style: TextStyle(
             fontSize: 24.sp,
             fontWeight: FontWeight.bold,
@@ -37,7 +39,7 @@ class IconAndTitleWidget extends StatelessWidget {
         ),
         verticalSpace(12),
         Text(
-          'Get in touch with us through WhatsApp',
+          LocaleKeys.profile_settings_contactUs_getInTouch.tr(),
           style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
           textAlign: TextAlign.center,
         ),

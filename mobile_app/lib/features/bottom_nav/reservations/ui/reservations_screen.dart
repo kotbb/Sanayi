@@ -17,8 +17,8 @@ class ReservationsScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 24.h),
               child: ReservationItemWidget(
                 image: '',
-                title: 'Reservation',
-                subTitle: 'Reservation Details',
+                title: "title",
+                subTitle: 'Details',
                 onTap: () {
                   //todo: Navigate to reservation details from ReservationItemWidget
                   Navigator.pushNamed(context, Routes.bookingDetailsScreen);

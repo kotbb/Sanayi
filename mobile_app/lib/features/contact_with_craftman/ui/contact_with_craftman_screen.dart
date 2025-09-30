@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/features/contact_with_craftman/ui/widgets/whatsapp_number_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ContactWithCraftmanScreen extends StatelessWidget {
   const ContactWithCraftmanScreen({super.key});
@@ -15,7 +17,7 @@ class ContactWithCraftmanScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Contact with craftman',
+          LocaleKeys.resrvation_bookingDetails_contactScreen_title.tr(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
         ),
         centerTitle: true,
@@ -59,13 +61,13 @@ class ContactWithCraftmanScreen extends StatelessWidget {
                 children: [
                   ListTile(
                     leading: Icon(Icons.access_time, color: Color(0xff102144)),
-                    title: Text('Working Hours'),
+                    title: Text(LocaleKeys.resrvation_bookingDetails_contactScreen_workingHours.tr()),
                     subtitle: Text('8:00 AM - 6:00 PM'),
                   ),
                   Divider(),
                   ListTile(
                     leading: Icon(Icons.location_on, color: Color(0xff102144)),
-                    title: Text('Location'),
+                    title: Text(LocaleKeys.resrvation_bookingDetails_location.tr()),
                     subtitle: Text('Gaza - AzZawayda'),
                   ),
                 ],
@@ -73,7 +75,7 @@ class ContactWithCraftmanScreen extends StatelessWidget {
             ),
             verticalSpace(20),
             Text(
-              'You can contact the craftman via WhatsApp or copy the number to your clipboard. Please respect his working hours when reaching out.',
+              LocaleKeys.resrvation_bookingDetails_contactScreen_subText.tr(),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14.sp,

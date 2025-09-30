@@ -83,6 +83,10 @@ class CodegenLoader extends AssetLoader{
     "requests": "طلبات",
     "bookingDetails": {
       "title": "تفاصيل الحجز",
+      "pending": "قيد الانتظار",
+      "accepted": "مقبول",
+      "rejected": "مرفوض",
+      "completed": "مكتمل",
       "clientInfo": "معلومات العميل",
       "requestDetails": "تفاصيل الطلب",
       "estimatedTime": "الوقت المقدر",
@@ -325,6 +329,10 @@ static const Map<String,dynamic> _en = {
     "requests": "Requests",
     "bookingDetails": {
       "title": "Booking Details",
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "completed": "Completed",
       "clientInfo": "Clinet Information",
       "requestDetails": "Request Details",
       "estimatedTime": "Estimated Time",

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
@@ -5,6 +6,7 @@ import 'package:sanayi_app/features/requests_details/ui/widgets/action_btns.dart
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_booking_info_card.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_client_info_card.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_service_details_card.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class RequestsDetailsScreen extends StatelessWidget {
   RequestsDetailsScreen({super.key});
@@ -28,7 +30,7 @@ class RequestsDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Booking Details',
+          LocaleKeys.craftmanHome_bookingDetails_title.tr(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
         ),
       ),
@@ -85,7 +87,7 @@ class RequestsDetailsScreen extends StatelessWidget {
                   // Add notes or additional details
                 },
                 child: Text(
-                  'Add Notes to Request',
+                  LocaleKeys.craftmanHome_bookingDetails_addNotes.tr(),
                   style: TextStyle(
                     color: const Color(0xff102144),
                     fontSize: 16.sp,

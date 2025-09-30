@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildInProgressCard extends StatelessWidget {
   Map<String, dynamic> request;
@@ -43,7 +45,7 @@ class BuildInProgressCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${request['progress']}% completed',
+                  '${request['progress']}% ${LocaleKeys.craftmanHome_completed.tr()}',
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: const Color(0xff102144),
