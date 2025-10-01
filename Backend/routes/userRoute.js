@@ -12,6 +12,7 @@ router
   .route("/update-phone/verify-otp")
   .patch(userController.verifyUpdatePhoneOTP);
 
+router.use(authController.protect);
 router.route("/:id").get(userController.getUser);
 
 //--- Admin Routes ---

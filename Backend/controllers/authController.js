@@ -12,21 +12,6 @@ const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
 
 //------------------------------------------------------
 
-const checkUserExists = catchAsync(async (req, res, next) => {
-  const { phoneNumber } = req.body;
-  if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
-    return next(new AppError("Invalid phone number", 400));
-  }
-  const user = await User.findOne({ phoneNumber });
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      exists: user ? true : false,
-    },
-  });
-});
-
 const sendRegisterOTP = catchAsync(async (req, res, next) => {
   const { phoneNumber } = req.body;
   if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
@@ -216,7 +201,6 @@ const checkOwnerShip = (Model, userFieldNames) => {
 module.exports = {
   login,
   loginAdmin,
-  checkUserExists,
   protect,
   restrictTo,
   sendRegisterOTP,
