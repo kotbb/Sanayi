@@ -62,6 +62,14 @@ const userSchema = new mongoose.Schema(
       select: false,
       minlength: 8,
     },
+    refreshToken: {
+      type: String,
+      select: false,
+    },
+    refreshTokenExpiresAt: {
+      type: Date,
+      select: false,
+    },
   },
   {
     timestamps: true,
@@ -85,18 +93,34 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
+// Hash password before saving
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
+// Check if password is correct
 userSchema.methods.correctPassword = async function (
   inputPassword,
   userPassword
 ) {
   return await bcrypt.compare(inputPassword, userPassword);
 };
+
+// Hash refresh token before saving
+userSchema.pre("save", async function (next){
+  if(!this.isModified("refreshToken")){
+    return next();
+  }
+  this.refreshToken = await bcrypt.hash(this.refreshToken, 12);
+  next();
+})
+
+// Check if refresh token is correct
+userSchema.methods.correctRefreshToken = async function (inputRefreshToken, userRefreshToken) {
+  return await bcrypt.compare(inputRefreshToken, userRefreshToken);
+}
 
 const User = mongoose.model("User", userSchema);
 

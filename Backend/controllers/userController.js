@@ -6,7 +6,7 @@ const factory = require("./handlerFactory");
 const filterObj = require("../utils/filterObject");
 const flattenObject = require("../utils/flattenObject");
 const verifyOTP = require("../utils/verifyOTP");
-const { createSendToken, signToken } = require("../utils/jwtUtils");
+const { createSendTokens, signToken } = require("../utils/jwtUtils");
 const createOTP = require("../utils/createOTP");
 const craftsmanService = require("../services/craftsmanService");
 
@@ -46,7 +46,7 @@ const verifyUpdatePhoneOTP = catchAsync(async (req, res, next) => {
     }
   );
 
-  createSendToken(updatedUser, 200, res);
+  createSendTokens(updatedUser, 200, res);
 });
 
 //---------------------------------------------------

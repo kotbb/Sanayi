@@ -6,11 +6,48 @@ const verifyOTP = require("../utils/verifyOTP");
 const User = require("../models/userModel");
 const Craftsman = require("../models/craftsmanModel");
 const jwt = require("jsonwebtoken");
-const { signToken, createSendToken } = require("../utils/jwtUtils");
+const {
+  createAccessToken,
+  createSendTokens,
+  getUserTokens,
+} = require("../utils/jwtUtils");
 const { promisify } = require("util");
 const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
 
 //------------------------------------------------------
+
+const getNewRefreshAccessTokens = catchAsync(async (req, res, next) => {
+  const inputRefreshToken = req.body.refreshToken;
+  const inputAccessToken = req.headers.authorization.split(" ")[1];
+
+  if (!inputRefreshToken || !inputAccessToken) {
+    return next(new AppError("Refresh and access token are required", 401));
+  }
+
+  const decoded = jwt.decode(inputAccessToken);
+  if(!decoded) {
+    return next(new AppError("Invalid access token", 401));
+  }
+  const user = await User.findById(decoded.data).select("+refreshToken +refreshTokenExpiresAt");
+  if (!user) {
+    return next(new AppError("User not found", 404));
+  }
+  // Compare input refresh token with stored refresh token (rotation protection)
+  if (!user.refreshToken || user.refreshTokenExpiresAt < Date.now() || 
+     (!await user.correctRefreshToken(inputRefreshToken, user.refreshToken))) {
+    return next(new AppError("Invalid or expired refresh token", 401));
+  }
+
+  const {accessToken, refreshToken} = await getUserTokens(user);
+  user.refreshToken = refreshToken;
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: "success",
+    token: accessToken,
+    refreshToken,
+  });
+});
 
 const sendRegisterOTP = catchAsync(async (req, res, next) => {
   const { phoneNumber } = req.body;
@@ -29,6 +66,7 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     message: "OTP sent successfully",
+    // TODO: Send OTP to user
   });
 });
 
@@ -36,9 +74,9 @@ const verifyRegisterOTP = catchAsync(async (req, res, next) => {
   const { otp, phoneNumber } = req.body;
   await verifyOTP(otp, phoneNumber);
 
-  const registerationToken = signToken(
+  const registerationToken = createAccessToken(
     phoneNumber,
-    process.env.JWT_EXPIRES_IN_REGISTER
+    process.env.JWT_ACCESS_EXPIRES_IN
   );
   res.status(200).json({
     status: "success",
@@ -54,7 +92,7 @@ const completeRegister = catchAsync(async (req, res, next) => {
   }
   const decoded = await promisify(jwt.verify)(
     registerationToken,
-    process.env.JWT_SECRET
+    process.env.JWT_ACCESS_SECRET
   );
 
   const phoneNumber = decoded.data;
@@ -67,7 +105,7 @@ const completeRegister = catchAsync(async (req, res, next) => {
     req.body,
     phoneNumber
   );
-  createSendToken(newUser, 201, res);
+  createSendTokens(newUser, 201, res);
 });
 
 const login = catchAsync(async (req, res, next) => {
@@ -85,7 +123,7 @@ const login = catchAsync(async (req, res, next) => {
   if (user.role === "admin") {
     return next(new AppError("Admin login here not allowed", 400));
   }
-  createSendToken(user, 200, res);
+  createSendTokens(user, 200, res);
 });
 
 const loginAdmin = catchAsync(async (req, res, next) => {
@@ -99,7 +137,7 @@ const loginAdmin = catchAsync(async (req, res, next) => {
   if (!user || (await user.correctPassword(user.password, password))) {
     return next(new AppError("Invalid phone number or password", 401));
   }
-  createSendToken(user, 200, res);
+  createSendTokens(user, 200, res);
 });
 
 const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
@@ -113,6 +151,7 @@ const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
   next();
 });
 
+// Set the logged in user id in the req.params
 const setLoggedId = (req, res, next) => {
   if (req.user.role === "client") {
     req.params.clientId = req.user.id;
@@ -151,7 +190,10 @@ const protect = catchAsync(async (req, res, next) => {
   }
 
   // 2) Verify token
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const decoded = await promisify(jwt.verify)(
+    token,
+    process.env.JWT_ACCESS_SECRET
+  );
 
   // 3) Check if user exists, data is the user's id
   const currentUser = await User.findById(decoded.data);
@@ -209,4 +251,5 @@ module.exports = {
   checkOwnerShip,
   loadCraftsmanProfile,
   setLoggedId,
+  getNewRefreshAccessTokens,
 };
