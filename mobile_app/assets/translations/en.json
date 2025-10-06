@@ -51,7 +51,12 @@
         "body":"We are here to facilitate your services ...",
         "search":"Search Here ...",
         "categories":"Categories",
-        "services":"Services"
+        "services":"Services",
+        "successBooking":"Your booking is successful",
+        "bodySuccessBooking":"You have successfully booked the craftman. The craftman will contact you soon.",
+        "experience":"Experience (Years)",
+        "description":"Description",
+        "clientReview":"Client Review"
     },
     "notifications":"Notifications",
     "craftmanHome":{

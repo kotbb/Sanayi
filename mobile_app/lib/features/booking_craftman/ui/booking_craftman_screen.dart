@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/booking_craftman/ui/widgets/build_section_widget.dart';
 
 class BookingCraftmanScreen extends StatelessWidget {
@@ -10,7 +11,12 @@ class BookingCraftmanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Booking Craftman')),
+      appBar: AppBar(
+        title: Text(
+          'Booking Craftman',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -35,6 +41,7 @@ class BookingCraftmanScreen extends StatelessWidget {
               title: 'Location',
               content: "Gaza, Azzwayda",
               onTap: () {
+                //todo
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -57,7 +64,7 @@ class BookingCraftmanScreen extends StatelessWidget {
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
@@ -71,15 +78,11 @@ class BookingCraftmanScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.notes, color: Color(0xff102144)),
-                      SizedBox(width: 12),
+                      Icon(Icons.notes, color: ColorsManager.mainBlue),
+                      horizontalSpace(12),
                       Text(
                         'Notes',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff102144),
-                        ),
+                        style: Theme.of(context).textTheme.labelLarge,
                       ),
                     ],
                   ),
@@ -89,17 +92,18 @@ class BookingCraftmanScreen extends StatelessWidget {
                     maxLines: 5,
                     decoration: InputDecoration(
                       hintText: 'Enter any additional notes...',
+                      hintStyle: Theme.of(context).textTheme.bodyMedium,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                         borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                         borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Color(0xff102144)),
+                        borderRadius: BorderRadius.circular(8.r),
+                        borderSide: BorderSide(color: ColorsManager.mainBlue),
                       ),
                     ),
                   ),
@@ -117,22 +121,22 @@ class BookingCraftmanScreen extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.successBookingScreen);
                   final snackBar = SnackBar(
                     content: Text('Appointment booked successfully!'),
-                    backgroundColor: Color(0xff102144),
+                    backgroundColor: ColorsManager.mainBlue,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff102144),
+                  backgroundColor: ColorsManager.mainBlue,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   elevation: 2,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: Text(
                     'Book Now',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: TextStyle(fontSize: 18.sp, color: Colors.white),
                   ),
                 ),
               ),

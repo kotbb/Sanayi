@@ -7,7 +7,7 @@ class BuildAnimatedChooseCard extends StatelessWidget {
   String description;
   Widget image;
   VoidCallback onTap;
-  
+
   BuildAnimatedChooseCard({
     super.key,
     required this.title,
@@ -45,22 +45,12 @@ class BuildAnimatedChooseCard extends StatelessWidget {
                   children: [
                     image,
                     verticalSpace(16),
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff102144),
-                      ),
-                    ),
+                    Text(title, style: Theme.of(context).textTheme.labelLarge),
                     verticalSpace(12),
                     Text(
                       description,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        color: Colors.grey[600],
-                      ),
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ],
                 ),

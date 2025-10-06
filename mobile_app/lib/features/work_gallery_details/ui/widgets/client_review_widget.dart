@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class ClientReviewWidget extends StatelessWidget {
   const ClientReviewWidget({super.key});
@@ -10,18 +12,11 @@ class ClientReviewWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Client Review",
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            color: Color(0xff102144),
-          ),
-        ),
+        Text(LocaleKeys.clientHome_clientReview.tr(), style: Theme.of(context).textTheme.labelLarge),
         verticalSpace(12),
         Row(
           children: [
-             CircleAvatar(
+            CircleAvatar(
               radius: 22.r,
               backgroundImage: NetworkImage("https://i.pravatar.cc/150?img=3"),
             ),
@@ -31,7 +26,7 @@ class ClientReviewWidget extends StatelessWidget {
               children: [
                 Text(
                   "Feras AbuZayed",
-                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 verticalSpace(4),
                 Row(
@@ -48,10 +43,10 @@ class ClientReviewWidget extends StatelessWidget {
           ],
         ),
         verticalSpace(12),
-        const Text(
+        Text(
           "The craftsman was professional and delivered the work on time. "
           "Very satisfied with the results!",
-          style: TextStyle(color: Colors.black87, height: 1.4),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
     );

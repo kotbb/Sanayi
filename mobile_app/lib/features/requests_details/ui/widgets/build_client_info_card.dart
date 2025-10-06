@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildClientInfoCard extends StatelessWidget {
@@ -40,11 +41,7 @@ class BuildClientInfoCard extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 8),
           child: Text(
             LocaleKeys.craftmanHome_bookingDetails_clientInfo.tr(),
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff102144),
-            ),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
         Card(
@@ -57,15 +54,18 @@ class BuildClientInfoCard extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.person, color: const Color(0xff102144)),
+                  leading: Icon(Icons.person, color: ColorsManager.mainBlue),
                   title: Text(
                     requestDetails['clientName'],
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
                 ListTile(
-                  leading: Icon(Icons.phone, color: const Color(0xff102144)),
-                  title: Text(requestDetails['phone']),
+                  leading: Icon(Icons.phone, color: ColorsManager.mainBlue),
+                  title: Text(
+                    requestDetails['phone'],
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   trailing: IconButton(
                     icon: Icon(Icons.phone, color: Colors.green),
                     onPressed: () => _contactClient(context),
@@ -74,9 +74,12 @@ class BuildClientInfoCard extends StatelessWidget {
                 ListTile(
                   leading: Icon(
                     Icons.location_on,
-                    color: const Color(0xff102144),
+                    color: ColorsManager.mainBlue,
                   ),
-                  title: Text(requestDetails['address']),
+                  title: Text(
+                    requestDetails['address'],
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                   trailing: IconButton(
                     icon: Icon(Icons.map, color: Colors.red),
                     onPressed: () => _showLocation(context, requestDetails),

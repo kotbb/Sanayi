@@ -2,15 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildInProgressCard extends StatelessWidget {
   Map<String, dynamic> request;
-  
-  BuildInProgressCard({
-    super.key,
-    required this.request,
-  });
+
+  BuildInProgressCard({super.key, required this.request});
 
   @override
   Widget build(BuildContext context) {
@@ -25,20 +23,18 @@ class BuildInProgressCard extends StatelessWidget {
           children: [
             Text(
               request['name'],
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             verticalSpace(8),
             Text(
               request['service'],
-              style: TextStyle(fontSize: 14.sp, color: Colors.grey[700]),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(8),
             LinearProgressIndicator(
               value: request['progress'] / 100,
               backgroundColor: Colors.grey[300],
-              valueColor: AlwaysStoppedAnimation<Color>(
-                const Color(0xff102144),
-              ),
+              valueColor: AlwaysStoppedAnimation<Color>(ColorsManager.mainBlue),
             ),
             verticalSpace(8),
             Row(
@@ -46,14 +42,11 @@ class BuildInProgressCard extends StatelessWidget {
               children: [
                 Text(
                   '${request['progress']}% ${LocaleKeys.craftmanHome_completed.tr()}',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: const Color(0xff102144),
-                  ),
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
                 Text(
                   request['date'],
-                  style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),

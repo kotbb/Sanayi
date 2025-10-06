@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/action_btns.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_booking_info_card.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_client_info_card.dart';
@@ -31,7 +32,7 @@ class RequestsDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           LocaleKeys.craftmanHome_bookingDetails_title.tr(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SingleChildScrollView(
@@ -88,10 +89,7 @@ class RequestsDetailsScreen extends StatelessWidget {
                 },
                 child: Text(
                   LocaleKeys.craftmanHome_bookingDetails_addNotes.tr(),
-                  style: TextStyle(
-                    color: const Color(0xff102144),
-                    fontSize: 16.sp,
-                  ),
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),
             ),

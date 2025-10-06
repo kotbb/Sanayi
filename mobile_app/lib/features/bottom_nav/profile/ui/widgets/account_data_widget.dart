@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 
 class AccountDataWidget extends StatelessWidget {
   String label;
@@ -14,15 +15,15 @@ class AccountDataWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextStyle(fontSize: 18.sp)),
+        Text(label, style: Theme.of(context).textTheme.labelLarge),
         verticalSpace(8),
         TextFormField(
           enabled: false,
-          style: TextStyle(color: Colors.black, fontSize: 16.sp),
+          style: Theme.of(context).textTheme.bodyMedium,
           controller: TextEditingController(text: value),
           decoration: InputDecoration(
             filled: true,
-            fillColor: Color(0xfffebf0f4),
+            fillColor: ColorsManager.seconderyLightGreen,
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8.r),

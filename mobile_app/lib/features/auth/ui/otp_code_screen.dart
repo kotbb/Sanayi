@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class OtpCodeScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class OtpCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Color(0xfffebf0f4)),
+      appBar: AppBar(backgroundColor: ColorsManager.seconderyLightGreen),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -21,11 +22,11 @@ class OtpCodeScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.45,
-                decoration: const BoxDecoration(
-                  color: Color(0xfffebf0f4),
+                decoration: BoxDecoration(
+                  color: ColorsManager.seconderyLightGreen,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(100),
-                    bottomRight: Radius.circular(100),
+                    bottomLeft: Radius.circular(100.r),
+                    bottomRight: Radius.circular(100.r),
                   ),
                 ),
                 child: Center(
@@ -46,25 +47,18 @@ class OtpCodeScreen extends StatelessWidget {
                       children: [
                         Text(
                           LocaleKeys.otp_verificationCode.tr(),
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                         Text(
                           "00:00",
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xff102144),
-                          ),
+                          style: Theme.of(context).textTheme.labelLarge,
                         ),
                       ],
                     ),
                     verticalSpace(16),
                     Text(
                       LocaleKeys.otp_body.tr(),
-                      style: TextStyle(fontSize: 12.sp, color: Colors.grey),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     verticalSpace(22),
                     Center(
@@ -75,15 +69,11 @@ class OtpCodeScreen extends StatelessWidget {
                         defaultPinTheme: PinTheme(
                           width: 60.w,
                           height: 60.h,
-                          textStyle: TextStyle(
-                            fontSize: 20.sp,
-                            color: const Color(0xff102144),
-                            fontWeight: FontWeight.w600,
-                          ),
+                          textStyle: Theme.of(context).textTheme.bodyMedium,
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade400),
                             // color: Color(0xfffEBF0F4),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                           ),
                         ),
                       ),
@@ -94,13 +84,13 @@ class OtpCodeScreen extends StatelessWidget {
                       height: 50.h,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff102144),
+                          backgroundColor: ColorsManager.mainBlue,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(30.r),
                           ),
                         ),
                         onPressed: () {
-                          // TODO: Handle continue button press
+                          // todo: Handle continue button press
                           Navigator.pushNamed(
                             context,
                             Routes.chooseUserTypeScreen,
@@ -108,10 +98,9 @@ class OtpCodeScreen extends StatelessWidget {
                         },
                         child: Text(
                           LocaleKeys.continueBtn.tr(),
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.white,
-                          ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge?.copyWith(color: Colors.white),
                         ),
                       ),
                     ),

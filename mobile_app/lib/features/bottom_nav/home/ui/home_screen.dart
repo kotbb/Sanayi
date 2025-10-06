@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/categories/categories_list_view_builder.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/search_widget.dart';
 import 'package:sanayi_app/features/bottom_nav/home/ui/widgets/services/services_list_view_builder.dart';
@@ -15,8 +16,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Color(0xfffebf0f4), // لون الخلفية
+      SystemUiOverlayStyle(
+        statusBarColor: ColorsManager.seconderyLightGreen, // لون الخلفية
         statusBarIconBrightness:
             Brightness.dark, // لون الأيقونات (Light = أبيض, Dark = أسود)
       ),
@@ -29,11 +30,11 @@ class HomeScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.33,
-              decoration: const BoxDecoration(
-                color: Color(0xfffebf0f4),
+              decoration: BoxDecoration(
+                color: ColorsManager.seconderyLightGreen,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(100),
+                  bottomLeft: Radius.circular(100.r),
+                  bottomRight: Radius.circular(100.r),
                 ),
               ),
               child: Padding(
@@ -46,11 +47,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "${LocaleKeys.clientHome_hey.tr()} Feras",
-                          style: TextStyle(
-                            color: const Color(0xff102144),
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -70,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.notifications,
-                                  color: const Color(0xff102144),
+                                  color: ColorsManager.mainBlue,
                                 ),
                               ),
                             ),
@@ -81,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                     verticalSpace(24),
                     Text(
                       LocaleKeys.clientHome_body.tr(),
-                      style: TextStyle(fontSize: 16.sp),
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     verticalSpace(36),
                     SearchWidget(),

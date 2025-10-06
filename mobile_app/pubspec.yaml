@@ -88,7 +88,7 @@ flutter:
           weight: 300
         - asset: assets/fonts/Tajawal-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Tajawal-medim.ttf
+        - asset: assets/fonts/Tajawal-Medium.ttf
           weight: 500
   # assets:
   #   - images/a_dot_burr.jpeg

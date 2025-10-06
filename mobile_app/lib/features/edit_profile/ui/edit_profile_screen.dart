@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/edit_profile/ui/widgets/Image_widget.dart';
 import 'package:sanayi_app/features/edit_profile/ui/widgets/change_data_widget.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
@@ -14,8 +15,11 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfffebf0f4),
-        title: Text(LocaleKeys.profile_settings_editProfile.tr()),
+        backgroundColor: ColorsManager.seconderyLightGreen,
+        title: Text(
+          LocaleKeys.profile_settings_editProfile.tr(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -25,14 +29,16 @@ class EditProfileScreen extends StatelessWidget {
               ImageWidget(onTap: () {}, networkImageUrl: null),
               verticalSpace(24),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //TODO: make controllers for text fields
+                    //todo: make controllers for text fields
                     ChangeDataWidget(label: LocaleKeys.profile_nameLabel.tr()),
                     verticalSpace(24),
-                    ChangeDataWidget(label: LocaleKeys.profile_locationLabel.tr()),
+                    ChangeDataWidget(
+                      label: LocaleKeys.profile_locationLabel.tr(),
+                    ),
                     verticalSpace(24),
                     ChangeDataWidget(label: LocaleKeys.profile_bioLabel.tr()),
                     verticalSpace(40),
@@ -49,7 +55,7 @@ class EditProfileScreen extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 14.h),
-                          backgroundColor: const Color(0xff102144),
+                          backgroundColor: ColorsManager.mainBlue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r),
                           ),

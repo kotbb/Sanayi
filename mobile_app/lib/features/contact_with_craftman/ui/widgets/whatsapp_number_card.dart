@@ -101,7 +101,7 @@ class WhatsappNumberCard extends StatelessWidget {
                       vertical: 12.h,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                     ),
                   ),
                 ),

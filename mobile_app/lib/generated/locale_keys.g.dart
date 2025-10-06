@@ -49,6 +49,11 @@ abstract class  LocaleKeys {
   static const clientHome_search = 'clientHome.search';
   static const clientHome_categories = 'clientHome.categories';
   static const clientHome_services = 'clientHome.services';
+  static const clientHome_successBooking = 'clientHome.successBooking';
+  static const clientHome_bodySuccessBooking = 'clientHome.bodySuccessBooking';
+  static const clientHome_experience = 'clientHome.experience';
+  static const clientHome_description = 'clientHome.description';
+  static const clientHome_clientReview = 'clientHome.clientReview';
   static const clientHome = 'clientHome';
   static const notifications = 'notifications';
   static const craftmanHome_hello = 'craftmanHome.hello';

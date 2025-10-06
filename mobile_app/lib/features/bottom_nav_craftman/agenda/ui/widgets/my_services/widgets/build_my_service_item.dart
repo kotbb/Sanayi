@@ -2,15 +2,22 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildMyServiceItem extends StatelessWidget {
   Map<String, dynamic> service;
-  final TextEditingController titleController ;
+  final TextEditingController titleController;
   final TextEditingController descriptionController;
   final TextEditingController priceController;
 
-  BuildMyServiceItem({super.key, required this.service, required this.titleController, required this.descriptionController, required this.priceController});
+  BuildMyServiceItem({
+    super.key,
+    required this.service,
+    required this.titleController,
+    required this.descriptionController,
+    required this.priceController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +35,7 @@ class BuildMyServiceItem extends StatelessWidget {
               children: [
                 Text(
                   service['title'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.sp,
-                    color: const Color(0xff102144),
-                  ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 Row(
                   children: [
@@ -81,18 +84,17 @@ class BuildMyServiceItem extends StatelessWidget {
                                       verticalSpace(16),
                                       Text(
                                         "${LocaleKeys.agenda_edit.tr()} ${service['title']} ${LocaleKeys.agenda_myServices_service.tr()}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.headlineLarge,
                                       ),
                                       verticalSpace(12),
                                       TextField(
                                         controller: titleController,
                                         decoration: InputDecoration(
-                                          labelText: LocaleKeys.agenda_myServices_serviceTitle.tr(),
+                                          labelText: LocaleKeys
+                                              .agenda_myServices_serviceTitle
+                                              .tr(),
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
@@ -100,7 +102,9 @@ class BuildMyServiceItem extends StatelessWidget {
                                       TextField(
                                         controller: descriptionController,
                                         decoration: InputDecoration(
-                                          labelText: LocaleKeys.agenda_myServices_category.tr(),
+                                          labelText: LocaleKeys
+                                              .agenda_myServices_category
+                                              .tr(),
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
@@ -108,7 +112,9 @@ class BuildMyServiceItem extends StatelessWidget {
                                       TextField(
                                         controller: descriptionController,
                                         decoration: InputDecoration(
-                                          labelText: LocaleKeys.agenda_myServices_price.tr(),
+                                          labelText: LocaleKeys
+                                              .agenda_myServices_price
+                                              .tr(),
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
@@ -116,7 +122,9 @@ class BuildMyServiceItem extends StatelessWidget {
                                       TextField(
                                         controller: descriptionController,
                                         decoration: InputDecoration(
-                                          labelText: LocaleKeys.agenda_myServices_description.tr(),
+                                          labelText: LocaleKeys
+                                              .agenda_myServices_description
+                                              .tr(),
                                           border: OutlineInputBorder(),
                                         ),
                                         maxLines: 3,
@@ -128,9 +136,8 @@ class BuildMyServiceItem extends StatelessWidget {
                                             double.infinity,
                                             50.h,
                                           ),
-                                          backgroundColor: const Color(
-                                            0xff102144,
-                                          ),
+                                          backgroundColor:
+                                              ColorsManager.mainBlue,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                               8.r,
@@ -141,7 +148,8 @@ class BuildMyServiceItem extends StatelessWidget {
                                           // todo: handle save
                                         },
                                         child: Text(
-                                          LocaleKeys.agenda_workSchedule_saveBtn.tr(),
+                                          LocaleKeys.agenda_workSchedule_saveBtn
+                                              .tr(),
                                           style: TextStyle(
                                             fontSize: 16.sp,
                                             color: Colors.white,
@@ -170,13 +178,16 @@ class BuildMyServiceItem extends StatelessWidget {
             verticalSpace(8),
             Text(
               service['description'],
-              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(8),
             Row(
               children: [
                 Chip(
-                  label: Text(service['category']),
+                  label: Text(
+                    service['category'],
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
                   backgroundColor: Colors.blue[100],
                 ),
                 horizontalSpace(6),

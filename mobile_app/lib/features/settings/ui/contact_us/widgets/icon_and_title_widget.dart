@@ -30,17 +30,15 @@ class IconAndTitleWidget extends StatelessWidget {
         verticalSpace(30),
         Text(
           LocaleKeys.profile_settings_contactUs_weAreHere.tr(),
-          style: TextStyle(
-            fontSize: 24.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.green[800],
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.labelLarge?.copyWith(color: Colors.green[800]),
           textAlign: TextAlign.center,
         ),
         verticalSpace(12),
         Text(
           LocaleKeys.profile_settings_contactUs_getInTouch.tr(),
-          style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
+          style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
       ],

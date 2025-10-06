@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
 import 'package:sanayi_app/features/works_gallery/ui/widgets/work_gallery_item_builder.dart';
 
@@ -8,7 +9,7 @@ class WorksGalleryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Works Gallery'), centerTitle: true),
+      appBar: AppBar(),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -18,14 +19,17 @@ class WorksGalleryScreen extends StatelessWidget {
         ),
         itemCount: 5,
         itemBuilder: (context, index) {
-          return WorkGalleryItemBuilder(
-            image:
-                'https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg',
-            title: 'Cleaning 2 backyards',
-            date: '25/06/2025',
-            onTap: () {
-              Navigator.pushNamed(context, Routes.workGalleryDetailsScreen);
-            },
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.sp),
+            child: WorkGalleryItemBuilder(
+              image:
+                  'https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg',
+              title: 'Cleaning 2 backyards',
+              date: '25/06/2025',
+              onTap: () {
+                Navigator.pushNamed(context, Routes.workGalleryDetailsScreen);
+              },
+            ),
           );
         },
       ),

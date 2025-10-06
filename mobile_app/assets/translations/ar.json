@@ -51,7 +51,12 @@
     "body": "نحن هنا لتسهيل خدماتك ...",
     "search": "ابحث هنا ...",
     "categories": "الفئات",
-    "services": "الخدمات"
+    "services": "الخدمات",
+    "successBooking": "عملية الحجز ناجحة",
+    "bodySuccessBooking": "تم تأكيد حجزك للحرفي بنجاح. سنقوم بتواصل الحرفي معك في أقرب وقت.",
+    "experience":"الخبرة (بالسنين)",
+    "description":"الوصف",
+    "clientReview":"مراجعة العميل"
   },
   "notifications": "الإشعارات",
   "craftmanHome": {

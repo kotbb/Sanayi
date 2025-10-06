@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildDayScheduleItem extends StatelessWidget {
@@ -37,9 +38,9 @@ class BuildDayScheduleItem extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(25.0),
+                    top: Radius.circular(25.r),
                   ),
                 ),
                 builder: (context) {
@@ -72,15 +73,16 @@ class BuildDayScheduleItem extends StatelessWidget {
                             verticalSpace(16),
                             Text(
                               "${LocaleKeys.agenda_edit.tr()} ${daySchedule['day']} ${LocaleKeys.agenda_workSchedule_schedule.tr()}",
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             verticalSpace(12),
 
                             // Active switch
                             SwitchListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: Text(LocaleKeys.agenda_workSchedule_active.tr()),
+                              title: Text(
+                                LocaleKeys.agenda_workSchedule_active.tr(),
+                              ),
                               value: daySchedule['active'],
                               onChanged: (value) {
                                 setState(() {
@@ -126,12 +128,14 @@ class BuildDayScheduleItem extends StatelessWidget {
                                       child: Text(
                                         startTime != null
                                             ? startTime!.format(context)
-                                            : LocaleKeys.agenda_workSchedule_startTime.tr(),
+                                            : LocaleKeys
+                                                  .agenda_workSchedule_startTime
+                                                  .tr(),
                                       ),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 12),
+                                horizontalSpace(12),
                                 Expanded(
                                   child: InkWell(
                                     onTap: () async {
@@ -144,20 +148,22 @@ class BuildDayScheduleItem extends StatelessWidget {
                                       }
                                     },
                                     child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 14,
-                                        horizontal: 12,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 14.h,
+                                        horizontal: 12.w,
                                       ),
                                       decoration: BoxDecoration(
                                         border: Border.all(
                                           color: Colors.grey.shade400,
                                         ),
-                                        borderRadius: BorderRadius.circular(6),
+                                        borderRadius: BorderRadius.circular(6.r),
                                       ),
                                       child: Text(
                                         endTime != null
                                             ? endTime!.format(context)
-                                            : LocaleKeys.agenda_workSchedule_endTime.tr(),
+                                            : LocaleKeys
+                                                  .agenda_workSchedule_endTime
+                                                  .tr(),
                                       ),
                                     ),
                                   ),
@@ -169,7 +175,7 @@ class BuildDayScheduleItem extends StatelessWidget {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(double.infinity, 50.h),
-                                backgroundColor: const Color(0xff102144),
+                                backgroundColor: ColorsManager.mainBlue,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.r),
                                 ),
@@ -177,9 +183,12 @@ class BuildDayScheduleItem extends StatelessWidget {
                               onPressed: () {
                                 // todo: handle save
                                 Navigator.pop(context, {
-                                  LocaleKeys.agenda_workSchedule_active.tr(): daySchedule['active'],
-                                  LocaleKeys.agenda_workSchedule_startTime.tr(): startTime,
-                                  LocaleKeys.agenda_workSchedule_endTime.tr(): endTime,
+                                  LocaleKeys.agenda_workSchedule_active.tr():
+                                      daySchedule['active'],
+                                  LocaleKeys.agenda_workSchedule_startTime.tr():
+                                      startTime,
+                                  LocaleKeys.agenda_workSchedule_endTime.tr():
+                                      endTime,
                                 });
                               },
                               child: Text(

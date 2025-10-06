@@ -67,7 +67,12 @@ class CodegenLoader extends AssetLoader{
     "body": "نحن هنا لتسهيل خدماتك ...",
     "search": "ابحث هنا ...",
     "categories": "الفئات",
-    "services": "الخدمات"
+    "services": "الخدمات",
+    "successBooking": "عملية الحجز ناجحة",
+    "bodySuccessBooking": "تم تأكيد حجزك للحرفي بنجاح. سنقوم بتواصل الحرفي معك في أقرب وقت.",
+    "experience": "الخبرة (بالسنين)",
+    "description": "الوصف",
+    "clientReview": "مراجعة العميل"
   },
   "notifications": "الإشعارات",
   "craftmanHome": {
@@ -313,7 +318,12 @@ static const Map<String,dynamic> _en = {
     "body": "We are here to facilitate your services ...",
     "search": "Search Here ...",
     "categories": "Categories",
-    "services": "Services"
+    "services": "Services",
+    "successBooking": "Your booking is successful",
+    "bodySuccessBooking": "You have successfully booked the craftman. The craftman will contact you soon.",
+    "experience": "Experience (Years)",
+    "description": "Description",
+    "clientReview": "Client Review"
   },
   "notifications": "Notifications",
   "craftmanHome": {

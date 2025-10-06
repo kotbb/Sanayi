@@ -19,7 +19,7 @@ class ListTileWidget extends StatelessWidget {
       onTap: onTap,
       child: ListTile(
         leading: leading,
-        title: Text(title),
+        title: Text(title, style: Theme.of(context).textTheme.labelMedium),
         trailing: trailing,
       ),
     );

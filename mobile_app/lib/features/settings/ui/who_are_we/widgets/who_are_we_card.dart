@@ -19,11 +19,7 @@ class WhoAreWeCard extends StatelessWidget {
           children: [
             Text(
               LocaleKeys.profile_settings_whoAreWe_title.tr(),
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xff102144),
-              ),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             verticalSpace(16),
             Text(

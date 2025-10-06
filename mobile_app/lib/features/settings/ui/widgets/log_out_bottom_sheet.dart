@@ -25,7 +25,7 @@ class LogOutBottomSheet extends StatelessWidget {
             LocaleKeys.profile_settings_logOut_title.tr(),
             style: Theme.of(
               context,
-            ).textTheme.displayLarge?.copyWith(fontSize: 24.sp),
+            ).textTheme.titleLarge?.copyWith(fontSize: 24.sp),
           ),
           verticalSpace(16),
           Text(
@@ -45,10 +45,7 @@ class LogOutBottomSheet extends StatelessWidget {
             onPressed: () {},
             child: Text(
               LocaleKeys.profile_settings_logOut_yesBtn.tr(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 16.sp),
             ),
           ),
           verticalSpace(16),
@@ -63,10 +60,7 @@ class LogOutBottomSheet extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
             child: Text(
               LocaleKeys.profile_settings_logOut_noBtn.tr(),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.sp,
-              ),
+              style: TextStyle(color: Colors.black, fontSize: 16.sp),
             ),
           ),
         ],

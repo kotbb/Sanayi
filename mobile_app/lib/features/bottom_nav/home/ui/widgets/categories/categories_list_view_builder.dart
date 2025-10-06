@@ -18,7 +18,10 @@ class CategoriesListViewBuilder extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(LocaleKeys.clientHome_categories.tr(), style: TextStyle(fontSize: 16.sp)),
+              Text(
+                LocaleKeys.clientHome_categories.tr(),
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, Routes.categoriesScreen);

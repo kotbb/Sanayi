@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -14,11 +13,7 @@ class TitleAndLastUpdateWidget extends StatelessWidget {
         Center(
           child: Text(
             LocaleKeys.profile_settings_privacyAndPolicy_terms.tr(),
-            style: TextStyle(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff102144),
-            ),
+            style: Theme.of(context).textTheme.labelLarge,
             textAlign: TextAlign.center,
           ),
         ),
@@ -26,7 +21,7 @@ class TitleAndLastUpdateWidget extends StatelessWidget {
         Center(
           child: Text(
             LocaleKeys.profile_settings_privacyAndPolicy_lastUpdate.tr(),
-            style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
       ],

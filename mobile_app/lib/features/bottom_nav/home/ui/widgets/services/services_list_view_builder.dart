@@ -18,7 +18,10 @@ class ServicesListViewBuilder extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(LocaleKeys.clientHome_services.tr(), style: TextStyle(fontSize: 16.sp)),
+              Text(
+                LocaleKeys.clientHome_services.tr(),
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, Routes.servicesScreen);

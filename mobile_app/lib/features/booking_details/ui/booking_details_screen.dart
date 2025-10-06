@@ -15,7 +15,10 @@ class BookingDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(LocaleKeys.resrvation_bookingDetails_title.tr()),
+        title: Text(
+          LocaleKeys.resrvation_bookingDetails_title.tr(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
@@ -33,11 +36,7 @@ class BookingDetailsScreen extends StatelessWidget {
             verticalSpace(12),
             Text(
               "Feras AbuZayed",
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff102144),
-              ),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             verticalSpace(24),
             BuildInfoCard(

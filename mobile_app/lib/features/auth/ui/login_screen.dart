@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -12,18 +13,17 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.45,
-              decoration: const BoxDecoration(
-                color: Color(0xfffebf0f4),
+              decoration: BoxDecoration(
+                color: ColorsManager.seconderyLightGreen,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(100),
+                  bottomLeft: Radius.circular(100.r),
+                  bottomRight: Radius.circular(100.r),
                 ),
               ),
               child: Center(
@@ -42,27 +42,21 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Text(
                     LocaleKeys.login_body.tr(),
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   verticalSpace(16),
                   TextFormField(
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       hintText: LocaleKeys.login_hintText.tr(),
+                      hintStyle: Theme.of(context).textTheme.bodyMedium,
                       prefixIcon: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           horizontalSpace(16),
                           Text(
                             "+970",
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xff102144),
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           horizontalSpace(8),
                           Container(
@@ -74,10 +68,10 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                       filled: true,
-                      fillColor: Color(0xfffebf0f4),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                      fillColor: ColorsManager.seconderyLightGreen,
+                      contentPadding: EdgeInsets.symmetric(vertical: 16.h),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.r),
                         borderSide: BorderSide.none,
                       ),
                     ),
@@ -88,18 +82,20 @@ class LoginScreen extends StatelessWidget {
                     height: 50.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff102144),
+                        backgroundColor: ColorsManager.mainBlue,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(30.r),
                         ),
                       ),
                       onPressed: () {
-                        // TODO: Handle continue button press
+                        // todo: Handle continue button press
                         Navigator.pushNamed(context, Routes.otpCodeScreen);
                       },
                       child: Text(
                         LocaleKeys.continueBtn.tr(),
-                        style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: Colors.white
+                        ),
                       ),
                     ),
                   ),
@@ -107,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       LocaleKeys.login_subTxt.tr(),
-                      style: TextStyle(color: Colors.grey),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ],

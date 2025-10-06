@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/contact_with_craftman/ui/widgets/whatsapp_number_card.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -18,7 +19,7 @@ class ContactWithCraftmanScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           LocaleKeys.resrvation_bookingDetails_contactScreen_title.tr(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         centerTitle: true,
       ),
@@ -35,18 +36,11 @@ class ContactWithCraftmanScreen extends StatelessWidget {
               ),
             ),
             verticalSpace(30),
-            Text(
-              name,
-              style: TextStyle(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff102144),
-              ),
-            ),
+            Text(name, style: Theme.of(context).textTheme.labelLarge),
             verticalSpace(10),
             Text(
               'Mobile App Developer',
-              style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(40),
             WhatsappNumberCard(whatsappNumber: whatsappNumber),
@@ -55,20 +49,40 @@ class ContactWithCraftmanScreen extends StatelessWidget {
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               ),
               child: Column(
                 children: [
                   ListTile(
-                    leading: Icon(Icons.access_time, color: Color(0xff102144)),
-                    title: Text(LocaleKeys.resrvation_bookingDetails_contactScreen_workingHours.tr()),
-                    subtitle: Text('8:00 AM - 6:00 PM'),
+                    leading: Icon(
+                      Icons.access_time,
+                      color: ColorsManager.mainBlue,
+                    ),
+                    title: Text(
+                      LocaleKeys
+                          .resrvation_bookingDetails_contactScreen_workingHours
+                          .tr(),
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                    subtitle: Text(
+                      '8:00 AM - 6:00 PM',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
                   Divider(),
                   ListTile(
-                    leading: Icon(Icons.location_on, color: Color(0xff102144)),
-                    title: Text(LocaleKeys.resrvation_bookingDetails_location.tr()),
-                    subtitle: Text('Gaza - AzZawayda'),
+                    leading: Icon(
+                      Icons.location_on,
+                      color: ColorsManager.mainBlue,
+                    ),
+                    title: Text(
+                      LocaleKeys.resrvation_bookingDetails_location.tr(),
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                    subtitle: Text(
+                      'Gaza - AzZawayda',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
                 ],
               ),
@@ -77,7 +91,7 @@ class ContactWithCraftmanScreen extends StatelessWidget {
             Text(
               LocaleKeys.resrvation_bookingDetails_contactScreen_subText.tr(),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontSize: 14.sp,
                 color: Colors.grey[600],
                 height: 1.5.w,

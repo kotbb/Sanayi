@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 
 class BuildSectionWidget extends StatelessWidget {
   IconData icon;
@@ -23,7 +24,7 @@ class BuildSectionWidget extends StatelessWidget {
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
@@ -34,25 +35,15 @@ class BuildSectionWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, color: Color(0xff102144)),
+            Icon(icon, color: ColorsManager.mainBlue),
             horizontalSpace(12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff102144),
-                    ),
-                  ),
+                  Text(title, style: Theme.of(context).textTheme.labelLarge),
                   verticalSpace(8),
-                  Text(
-                    content,
-                    style: TextStyle(fontSize: 18.sp, color: Colors.grey[800]),
-                  ),
+                  Text(content, style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
             ),

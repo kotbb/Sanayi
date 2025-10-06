@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/requests_details/ui/widgets/build_details_item.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -19,11 +20,7 @@ class BuildServiceDetailsCard extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 8),
           child: Text(
             LocaleKeys.craftmanHome_bookingDetails_requestDetails.tr(),
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff102144),
-            ),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
         Card(
@@ -38,16 +35,12 @@ class BuildServiceDetailsCard extends StatelessWidget {
               children: [
                 Text(
                   requestDetails['serviceType'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp,
-                    color: const Color(0xff102144),
-                  ),
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 verticalSpace(10),
                 Text(
                   requestDetails['serviceDescription'],
-                  style: TextStyle(fontSize: 16.sp, color: Colors.grey[700]),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 verticalSpace(16),
                 Divider(),
@@ -57,12 +50,16 @@ class BuildServiceDetailsCard extends StatelessWidget {
                   children: [
                     BuildDetailsItem(
                       icon: Icons.access_time,
-                      title: LocaleKeys.craftmanHome_bookingDetails_estimatedTime.tr(),
+                      title: LocaleKeys
+                          .craftmanHome_bookingDetails_estimatedTime
+                          .tr(),
                       value: requestDetails['estimatedTime'],
                     ),
                     BuildDetailsItem(
                       icon: Icons.attach_money,
-                      title: LocaleKeys.craftmanHome_bookingDetails_estimatedcost.tr(),
+                      title: LocaleKeys
+                          .craftmanHome_bookingDetails_estimatedcost
+                          .tr(),
                       value: requestDetails['estimatedCost'],
                     ),
                   ],

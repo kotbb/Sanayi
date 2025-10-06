@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/build_policy_section.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/privacy_icon_widget.dart';
 import 'package:sanayi_app/features/settings/ui/privacy_and_policies/widgets/title_and_last_update_widget.dart';
@@ -18,7 +19,7 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
         backgroundColor: Colors.grey[300],
         title: Text(
           LocaleKeys.profile_settings_privacyAndPolicy_title.tr(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SingleChildScrollView(
@@ -32,45 +33,66 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
             TitleAndLastUpdateWidget(),
             verticalSpace(30),
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_acceptableTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_acceptableBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_acceptableTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_acceptableBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_suspensionTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_suspensionBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_suspensionTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_suspensionBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_responsibilitiesTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_responsibilitiesBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_responsibilitiesTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_responsibilitiesBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_guidelinesTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_guidelinesBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_guidelinesTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_guidelinesBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_protectionTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_protectionBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_protectionTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_protectionBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_modificationsTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_modificationsBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_modificationsTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_modificationsBody
+                  .tr(),
             ),
 
             BuildPolicySection(
-              title: LocaleKeys.profile_settings_privacyAndPolicy_limitationTitle.tr(),
-              content:
-                  LocaleKeys.profile_settings_privacyAndPolicy_limitationBody.tr(),
+              title: LocaleKeys
+                  .profile_settings_privacyAndPolicy_limitationTitle
+                  .tr(),
+              content: LocaleKeys
+                  .profile_settings_privacyAndPolicy_limitationBody
+                  .tr(),
             ),
             verticalSpace(30),
             Card(
@@ -84,14 +106,16 @@ class PrivacyAndPoliciesScreen extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.check_circle,
-                      color: const Color(0xff102144),
+                      color: ColorsManager.mainBlue,
                       size: 24,
                     ),
                     horizontalSpace(12),
                     Expanded(
                       child: Text(
-                        LocaleKeys.profile_settings_privacyAndPolicy_agreePrivacyPolicy.tr(),
-                        style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                        LocaleKeys
+                            .profile_settings_privacyAndPolicy_agreePrivacyPolicy
+                            .tr(),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ],

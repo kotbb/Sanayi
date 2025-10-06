@@ -21,7 +21,7 @@ class SanayiApp extends StatelessWidget {
           locale: context.locale,
           themeMode: ThemeMode.system,
           theme: lightTheme,
-          darkTheme: darkTheme,
+          // darkTheme: darkTheme,
           title: 'Sanayai',
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouters.onGenerateRoute,

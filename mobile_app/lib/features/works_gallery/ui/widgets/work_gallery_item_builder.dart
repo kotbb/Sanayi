@@ -14,40 +14,40 @@ class WorkGalleryItemBuilder extends StatelessWidget {
     required this.image,
     required this.title,
     required this.date,
-    required this.onTap
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: 160.w,
-        height: 174.h,
-        margin: EdgeInsets.symmetric(horizontal: 10.w),
-        child: Card(
-          shadowColor: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                verticalSpace(8),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.network(
-                    image,
-                    height: 90,
-                    width: double.infinity,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                verticalSpace(8),
-                Text(title),
-                verticalSpace(14),
-                Text(date),
-              ],
+      child: Card(
+        shadowColor: Colors.white,
+        child: Column(
+          children: [
+            verticalSpace(8),
+            Image.network(
+              image,
+              height: 114.h,
+              width: double.infinity,
+              fit: BoxFit.contain,
             ),
-          ),
+            Padding(
+              padding: EdgeInsetsDirectional.only(top: 12.h),
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelMedium?.copyWith(fontSize: 12.sp),
+                  ),
+                  verticalSpace(8),
+                  Text(date, style: Theme.of(context).textTheme.bodyMedium),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

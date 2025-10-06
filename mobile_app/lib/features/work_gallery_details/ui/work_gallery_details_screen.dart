@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/work_gallery_details/ui/widgets/client_review_widget.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class WorkGalleryDetailsScreen extends StatelessWidget {
   final List<String> images = [
@@ -55,45 +58,52 @@ class WorkGalleryDetailsScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Electrical Maintenance",
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff102144),
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   verticalSpace(8),
                   Row(
                     children: [
                       Icon(Icons.calendar_today, size: 16, color: Colors.grey),
                       horizontalSpace(6),
-                      Text("Aug 2025", style: TextStyle(color: Colors.grey)),
+                      Text(
+                        "Aug 2025",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                      ),
                       horizontalSpace(16),
                       Icon(Icons.place, size: 16, color: Colors.grey),
                       horizontalSpace(6),
-                      Text("Gaza City", style: TextStyle(color: Colors.grey)),
+                      Text(
+                        "Gaza City",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                      ),
                       horizontalSpace(16),
                       Icon(Icons.timer, size: 16, color: Colors.grey),
                       horizontalSpace(6),
-                      Text("3 Days", style: TextStyle(color: Colors.grey)),
+                      Text(
+                        "3 Days",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                      ),
                     ],
                   ),
                   verticalSpace(24),
                   Divider(height: 1.h, color: Colors.grey),
                   verticalSpace(20),
                   Text(
-                    "Description",
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff102144),
-                    ),
+                    LocaleKeys.clientHome_description.tr(),
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                   verticalSpace(12),
                   Text(
                     "This project involved fixing electrical wiring and replacing old switches. "
                     "I ensured all safety measures were taken, and the client was satisfied "
                     "with the results. The work was completed within 2 days. ",
-                    style: TextStyle(fontSize: 16.sp, height: 1.5),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   verticalSpace(24),
                   Divider(height: 1.h, color: Colors.grey),

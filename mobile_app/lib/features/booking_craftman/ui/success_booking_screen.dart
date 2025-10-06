@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SuccessBookingScreen extends StatelessWidget {
   const SuccessBookingScreen({super.key});
@@ -34,15 +37,13 @@ class SuccessBookingScreen extends StatelessWidget {
               ),
               verticalSpace(23),
               Text(
-                "Your booking is successful",
-                style: Theme.of(
-                  context,
-                ).textTheme.displayLarge?.copyWith(fontSize: 20.sp),
+                LocaleKeys.clientHome_successBooking.tr(),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               verticalSpace(17),
               Text(
                 textAlign: TextAlign.center,
-                "You have successfully booked the craftman. The craftman will contact you soon.",
+                LocaleKeys.clientHome_bodySuccessBooking.tr(),
                 style: Theme.of(
                   context,
                 ).textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
@@ -58,15 +59,12 @@ class SuccessBookingScreen extends StatelessWidget {
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.r),
-                    side: BorderSide(color: Color(0xff102144), width: 1.w),
+                    side: BorderSide(color: ColorsManager.mainBlue, width: 1.w),
                   ),
                 ),
                 child: Text(
-                  "Done",
-                  style: TextStyle(
-                    color: Color(0xff102144),
-                    fontSize: 16.sp,
-                  ),
+                  LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_successCancel_doneBtn.tr(),
+                  style: TextStyle(color: ColorsManager.mainBlue, fontSize: 16.sp),
                 ),
               ),
             ],

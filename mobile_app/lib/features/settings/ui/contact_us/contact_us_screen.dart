@@ -16,7 +16,7 @@ class ContactUsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           LocaleKeys.profile_settings_contactUs_title.tr(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SingleChildScrollView(
@@ -34,11 +34,7 @@ class ContactUsScreen extends StatelessWidget {
             Text(
               LocaleKeys.profile_settings_contactUs_subTxt.tr(),
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.grey[600],
-                height: 1.5.h,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium
             ),
           ],
         ),

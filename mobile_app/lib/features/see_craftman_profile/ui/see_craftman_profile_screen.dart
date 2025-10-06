@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/see_craftman_profile/ui/widgets/build_info_tile.dart';
+import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SeeCraftmanProfileScreen extends StatelessWidget {
   const SeeCraftmanProfileScreen({super.key});
@@ -10,14 +13,7 @@ class SeeCraftmanProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          "CraftMan Profile",
-          style: TextStyle(color: Colors.black87),
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBar(elevation: 0),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -33,37 +29,37 @@ class SeeCraftmanProfileScreen extends StatelessWidget {
             verticalSpace(24),
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
               ),
               child: Column(
                 children: [
                   BuildInfoTile(
                     icon: Icons.person,
-                    label: "Name",
+                    label: LocaleKeys.createAccount_nameHint.tr(),
                     value: "Feras AbuZayed",
                   ),
                   const Divider(height: 0),
                   BuildInfoTile(
                     icon: Icons.phone,
-                    label: "Phone",
+                    label: LocaleKeys.createAccount_phoneHint.tr(),
                     value: "+970591234567",
                   ),
                   const Divider(height: 0),
                   BuildInfoTile(
                     icon: Icons.location_on,
-                    label: "Location",
+                    label: LocaleKeys.createAccount_locationHint.tr(),
                     value: "Gaza - AzZawayda",
                   ),
                   const Divider(height: 0),
                   BuildInfoTile(
                     icon: Icons.work,
-                    label: "Profession",
+                    label: LocaleKeys.createAccount_profession.tr(),
                     value: "Cleaner",
                   ),
                   const Divider(height: 0),
                   BuildInfoTile(
                     icon: Icons.calendar_today,
-                    label: "Experience (Years)",
+                    label: LocaleKeys.clientHome_experience.tr(),
                     value: "3",
                   ),
                 ],
@@ -74,13 +70,10 @@ class SeeCraftmanProfileScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    Routes.worksGalleryScreen,
-                  );
+                  Navigator.pushNamed(context, Routes.worksGalleryScreen);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff102144),
+                  backgroundColor: ColorsManager.mainBlue,
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.r),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/on_boarding/first_on_boarding_page.dart';
 import 'package:sanayi_app/features/on_boarding/second_on_boarding_page.dart';
 
@@ -48,7 +49,7 @@ class _OnBoardingScreensState extends State<OnBoardingScreens> {
                     height: currentIndex == index ? 12 : 8,
                     decoration: BoxDecoration(
                       color: currentIndex == index
-                          ? Color(0xFF102144)
+                          ? ColorsManager.mainBlue
                           : Colors.grey,
                       shape: BoxShape.circle,
                     ),

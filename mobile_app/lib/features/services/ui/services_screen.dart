@@ -9,7 +9,12 @@ class ServicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(LocaleKeys.clientHome_services.tr())),
+      appBar: AppBar(
+        title: Text(
+          LocaleKeys.clientHome_services.tr(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

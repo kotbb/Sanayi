@@ -12,7 +12,10 @@ class LanguageScreen extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        title: Text(LocaleKeys.profile_settings_lang.tr()),
+        title: Text(
+          LocaleKeys.profile_settings_lang.tr(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -22,7 +25,10 @@ class LanguageScreen extends StatelessWidget {
               Container(
                 color: Colors.white,
                 child: ListTile(
-                  title: Text(LocaleKeys.profile_settings_en.tr()),
+                  title: Text(
+                    LocaleKeys.profile_settings_en.tr(),
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                   trailing: Radio(
                     value: 'en',
                     onChanged: (value) {
@@ -35,7 +41,10 @@ class LanguageScreen extends StatelessWidget {
               Container(
                 color: Colors.white,
                 child: ListTile(
-                  title: Text(LocaleKeys.profile_settings_ar.tr()),
+                  title: Text(
+                    LocaleKeys.profile_settings_ar.tr(),
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                   trailing: Radio(
                     value: 'ar',
                     onChanged: (value) {

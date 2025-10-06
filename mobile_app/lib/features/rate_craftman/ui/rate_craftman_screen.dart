@@ -61,7 +61,7 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
         centerTitle: true,
         title: Text(
           LocaleKeys.resrvation_bookingDetails_rateScreen_title.tr(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SingleChildScrollView(
@@ -71,18 +71,15 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
           children: [
             Text(
               LocaleKeys.resrvation_bookingDetails_rateScreen_subTitle.tr(),
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             verticalSpace(24),
             RatingCard(),
             verticalSpace(40),
             Text(
-              LocaleKeys.resrvation_bookingDetails_rateScreen_rateServiceTxt.tr(),
-              style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
-              ),
+              LocaleKeys.resrvation_bookingDetails_rateScreen_rateServiceTxt
+                  .tr(),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             verticalSpace(16),
             RatingBar.builder(
@@ -103,7 +100,8 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
             verticalSpace(12),
             Text(
               _rating == 0
-                  ? LocaleKeys.resrvation_bookingDetails_rateScreen_noRating.tr()
+                  ? LocaleKeys.resrvation_bookingDetails_rateScreen_noRating
+                        .tr()
                   : '${LocaleKeys.resrvation_bookingDetails_rateScreen_yourRate.tr()}: ${_rating.toStringAsFixed(1)} ${LocaleKeys.resrvation_bookingDetails_rateScreen_stars.tr()}',
               style: TextStyle(
                 fontSize: 16.sp,
@@ -113,12 +111,9 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
             ),
             verticalSpace(40),
             Text(
-              LocaleKeys.resrvation_bookingDetails_rateScreen_enterComntLabel.tr(),
-              style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
-              ),
+              LocaleKeys.resrvation_bookingDetails_rateScreen_enterComntLabel
+                  .tr(),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             verticalSpace(16),
             Container(
@@ -138,7 +133,10 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
                 focusNode: _commentFocusNode,
                 maxLines: 5,
                 decoration: InputDecoration(
-                  hintText: LocaleKeys.resrvation_bookingDetails_rateScreen_enterComntHint.tr(),
+                  hintText: LocaleKeys
+                      .resrvation_bookingDetails_rateScreen_enterComntHint
+                      .tr(),
+                  hintStyle: Theme.of(context).textTheme.bodyMedium,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
@@ -165,7 +163,8 @@ class _RateCraftmanScreenState extends State<RateCraftmanScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    LocaleKeys.resrvation_bookingDetails_rateScreen_sendBtn.tr(),
+                    LocaleKeys.resrvation_bookingDetails_rateScreen_sendBtn
+                        .tr(),
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),

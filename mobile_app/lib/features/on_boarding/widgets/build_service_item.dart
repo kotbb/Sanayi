@@ -19,10 +19,7 @@ class BuildServiceItem extends StatelessWidget {
         children: [
           SvgPicture.asset(assetPath, width: 50.w, height: 50.h),
           verticalSpace(8),
-          Text(
-            title,
-            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
-          ),
+          Text(title, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12.sp)),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/agenda/ui/widgets/work_schedule/widgets/build_day_schedule_item.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -36,16 +37,18 @@ class WorkScheduleTab extends StatelessWidget {
                   ListTile(
                     leading: Icon(
                       Icons.access_time,
-                      color: const Color(0xff102144),
+                      color: ColorsManager.mainBlue,
                     ),
                     title: Text(
                       LocaleKeys.agenda_workSchedule_title.tr(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                    subtitle: Text(LocaleKeys.agenda_workSchedule_subTitle.tr()),
+                    subtitle: Text(
+                      LocaleKeys.agenda_workSchedule_subTitle.tr(),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelMedium?.copyWith(fontSize: 14.sp),
+                    ),
                   ),
                   Divider(),
                   ...workSchedule.map(
@@ -62,7 +65,9 @@ class WorkScheduleTab extends StatelessWidget {
               // Save schedule functionality
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(LocaleKeys.agenda_workSchedule_snackBarTxt.tr()),
+                  content: Text(
+                    LocaleKeys.agenda_workSchedule_snackBarTxt.tr(),
+                  ),
                   backgroundColor: Colors.green,
                 ),
               );
@@ -70,7 +75,7 @@ class WorkScheduleTab extends StatelessWidget {
             icon: Icon(Icons.save),
             label: Text(LocaleKeys.agenda_workSchedule_saveScheduleBtn.tr()),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xff102144),
+              backgroundColor: ColorsManager.mainBlue,
               foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
             ),

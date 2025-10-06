@@ -4,21 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class BuildWelcomeCard extends StatelessWidget {
   List<Map<String, dynamic>> newRequests;
 
-  BuildWelcomeCard({
-    super.key,
-    required this.newRequests,
-  });
+  BuildWelcomeCard({super.key, required this.newRequests});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Row(
@@ -32,7 +30,7 @@ class BuildWelcomeCard extends StatelessWidget {
               child: Icon(
                 Icons.person,
                 size: 30,
-                color: const Color(0xff102144),
+                color: ColorsManager.mainBlue,
               ),
             ),
             horizontalSpace(16),
@@ -45,16 +43,15 @@ class BuildWelcomeCard extends StatelessWidget {
                     children: [
                       Text(
                         '${LocaleKeys.craftmanHome_hello.tr()} Feras',
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xff102144),
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       IconButton(
                         icon: Icon(Icons.notifications),
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.notificationsScreen);
+                          Navigator.pushNamed(
+                            context,
+                            Routes.notificationsScreen,
+                          );
                         },
                       ),
                     ],
@@ -62,7 +59,7 @@ class BuildWelcomeCard extends StatelessWidget {
                   verticalSpace(6),
                   Text(
                     '${LocaleKeys.craftmanHome_bodyPart1.tr()} ${newRequests.length} ${LocaleKeys.craftmanHome_bodyPart2.tr()}',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),

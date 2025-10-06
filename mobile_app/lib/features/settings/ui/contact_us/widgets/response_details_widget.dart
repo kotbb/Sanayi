@@ -18,20 +18,38 @@ class ResponseDetailsWidget extends StatelessWidget {
         children: [
           ListTile(
             leading: Icon(Icons.access_time, color: Colors.green),
-            title: Text(LocaleKeys.profile_settings_contactUs_responsetime.tr()),
-            subtitle: Text(LocaleKeys.profile_settings_contactUs_responseTxt.tr()),
+            title: Text(
+              LocaleKeys.profile_settings_contactUs_responsetime.tr(),
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            subtitle: Text(
+              LocaleKeys.profile_settings_contactUs_responseTxt.tr(),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.language, color: Colors.green),
-            title: Text(LocaleKeys.profile_settings_contactUs_workingHours.tr()),
-            subtitle: Text(LocaleKeys.profile_settings_contactUs_workingHoursTxt.tr()),
+            title: Text(
+              LocaleKeys.profile_settings_contactUs_workingHours.tr(),
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            subtitle: Text(
+              LocaleKeys.profile_settings_contactUs_workingHoursTxt.tr(),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.help, color: Colors.green),
-            title: Text(LocaleKeys.profile_settings_contactUs_needHelp.tr()),
-            subtitle: Text(LocaleKeys.profile_settings_contactUs_needHelpTxt.tr()),
+            title: Text(
+              LocaleKeys.profile_settings_contactUs_needHelp.tr(),
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            subtitle: Text(
+              LocaleKeys.profile_settings_contactUs_needHelpTxt.tr(),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
         ],
       ),

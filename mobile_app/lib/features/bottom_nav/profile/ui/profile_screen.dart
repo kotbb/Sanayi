@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/bottom_nav/profile/ui/widgets/account_data_widget.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -20,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.33,
               decoration: const BoxDecoration(
-                color: Color(0xfffebf0f4),
+                color: ColorsManager.seconderyLightGreen,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
@@ -44,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Icon(
                             Icons.settings,
-                            color: const Color(0xff102144),
+                            color: ColorsManager.mainBlue,
                           ),
                         ),
                       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 
 class BuildInputFieldCraftMan extends StatelessWidget {
   String hint;
@@ -21,9 +22,11 @@ class BuildInputFieldCraftMan extends StatelessWidget {
       maxLines: maxLines,
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: const Color(0xff102144)),
+        prefixIcon: Icon(icon, color: ColorsManager.mainBlue),
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey[500]),
+        hintStyle: Theme.of(
+          context,
+        ).textTheme.displaySmall?.copyWith(fontSize: 16.sp),
         filled: true,
         fillColor: Colors.grey[100],
         contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),

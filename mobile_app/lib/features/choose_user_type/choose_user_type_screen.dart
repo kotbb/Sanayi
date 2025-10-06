@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/choose_user_type/widgets/build_animated_choose_card.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -21,22 +22,16 @@ class ChooseUserTypeScreen extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.userType_title.tr(),
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xff102144),
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(color: ColorsManager.mainBlue),
                 textAlign: TextAlign.center,
               ),
               verticalSpace(12),
               Text(
                 LocaleKeys.userType_body.tr(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.grey[700],
-                  height: 1.4.h,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               verticalSpace(48),
 
@@ -90,7 +85,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
               verticalSpace(32),
               Text(
                 LocaleKeys.userType_subTxt.tr(),
-                style: TextStyle(fontSize: 13.sp, color: Colors.grey[600]),
+                style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
               verticalSpace(12),

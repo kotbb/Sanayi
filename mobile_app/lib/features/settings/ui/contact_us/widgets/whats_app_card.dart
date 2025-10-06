@@ -42,18 +42,16 @@ class WhatsAppCard extends StatelessWidget {
                 horizontalSpace(10),
                 Text(
                   LocaleKeys.profile_settings_contactUs_whatsCardTxt.tr(),
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green[700],
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelLarge?.copyWith(color: Colors.green[700]),
                 ),
               ],
             ),
             verticalSpace(16),
             Text(
               LocaleKeys.profile_settings_contactUs_whatsCardBody.tr(),
-              style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
+              style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
             verticalSpace(20),
@@ -76,7 +74,7 @@ class WhatsAppCard extends StatelessWidget {
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   elevation: 2,
                 ),

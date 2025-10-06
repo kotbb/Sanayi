@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 
 class CraftmanDetailsScreen extends StatelessWidget {
   const CraftmanDetailsScreen({super.key});
@@ -21,15 +22,9 @@ class CraftmanDetailsScreen extends StatelessWidget {
               ),
             ),
             verticalSpace(16),
-            Text(
-              "Feras Osama",
-              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
-            ),
+            Text("Feras Osama", style: Theme.of(context).textTheme.labelLarge),
             verticalSpace(8),
-            Text(
-              "Cleaner",
-              style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
-            ),
+            Text("Cleaner", style: Theme.of(context).textTheme.labelMedium),
             verticalSpace(12),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,11 +43,7 @@ class CraftmanDetailsScreen extends StatelessWidget {
               child: Text(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  height: 1.6,
-                  color: Colors.grey[800],
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
             verticalSpace(30),
@@ -70,10 +61,10 @@ class CraftmanDetailsScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff102144),
+                        backgroundColor: ColorsManager.mainBlue,
                         padding: EdgeInsets.symmetric(vertical: 14.h),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         elevation: 3,
                       ),
@@ -96,18 +87,18 @@ class CraftmanDetailsScreen extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 14.h),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
-                        side: const BorderSide(
-                          color: Color(0xff102144),
-                          width: 2,
+                        side: BorderSide(
+                          color: ColorsManager.mainBlue,
+                          width: 2.w,
                         ),
                       ),
                       child: Text(
                         "See Profile",
                         style: TextStyle(
                           fontSize: 16.sp,
-                          color: Color(0xff102144),
+                          color: ColorsManager.mainBlue,
                         ),
                       ),
                     ),

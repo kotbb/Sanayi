@@ -21,17 +21,16 @@ class RatingCard extends StatelessWidget {
           verticalSpace(16),
           Text(
             LocaleKeys.resrvation_bookingDetails_rateScreen_cardTitle.tr(),
-            style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
               color: Colors.amber[800],
+              fontSize: 20.sp,
             ),
             textAlign: TextAlign.center,
           ),
           verticalSpace(10),
           Text(
             LocaleKeys.resrvation_bookingDetails_rateScreen_cardBody.tr(),
-            style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
+            style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
         ],

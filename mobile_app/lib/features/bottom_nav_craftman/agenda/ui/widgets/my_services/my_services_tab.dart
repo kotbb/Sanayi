@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/agenda/ui/widgets/my_services/widgets/build_my_service_item.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -50,15 +51,17 @@ class MyServicesTab extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    leading: Icon(Icons.build, color: const Color(0xff102144)),
+                    leading: Icon(Icons.build, color: ColorsManager.mainBlue),
                     title: Text(
                       LocaleKeys.agenda_myServices_tabName.tr(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.sp,
-                      ),
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                    subtitle: Text(LocaleKeys.agenda_myServices_subTitle.tr()),
+                    subtitle: Text(
+                      LocaleKeys.agenda_myServices_subTitle.tr(),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelMedium?.copyWith(fontSize: 14.sp),
+                    ),
                   ),
                   Divider(),
                   ...services.map(
@@ -111,14 +114,15 @@ class MyServicesTab extends StatelessWidget {
                             verticalSpace(16),
                             Text(
                               LocaleKeys.agenda_myServices_addNew.tr(),
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             verticalSpace(12),
                             TextField(
                               controller: titleController,
                               decoration: InputDecoration(
-                                labelText: LocaleKeys.agenda_myServices_serviceTitle.tr(),
+                                labelText: LocaleKeys
+                                    .agenda_myServices_serviceTitle
+                                    .tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -126,7 +130,8 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: LocaleKeys.agenda_myServices_category.tr(),
+                                labelText: LocaleKeys.agenda_myServices_category
+                                    .tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -134,7 +139,8 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: LocaleKeys.agenda_myServices_price.tr(),
+                                labelText: LocaleKeys.agenda_myServices_price
+                                    .tr(),
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -142,7 +148,9 @@ class MyServicesTab extends StatelessWidget {
                             TextField(
                               controller: descriptionController,
                               decoration: InputDecoration(
-                                labelText: LocaleKeys.agenda_myServices_description.tr(),
+                                labelText: LocaleKeys
+                                    .agenda_myServices_description
+                                    .tr(),
                                 border: OutlineInputBorder(),
                               ),
                               maxLines: 3,
@@ -151,7 +159,7 @@ class MyServicesTab extends StatelessWidget {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size(double.infinity, 50.h),
-                                backgroundColor: const Color(0xff102144),
+                                backgroundColor: ColorsManager.mainBlue,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.r),
                                 ),
@@ -160,7 +168,10 @@ class MyServicesTab extends StatelessWidget {
                                 // todo: handle add
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text(LocaleKeys.agenda_myServices_snackBarTxt.tr()),
+                                    content: Text(
+                                      LocaleKeys.agenda_myServices_snackBarTxt
+                                          .tr(),
+                                    ),
                                     backgroundColor: Colors.green,
                                   ),
                                 );
@@ -184,7 +195,7 @@ class MyServicesTab extends StatelessWidget {
             icon: Icon(Icons.add),
             label: Text(LocaleKeys.agenda_myServices_addNew.tr()),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xff102144),
+              backgroundColor: ColorsManager.mainBlue,
               foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
             ),

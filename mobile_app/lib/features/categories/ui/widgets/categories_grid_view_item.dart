@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
     
 class CategoriesGridViewItem extends StatelessWidget {
   String image;
@@ -20,7 +21,7 @@ class CategoriesGridViewItem extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xfffebf0f4),
+                color: ColorsManager.seconderyLightGreen,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -28,7 +29,7 @@ class CategoriesGridViewItem extends StatelessWidget {
               ),
             ),
             verticalSpace(14),
-            Text(label),
+            Text(label, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

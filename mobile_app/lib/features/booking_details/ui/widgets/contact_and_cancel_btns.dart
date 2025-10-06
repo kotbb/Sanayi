@@ -16,16 +16,13 @@ class ContactAndCancelBtns extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
-              padding: const EdgeInsets.symmetric(vertical: 14),
+              padding: EdgeInsets.symmetric(vertical: 14.h),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
               ),
             ),
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                Routes.contactWithCraftmanScreen,
-              );
+              Navigator.pushNamed(context, Routes.contactWithCraftmanScreen);
             },
             child: Text(
               LocaleKeys.resrvation_bookingDetails_contact.tr(),
@@ -47,9 +44,9 @@ class ContactAndCancelBtns extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(25.0),
+                    top: Radius.circular(25.0.r),
                   ),
                 ),
                 builder: (context) {
@@ -77,14 +74,16 @@ class ContactAndCancelBtns extends StatelessWidget {
                         ),
                         verticalSpace(16),
                         Text(
-                          LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_title.tr(),
-                          style: Theme.of(
-                            context,
-                          ).textTheme.displayLarge?.copyWith(fontSize: 24.sp),
+                          LocaleKeys
+                              .resrvation_bookingDetails_cancelBtmSheet_title
+                              .tr(),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         verticalSpace(16),
                         Text(
-                          LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_subTitle.tr(),
+                          LocaleKeys
+                              .resrvation_bookingDetails_cancelBtmSheet_subTitle
+                              .tr(),
                           style: Theme.of(context).textTheme.bodyMedium,
                           textAlign: TextAlign.center,
                         ),
@@ -94,7 +93,7 @@ class ContactAndCancelBtns extends StatelessWidget {
                             minimumSize: Size(double.infinity, 48.h),
                             backgroundColor: Colors.red,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(6.r),
                             ),
                           ),
                           onPressed: () {
@@ -105,8 +104,10 @@ class ContactAndCancelBtns extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_yesBtn.tr(),
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            LocaleKeys
+                                .resrvation_bookingDetails_cancelBtmSheet_yesBtn
+                                .tr(),
+                            style: TextStyle(color: Colors.white, fontSize: 16.sp),
                           ),
                         ),
                         verticalSpace(16),
@@ -115,13 +116,15 @@ class ContactAndCancelBtns extends StatelessWidget {
                             minimumSize: Size(double.infinity, 48.h),
                             backgroundColor: Colors.grey,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(6.r),
                             ),
                           ),
                           onPressed: () => Navigator.pop(context),
                           child: Text(
-                            LocaleKeys.resrvation_bookingDetails_cancelBtmSheet_noBtn.tr(),
-                            style: TextStyle(color: Colors.black, fontSize: 16),
+                            LocaleKeys
+                                .resrvation_bookingDetails_cancelBtmSheet_noBtn
+                                .tr(),
+                            style: TextStyle(color: Colors.black, fontSize: 16.sp),
                           ),
                         ),
                       ],

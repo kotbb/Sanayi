@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/bottom_nav_craftman/home/ui/widgets/build_stat_item.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
     
@@ -34,7 +35,7 @@ class BuildStatsRow extends StatelessWidget {
           title: LocaleKeys.craftmanHome_revenue.tr(),
           value: '5,250',
           icon: Icons.attach_money,
-          color: const Color(0xff102144),
+          color: ColorsManager.mainBlue,
           isMoney: true,
         ),
       ],

@@ -17,7 +17,10 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        title: Text(LocaleKeys.profile_settings_title.tr()),
+        title: Text(
+          LocaleKeys.profile_settings_title.tr(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -26,7 +29,10 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(LocaleKeys.agenda_edit.tr(), style: TextStyle(fontSize: 18.sp)),
+                Text(
+                  LocaleKeys.agenda_edit.tr(),
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -62,7 +68,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(33),
-                Text(LocaleKeys.profile_settings_general.tr(), style: TextStyle(fontSize: 18.sp)),
+                Text(
+                  LocaleKeys.profile_settings_general.tr(),
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -98,7 +107,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(33),
-                Text(LocaleKeys.profile_settings_aboutUs.tr(), style: TextStyle(fontSize: 18.sp)),
+                Text(
+                  LocaleKeys.profile_settings_aboutUs.tr(),
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,
@@ -130,7 +142,9 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         leading: Icon(Icons.policy_outlined),
-                        title: LocaleKeys.profile_settings_privacyAndPolicy_title.tr(),
+                        title: LocaleKeys
+                            .profile_settings_privacyAndPolicy_title
+                            .tr(),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         onTap: () {
                           Navigator.pushNamed(
@@ -143,7 +157,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(33),
-                Text(LocaleKeys.profile_settings_myAccount.tr(), style: TextStyle(fontSize: 18.sp)),
+                Text(
+                  LocaleKeys.profile_settings_myAccount.tr(),
+                  style: TextStyle(fontSize: 18.sp),
+                ),
                 verticalSpace(14),
                 Container(
                   width: double.infinity,

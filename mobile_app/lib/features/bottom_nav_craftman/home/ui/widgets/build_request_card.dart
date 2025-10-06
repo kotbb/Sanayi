@@ -8,12 +8,8 @@ import 'package:sanayi_app/generated/locale_keys.g.dart';
 class BuildRequestCard extends StatelessWidget {
   Map<String, dynamic> request;
   bool isNew;
-  
-  BuildRequestCard({
-    super.key,
-    required this.request,
-    this.isNew = false,
-  });
+
+  BuildRequestCard({super.key, required this.request, this.isNew = false});
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +31,14 @@ class BuildRequestCard extends StatelessWidget {
                 children: [
                   Text(
                     request['name'],
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   if (isNew)
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 8.w,
+                        vertical: 4.h,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.green[100],
                         borderRadius: BorderRadius.circular(8.r),
@@ -61,7 +57,7 @@ class BuildRequestCard extends StatelessWidget {
               verticalSpace(8),
               Text(
                 request['service'],
-                style: TextStyle(fontSize: 14.sp, color: Colors.grey[700]),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               verticalSpace(8),
               Row(
@@ -69,7 +65,7 @@ class BuildRequestCard extends StatelessWidget {
                 children: [
                   Text(
                     '${request['date']} - ${request['time']}',
-                    style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   Row(
                     children: [

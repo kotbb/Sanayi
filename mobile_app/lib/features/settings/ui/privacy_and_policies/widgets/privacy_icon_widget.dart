@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 
 class PrivacyIconWidget extends StatelessWidget {
   const PrivacyIconWidget({super.key});
@@ -21,7 +22,7 @@ class PrivacyIconWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: Icon(Icons.security, size: 50, color: const Color(0xff102144)),
+        child: Icon(Icons.security, size: 50, color: ColorsManager.mainBlue),
       ),
     );
   }

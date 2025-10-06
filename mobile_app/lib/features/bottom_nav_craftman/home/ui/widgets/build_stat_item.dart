@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
-   
+
 class BuildStatItem extends StatelessWidget {
   String title;
   String value;
@@ -17,7 +17,7 @@ class BuildStatItem extends StatelessWidget {
     required this.color,
     this.isMoney = false,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,13 +33,9 @@ class BuildStatItem extends StatelessWidget {
         verticalSpace(8),
         Text(
           isMoney ? '\$$value' : value,
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[800],
-          ),
+          style: Theme.of(context).textTheme.labelLarge,
         ),
-        Text(title, style: TextStyle(fontSize: 12.sp, color: Colors.grey[600])),
+        Text(title, style: Theme.of(context).textTheme.bodyMedium),
       ],
     );
   }

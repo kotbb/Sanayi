@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/create_account_craftman/ui/widgets/build_input_field_craft_man.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -68,11 +69,14 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.appLayoutCraftman);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      Routes.appLayoutCraftman,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14.h),
-                    backgroundColor: const Color(0xff102144),
+                    backgroundColor: ColorsManager.mainBlue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
@@ -80,11 +84,9 @@ class CreateAccountCraftmanScreen extends StatelessWidget {
                   ),
                   child: Text(
                     LocaleKeys.createAccount_createBtn.tr(),
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelLarge?.copyWith(color: Colors.white),
                   ),
                 ),
               ),

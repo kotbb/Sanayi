@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/features/create_account_client/ui/widgets/build_input_field.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
@@ -30,7 +31,10 @@ class CreateAccountClientScreen extends StatelessWidget {
               verticalSpace(32),
 
               // Name field
-              BuildInputField(hint: LocaleKeys.createAccount_nameHint.tr(), icon: Icons.person_outline),
+              BuildInputField(
+                hint: LocaleKeys.createAccount_nameHint.tr(),
+                icon: Icons.person_outline,
+              ),
               verticalSpace(16),
 
               // Phone field
@@ -57,7 +61,7 @@ class CreateAccountClientScreen extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14.h),
-                    backgroundColor: const Color(0xff102144),
+                    backgroundColor: ColorsManager.mainBlue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
@@ -65,11 +69,9 @@ class CreateAccountClientScreen extends StatelessWidget {
                   ),
                   child: Text(
                     LocaleKeys.createAccount_createBtn.tr(),
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelLarge?.copyWith(color: Colors.white),
                   ),
                 ),
               ),

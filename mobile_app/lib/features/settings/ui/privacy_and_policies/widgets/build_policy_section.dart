@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sanayi_app/core/helpers/spacing.dart';
-   
+
 class BuildPolicySection extends StatelessWidget {
   String title;
   String content;
-  
-  BuildPolicySection({
-    super.key,
-    required this.title,
-    required this.content,
-  });
-  
+
+  BuildPolicySection({super.key, required this.title, required this.content});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,22 +24,11 @@ class BuildPolicySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff102144),
-            ),
-          ),
+          Text(title, style: Theme.of(context).textTheme.headlineLarge),
           verticalSpace(8),
           Text(
             content,
-            style: TextStyle(
-              fontSize: 16.sp,
-              color: Colors.grey[700],
-              height: 1.5,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.left,
           ),
         ],

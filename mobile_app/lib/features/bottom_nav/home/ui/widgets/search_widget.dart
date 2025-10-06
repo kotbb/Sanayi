@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sanayi_app/core/helpers/spacing.dart';
 import 'package:sanayi_app/core/routing/routes.dart';
+import 'package:sanayi_app/core/styles/colors.dart';
 import 'package:sanayi_app/generated/locale_keys.g.dart';
 
 class SearchWidget extends StatelessWidget {
@@ -28,17 +29,17 @@ class SearchWidget extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xfffebf0f4),
+                  color: ColorsManager.seconderyLightGreen,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.search, color: const Color(0xff102144)),
+                  child: Icon(Icons.search, color: ColorsManager.mainBlue),
                 ),
               ),
               horizontalSpace(12),
               Text(
                 LocaleKeys.clientHome_search.tr(),
-                style: TextStyle(color: Color(0xff102144)),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),
