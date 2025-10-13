@@ -13,6 +13,11 @@ const {
 } = require("../utils/jwtUtils");
 const { promisify } = require("util");
 const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
+const {
+  blacklistToken,
+  isTokenBlacklisted,
+} = require("../utils/tokenBlacklist");
+const rateLimit = require("express-rate-limit");
 
 //------------------------------------------------------
 
@@ -25,22 +30,29 @@ const getNewRefreshAccessTokens = catchAsync(async (req, res, next) => {
   }
 
   const decoded = jwt.decode(inputAccessToken);
-  if(!decoded) {
+  if (!decoded) {
     return next(new AppError("Invalid access token", 401));
   }
-  const user = await User.findById(decoded.data).select("+refreshToken +refreshTokenExpiresAt");
+  const user = await User.findById(decoded.data).select(
+    "+refreshToken +refreshTokenExpiresAt"
+  );
   if (!user) {
     return next(new AppError("User not found", 404));
   }
   // Compare input refresh token with stored refresh token (rotation protection)
-  if (!user.refreshToken || user.refreshTokenExpiresAt < Date.now() || 
-     (!await user.correctRefreshToken(inputRefreshToken, user.refreshToken))) {
+  if (
+    !user.refreshToken ||
+    user.refreshTokenExpiresAt < Date.now() ||
+    !(await user.correctRefreshToken(inputRefreshToken, user.refreshToken))
+  ) {
     return next(new AppError("Invalid or expired refresh token", 401));
   }
 
-  const {accessToken, refreshToken} = await getUserTokens(user);
-  user.refreshToken = refreshToken;
-  await user.save({ validateBeforeSave: false });
+  // Blacklist the old access token for extra security
+  await blacklistToken(inputAccessToken);
+
+  // Generate new tokens
+  const { accessToken, refreshToken } = await getUserTokens(user);
 
   res.status(200).json({
     status: "success",
@@ -134,10 +146,43 @@ const loginAdmin = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({ phoneNumber }).select("+password");
 
-  if (!user || (await user.correctPassword(user.password, password))) {
+  if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Invalid phone number or password", 401));
   }
+
+  if(user.role !== "admin") {
+    return next(new AppError("You are not authorized to access this resource", 403));
+  }
+
   createSendTokens(user, 200, res);
+});
+
+const logout = catchAsync(async (req, res, next) => {
+  const user = req.user;
+  const token = req.headers.authorization.split(" ")[1];
+
+  // Blacklist the current access token
+  await blacklistToken(token);
+
+  // Clear user's refresh token and expiry from database
+  user.refreshToken = null;
+  user.refreshTokenExpiresAt = null;
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: "success",
+    message: "Logged out successfully",
+  });
+});
+
+// Stricter rate limiting for login endpoints
+const loginLimiter = rateLimit({
+  max: 50, // 50 attempts
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  message:
+    "Too many login attempts from this IP, please try again after 15 minutes",
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
@@ -189,13 +234,21 @@ const protect = catchAsync(async (req, res, next) => {
     );
   }
 
-  // 2) Verify token
+  // 2) Check if token is blacklisted
+  const isBlacklisted = await isTokenBlacklisted(token);
+  if (isBlacklisted) {
+    return next(
+      new AppError("This token has been invalidated. Please log in again.", 401)
+    );
+  }
+
+  // 3) Verify token
   const decoded = await promisify(jwt.verify)(
     token,
     process.env.JWT_ACCESS_SECRET
   );
 
-  // 3) Check if user exists, data is the user's id
+  // 4) Check if user exists, data is the user's id
   const currentUser = await User.findById(decoded.data);
   if (!currentUser) {
     return next(
@@ -216,8 +269,7 @@ const checkOwnerShip = (Model, userFieldNames) => {
       return next(new AppError("No document found with that ID", 404));
     }
 
-    console.log(doc);
-    // 3) Check if the document belongs to the admin
+    // Check if the document belongs to the admin
     if (req.user.role === "admin") {
       req.doc = doc;
       return next();
@@ -243,6 +295,7 @@ const checkOwnerShip = (Model, userFieldNames) => {
 module.exports = {
   login,
   loginAdmin,
+  loginLimiter,
   protect,
   restrictTo,
   sendRegisterOTP,
@@ -252,4 +305,5 @@ module.exports = {
   loadCraftsmanProfile,
   setLoggedId,
   getNewRefreshAccessTokens,
+  logout,
 };

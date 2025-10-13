@@ -109,18 +109,21 @@ userSchema.methods.correctPassword = async function (
 };
 
 // Hash refresh token before saving
-userSchema.pre("save", async function (next){
-  if(!this.isModified("refreshToken")){
+userSchema.pre("save", async function (next) {
+  if (!this.refreshToken || !this.isModified("refreshToken")) {
     return next();
   }
   this.refreshToken = await bcrypt.hash(this.refreshToken, 12);
   next();
-})
+});
 
 // Check if refresh token is correct
-userSchema.methods.correctRefreshToken = async function (inputRefreshToken, userRefreshToken) {
+userSchema.methods.correctRefreshToken = async function (
+  inputRefreshToken,
+  userRefreshToken
+) {
   return await bcrypt.compare(inputRefreshToken, userRefreshToken);
-}
+};
 
 const User = mongoose.model("User", userSchema);
 
