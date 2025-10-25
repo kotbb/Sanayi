@@ -35,7 +35,7 @@ export default function SideBar() {
               <FontAwesomeIcon icon={faUsersGear} style={{color:"black",cursor:"pointer",fontSize:"22px"}}/> Management Users
             </li>
           </Link>
-          <Link to={"reborts"}>
+          <Link to={"reports"}>
             <li className={isActive("reborts") ? "active" : ""}>
               <FontAwesomeIcon icon={faChartLine}style={{color:"black",cursor:"pointer",fontSize:"22px"}} /> Reports
             </li>
