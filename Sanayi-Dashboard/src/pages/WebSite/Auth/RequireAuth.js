@@ -8,6 +8,6 @@ export default function RequireAuth(){
    const cookie=Cookie();
    const token=cookie.get("token"); 
    const location=useLocation() 
-   return  token?<Outlet/>:<Navigate state={{from:location}}replace to="/login"/>; 
+   return  token?<Outlet/>:<Navigate state={{from:location}}replace to="/"/>; 
    //console.log(token.auth.user);
 };  

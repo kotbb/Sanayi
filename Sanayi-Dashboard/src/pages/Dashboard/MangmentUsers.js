@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
 import { Link } from "react-router-dom";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare,faTrash} from "@fortawesome/free-solid-svg-icons";
+import UpdateUsers from "./UpdateUsers";
 
 export default function MangmentUsers() {
-  // 🧠 حالات (States)
+  // حالات (States)
   const [allUsers, setAllUsers] = useState([]); // كل المستخدمين من الـ API
   const [filtered, setFiltered] = useState([]); // المستخدمون المعروضون بعد الفلترة
   const [search, setSearch] = useState(""); // نص البحث الحالي
@@ -19,7 +19,7 @@ export default function MangmentUsers() {
   const cookie = Cookie();
   const token = cookie.get("token");
 
-  // 📥 جلب جميع المستخدمين من السيرفر
+  //get All users
   useEffect(() => {
     axios
       .get("http://127.0.0.1:4000/api/users", {
@@ -94,27 +94,7 @@ function handleEdit(user) {
   setSelectedUser(user);
   setIsEditing(true);
 }
-async function handleSave() {
-  try {
-    const res = await axios.put(
-      `http://127.0.0.1:4000/api/users/${selectedUser.id}`,
-      {
-        name: selectedUser.name,
-        phoneNumber: selectedUser.phoneNumber,
-        role: selectedUser.role,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
 
-    console.log("✅ User updated:", res.data);
-    setIsEditing(false);
-    setRefreshUseEffect((prev) => prev + 1); // لإعادة تحميل الجدول بعد الحفظ
-  } catch (error) {
-    console.error("❌ Error updating user:", error);
-  }
-}
 
   return (
     <div className="table-container">
@@ -142,7 +122,7 @@ async function handleSave() {
             </button>
           </div>
 
-          {/* 🔍 مربع البحث */}
+          {/* 🔍 search box*/}
           <div className="search-box">
             <i className="fa fa-search"></i>
             <input
@@ -155,7 +135,7 @@ async function handleSave() {
         </div>
       </div>
 
-      {/* 📊 جدول عرض المستخدمين */}
+      {/* table show users*/}
       <table>
         <thead>
           <tr>
@@ -187,61 +167,17 @@ async function handleSave() {
           )}
         </tbody>
       </table>
-      {isEditing && selectedUser && (
-  <div className="edit-overlay">
-    <div className="edit-form">
-      <h2>Edit User</h2>
-      <label>Name:</label>
-      <input
-        type="text"
-        value={selectedUser.name}
-        onChange={(e) =>
-          setSelectedUser({ ...selectedUser, name: e.target.value })
-        }
-      />
-
-      <label>Phone Number:</label>
-      <input
-        type="text"
-        value={selectedUser.phoneNumber}
-        onChange={(e) =>
-          setSelectedUser({ ...selectedUser, phoneNumber: e.target.value })
-        }
-      />
-
-      <label>Role:</label>
-      <div className="role-radio">
-        <label>
-          <input
-            type="radio"
-            value="client"
-            checked={selectedUser.role === "client"}
-            onChange={(e) =>
-              setSelectedUser({ ...selectedUser, role: e.target.value })
-            }
-          />
-          Client
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="craftsman"
-            checked={selectedUser.role === "craftsman"}
-            onChange={(e) =>
-              setSelectedUser({ ...selectedUser, role: e.target.value })
-            }
-          />
-          Craftsman
-        </label>
-      </div>
-
-      <div className="edit-buttons">
-        <button onClick={handleSave}>Save</button>
-        <button onClick={() => setIsEditing(false)}>Cancel</button>
-      </div>
-    </div>
-  </div>
+     {isEditing && (
+  <UpdateUsers
+    selectedUser={selectedUser}
+    setSelectedUser={setSelectedUser}
+    setIsEditing={setIsEditing}
+    setRefreshUseEffect={setRefreshUseEffect}
+  />
 )}
+
+      
+      
     </div>
   );
 }

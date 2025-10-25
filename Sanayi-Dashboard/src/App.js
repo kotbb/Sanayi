@@ -15,30 +15,31 @@ import CreateUsers from "./pages/Dashboard/CreateUsers";
 import UpdateUsers from "./pages/Dashboard/UpdateUsers";
 import Bookings from "./pages/Dashboard/Bookings";
 import LogOut from "./pages/WebSite/Auth/LogOut";
+import Reborts from "./pages/Dashboard/Reborts";
 
 function App() {
   return ( 
    <div className="container" >
       <Header /> {/* الهيدر دائم */}
      
-      <Routes>
-        <Route path="/" element={<Splash />} /> 
-        
-        <Route path="/login" element={ <Login />} />
-        
-        <Route element={<RequireAuth/>}>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="users"    element={<Users/>}/>
-          <Route path="MangmentUsers"    element={<MangmentUsers/>}/>
-          <Route path="CreateUsers" element={<CreateUsers/>}/>
-          <Route path="bookings" element={<Bookings/>}/>
-          
-        </Route>
-        <Route path="/UpdateUsers" element={<UpdateUsers/>}/>
-        <Route path="/logOut" element={<LogOut/>}/>
-        </Route>
-       
-      </Routes>
+     <Routes>
+  <Route path="/" element={<Splash />} /> 
+  <Route path="/login" element={<Login />} />
+
+  <Route element={<RequireAuth/>}>
+    <Route path="/dashboard" element={<Dashboard />}>
+      <Route path="users" element={<Users />} />
+      <Route path="MangmentUsers" element={<MangmentUsers />} />
+      <Route path="CreateUsers" element={<CreateUsers />} />
+      <Route path="bookings" element={<Bookings />} />
+      <Route path="reborts" element={<Reborts />} />
+    </Route>
+
+    <Route path="/UpdateUsers" element={<UpdateUsers />} />
+    <Route path="/logOut" element={<LogOut />} /> {/* ✅ أضفه هنا */}
+  </Route>
+</Routes>
+
    
     </div>
   );

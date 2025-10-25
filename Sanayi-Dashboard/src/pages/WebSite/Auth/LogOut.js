@@ -17,11 +17,12 @@ export default function LogOut(){
             headers:{
                 Authorization: `Bearer ${token}`,
             }
-        })
+        });
         console.log(res);
-        cookie.remove("toekn");
-        cookie.remove("refrechToken");
-        navigate("/Login"); 
+      cookie.remove("token", { path: "/" });
+      cookie.remove("refreshToken", { path: "/" });
+       navigate("/", { replace: true });
+       //window.location.replace("/")
         setLoading(false);
        
 

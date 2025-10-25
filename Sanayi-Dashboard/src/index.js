@@ -5,6 +5,7 @@ import UserProvider from './pages/WebSite/Context/Context';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemModeProvider } from './pages/WebSite/Context/ThemeModeContext';
+import ShowLogin from './pages/WebSite/Context/LoginContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,7 +14,9 @@ root.render(
       
       <UserProvider>
         <ThemModeProvider>
+          <ShowLogin>
         <App/>
+        </ShowLogin>
         </ThemModeProvider>
       </UserProvider>
    

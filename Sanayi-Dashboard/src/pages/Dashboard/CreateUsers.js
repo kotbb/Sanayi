@@ -1,92 +1,97 @@
-
-import { useContext, useState } from "react"
-import { user } from "../WebSite/Context/Context";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookie from "cookie-universal";
+import { baseURL, CREATEUSERS } from "../../Api/Api";
 
-export default function CreateUsers(){
-const [name,setName]=useState("");
-const [phoneNumber,setphoneNumber]=useState("");
-const [role,setRole]=useState("");
-const [userId,setUserId]=useState("");
-//const [date,setDate]=useState("");
-const [error,setError]=useState(false)
-const cookie=Cookie();
+export default function CreateUsers() {
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [role, setRole] = useState("");
+  const [error, setError] = useState(false);
 
-//const [accept,setAccept]=useState(false);
-console.log(name);
-console.log(phoneNumber);
-console.log(role);
-    
-    //const Cuser=useContext(user);
-    const token =cookie.get("token");
-//    console.log(token);
+  const cookie = Cookie();
+  const token = cookie.get("token");
+  const navigate = useNavigate();
 
-    const navigate=useNavigate();
-    //console.log(phoneNumber, password);
-    const handleChangeRadio=(e)=>{
-        setRole(e.target.value)
+  const handleChangeRadio = (e) => setRole(e.target.value);
+
+  async function notSubmit(e) {
+    e.preventDefault();
+    setError(false);
+
+    try {
+      await axios.post(
+        `${baseURL}/${CREATEUSERS}`,
+        { name, phoneNumber, role },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log("✅ User Created Successfully");
+      navigate("/dashboard");
+    } catch (error) {
+      setError(true);
+      console.error("❌ Error:", error.response?.data || error.message);
     }
-        async function notSubmit(e){
-            e.preventDefault();
-            try{
-                //admin:    01234567899
-                //run  :    npm run start:dev
-                let res=await axios.post("http://127.0.0.1:4000/api/users",
-                    {name:name,phoneNumber:phoneNumber,role:role },{
-                     headers:{
-                    Authorization: `Bearer ${token}`
-                    },
-                }
-                   
-            );
-                console.log(res.data);
-                //const usersDet=res.data.data.user;//*
-              //  const token =res.data.token;
-               // console.log("the token is :"+token);
-               // Cuser.setAuth({token,usersDet})
-              //  console.log(user.auth);
-                //console.log(usersDet);
-                
-                console.log("the add users is done");
-                //console.log(token);
-               
-            }catch(error){
+  }
 
-                    console.error(error.response?.data || error.message);
-    }
-   navigate("/dashboard");
+  return (
+    <div className="create-container">
+      <h1 className="create-title">Create New User</h1>
 
-            
-        }
-return(
-        <div className="login-content">
-            <h1>Add Users</h1>
-            <form  onSubmit={notSubmit}>
-                <div className="name">
-                    <label htmlFor="name">Name:</label>
-                    <input id="name" type="text" placeholder="Name..." required value={name} onChange={(e)=>setName(e.target.value)}/>
-                    {name.length<0 &&error&&<p>the name is required</p>}
-                 
-                </div>
-                <div className="phoneNumber">
-                      <label htmlFor="phoneNumber">PhoneNumber:</label>
-                      <input id="phoneNumber" type="number" placeholder="phoneNumber..." required value={phoneNumber} onChange={(e)=>setphoneNumber(e.target.value)}/>
-                      {phoneNumber.length <8 &&error&&<p>the PhoneNumber is Rhong</p>}
-                </div>
-                  <div className="rol">
-                      <label htmlFor="rol">Role:</label>
-                      <label>client<input type="radio" value="client" checked={role=="client"} onChange={handleChangeRadio}></input></label>
-                       <label>craftsman<input type="radio" value="craftsman" checked={role=="craftsman"} onChange={handleChangeRadio}></input></label>    
-                    </div>
-                    
-                  
-                <button type="submit">Create Users </button>
-            </form> 
-            
-
+      <form onSubmit={notSubmit} className="create-form">
+        <div className="form-group">
+          <label htmlFor="name">Full Name</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter user name..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </div>
-    )}
 
+        <div className="form-group">
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            id="phone"
+            type="number"
+            placeholder="Enter phone number..."
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </div>
 
+        <div className="form-group role">
+          <label>Role</label>
+          <div className="radio-group">
+            <label>
+              <input
+                type="radio"
+                value="client"
+                checked={role === "client"}
+                onChange={handleChangeRadio}
+              />
+              Client
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="craftsman"
+                checked={role === "craftsman"}
+                onChange={handleChangeRadio}
+              />
+              Craftsman
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" className="submit-btn">
+          Create User
+        </button>
+      </form>
+    </div>
+  );
+}

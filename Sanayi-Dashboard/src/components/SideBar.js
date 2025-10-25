@@ -1,29 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus, faUsers ,faUsersGear,faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faUsers, faUsersGear, faArrowRightFromBracket, faChartLine } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { themModeContext } from "../pages/WebSite/Context/ThemeModeContext";
 
-export default function SideBar(){
-   // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  
-  
-   return(
-        
-        <div className="aside-bar-contaner">
-        
-             <aside class="sidebar">
-      
-      <ul class="menu">
-        <Link to={"users"}><li class="active"><FontAwesomeIcon icon={faUsers} /> Users</li></Link>
-        <Link to={"CreateUsers"}><li class="active"><FontAwesomeIcon icon={faUserPlus}/> CreateUsers</li></Link>
-        <Link to={"bookings"}><li class="active"><i class="fa fa-users"></i> Bookings</li></Link>
-        <Link to={"MangmentUsers"}><li><FontAwesomeIcon icon={faUsersGear} /> Management Users</li></Link>
-        <li><i class="fa fa-chart-bar"></i> Management  </li>
-        <Link to={"/logOut"}><li><FontAwesomeIcon icon={faArrowRightFromBracket} />LogOut</li></Link>
-      </ul>
-    </aside>
+export default function SideBar() {
+  const { darkMode } = useContext(themModeContext);
+  const location = useLocation(); // لمعرفة الصفحة الحالية لتفعيل الزر النشط
 
-        </div>
+  // 🟢 دالة لتحديد الصف النشط
+  const isActive = (path) => location.pathname.includes(path);
 
-    )
-    
-};
+  return (
+    <div className={`aside-bar-contaner${darkMode ? " dark" : ""}`}>
+      <aside className="sidebar">
+        <ul className="menu">
+          <Link to={"users"}>
+            <li className={isActive("users") ? "active" : ""}>
+              <FontAwesomeIcon icon={faUsers}style={{color:"black",cursor:"pointer",fontSize:"22px"}} /> Users
+            </li>
+          </Link>
+          <Link to={"CreateUsers"}>
+            <li className={isActive("CreateUsers") ? "active" : ""}>
+              <FontAwesomeIcon icon={faUserPlus}style={{color:"black",cursor:"pointer",fontSize:"22px"}} /> Create Users
+            </li>
+          </Link>
+          <Link to={"bookings"}>
+            <li className={isActive("bookings") ? "active" : ""}>
+              <FontAwesomeIcon icon={faUsers}style={{color:"black",cursor:"pointer",fontSize:"22px"}} /> Bookings
+            </li>
+          </Link>
+          <Link to={"MangmentUsers"}>
+            <li className={isActive("MangmentUsers") ? "active" : ""}>
+              <FontAwesomeIcon icon={faUsersGear} style={{color:"black",cursor:"pointer",fontSize:"22px"}}/> Management Users
+            </li>
+          </Link>
+          <Link to={"reborts"}>
+            <li className={isActive("reborts") ? "active" : ""}>
+              <FontAwesomeIcon icon={faChartLine}style={{color:"black",cursor:"pointer",fontSize:"22px"}} /> Reports
+            </li>
+          </Link>
+          <Link to={"/logOut"}>
+            <li>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} style={{color:"black",cursor:"pointer",fontSize:"22px"}}/> LogOut
+            </li>
+          </Link>
+        </ul>
+      </aside>
+    </div>
+  );
+}

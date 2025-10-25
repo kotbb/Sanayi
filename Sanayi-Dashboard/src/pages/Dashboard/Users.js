@@ -1,44 +1,52 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookie from "cookie-universal";
-import { baseURL } from "../../Api/Api";
+import { baseURL, REFRESHTOKEN } from "../../Api/Api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../../components/Footer";
 
 export default function Users() {
-  //  حالات (States)
-  const [allUsers, setAllUsers] = useState([]); // كل المستخدمين من الـ API
+  // 🎯 حالات (States)
+  const [allUsers, setAllUsers] = useState([]); // كل المستخدمين القادمين من API
   const [filtered, setFiltered] = useState([]); // المستخدمون المعروضون بعد الفلترة
-  const [search, setSearch] = useState(""); // نص البحث الحالي
-  const [activeFilter, setActiveFilter] = useState("all"); // الفلتر النشط (all | client | craftsman)
+  const [search, setSearch] = useState(""); // النص الذي يكتبه المستخدم للبحث
+  const [activeFilter, setActiveFilter] = useState("all"); // الفلتر النشط (الكل | عميل | حرفي)
+
+  // 🧁 الكوكيز للحصول على التوكنات
   const cookie = Cookie();
   const token = cookie.get("token");
   const refreshToken = cookie.get("refreshToken");
-  // 📥 جلب جميع المستخدمين من السيرفر
+  //get All users
   useEffect(() => {
     axios
       .get("http://127.0.0.1:4000/api/users", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // تمرير التوكن في الهيدر
         },
       })
       .then((res) => {
-        const allUsersArray = res.data.data.data;
+        const allUsersArray = res.data.data.data; // استخراج المصفوفة الحقيقية للمستخدمين
         setAllUsers(allUsersArray);
-        setFiltered(allUsersArray); // في البداية نعرض الجميع
+        setFiltered(allUsersArray); // عرض الجميع مبدئيًا
         console.log("✅ All users fetched:", allUsersArray);
       })
       .catch((err) => console.log("❌ Error fetching users:", err));
-  }, []);
+  }, []); // 👈 يحدث مرة واحدة فقط عند تحميل الصفحة
 
-  // 🎯 دالة تقوم بالفلترة حسب الدور والبحث في نفس الوقت
+  // 🧩 فلترة المستخدمين حسب الدور والبحث في نفس الوقت
   useEffect(() => {
     let temp = [...allUsers];
-    // أولاً فلترة حسب الدور
+
+    // 🔹 أولًا: الفلترة حسب الدور
     if (activeFilter === "client") {
       temp = temp.filter((u) => u.role === "client");
     } else if (activeFilter === "craftsman") {
       temp = temp.filter((u) => u.role === "craftsman");
     }
-    // ثانياً فلترة حسب نص البحث
+
+    // 🔹 ثانيًا: الفلترة حسب البحث
     if (search.trim() !== "") {
       temp = temp.filter(
         (u) =>
@@ -47,9 +55,11 @@ export default function Users() {
           u.role.toLowerCase().includes(search.toLowerCase())
       );
     }
-    setFiltered(temp);
-  }, [activeFilter, search, allUsers]); // أي تغيير في هذه القيم يعيد الفلترة
-  // دوال تغيير الفلاتر عند الضغط على الأزرار
+
+    setFiltered(temp); // تحديث النتيجة النهائية
+  }, [activeFilter, search, allUsers]); // 👈 يُعاد تنفيذها عند أي تغيير
+
+  // 🧭 دوال لتغيير الفلاتر (الأزرار)
   function showAll() {
     setActiveFilter("all");
   }
@@ -59,43 +69,58 @@ export default function Users() {
   function showCraftsmen() {
     setActiveFilter("craftsman");
   }
-  async function refToken(){
-    try{
-      const res = await axios.post(`${baseURL}/auth/refresh-token`,{ refreshToken: refreshToken },{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      console.log(res)
-      const newToken=res.data.token
+
+  // function refrech token
+  async function refToken() {
+    try {
+      const res = await axios.post(
+        `${baseURL}/${REFRESHTOKEN}`,
+        { refreshToken: refreshToken },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // ✅ استخراج التوكنات الجديدة
+      const newToken = res.data.token;
       const newRefToken = res.data.refreshToken;
+
+      // update tokens
       cookie.set("token", newToken);
       cookie.set("refreshToken", newRefToken);
-      
-    }catch (error){
-      console.log(error);
+
+      console.log("♻️ Tokens refreshed successfully!");
+    } catch (error) {
+      console.log("❌ Error refreshing token:", error);
     }
   }
+
+  // ⏱️ تنفيذ تجديد التوكن كل 9 دقائق تلقائيًا
   useEffect(() => {
-  const interval = setInterval(() => {
-    refToken();// استدعاء التجديد تلقائيًا
-  }, 9 * 60 * 1000); // كل 9 دقائق (مثلاً)
-  
+    const interval = setInterval(() => {
+      refToken(); 
+    }, 9 * 60 * 1000); 
 
-  return () => clearInterval(interval); // تنظيف عند إلغاء المكون
-}, []);
-useEffect(() => {
-  const token = cookie.get("token");
-  const refreshToken = cookie.get("refreshToken");
+    return () => clearInterval(interval); // تنظيف عند إزالة المكون
+  }, []);
 
-  console.log("Token on page load:", token);
-  console.log("Refresh Token on page load:", refreshToken);
-}, []); 
+ 
+  useEffect(() => {
+    const token = cookie.get("token");
+    const refreshToken = cookie.get("refreshToken");
+
+    console.log("🔑 Token on page load:", token);
+    console.log("🔁 Refresh Token on page load:", refreshToken);
+  }, []);
+
   return (
     <div className="table-container">
+      {/* 🧩 القسم العلوي: الفلاتر والبحث */}
       <div className="title-div">
         <div className="title">
-          {/*  أزرار الفلترة */}
+          {/* 🔘 أزرار الفلترة */}
           <div className="tabs">
             <button
               className={`tab-All ${activeFilter === "all" ? "active" : ""}`}
@@ -117,12 +142,13 @@ useEffect(() => {
             </button>
           </div>
 
-          {/* 🔍 مربع البحث */}
+          {/* 🔍 search box*/}
           <div className="search-box">
-            <i className="fa fa-search"></i>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
             <input
+            
               type="text"
-              placeholder="Search by name, phone or role..."
+              placeholder=" Search by name, phone or role..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -130,7 +156,7 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* 📊 جدول عرض المستخدمين */}
+      {/* table show users*/}
       <table>
         <thead>
           <tr>
@@ -140,11 +166,12 @@ useEffect(() => {
             <th>Role</th>
           </tr>
         </thead>
+
         <tbody>
           {filtered.length > 0 ? (
             filtered.map((i, index) => (
               <tr key={index}>
-                <td>{index + 1}</td>
+                <th>{index + 1}</th>
                 <td>{i.name}</td>
                 <td>{i.phoneNumber}</td>
                 <td>{i.role}</td>
@@ -158,8 +185,11 @@ useEffect(() => {
             </tr>
           )}
         </tbody>
-        <button onClick={refToken} type="submit"> refrechToken</button>
       </table>
+
+      
+    
     </div>
+    
   );
 }
