@@ -1,7 +1,9 @@
-export default function LoadingSubmit(){
-    return (
-        <div className="spinner-container-submit">  
-        <div className="spinner"></div>
-        </div>
-    )
-};
+export default function LoadingSubmit() {
+  return (
+    <div className="spinner-container-submit">
+      <div className="modern-spinner">
+        <div className="spinner-inner"></div>
+      </div>
+    </div>
+  );
+}

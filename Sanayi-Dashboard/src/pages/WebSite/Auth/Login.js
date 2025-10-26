@@ -5,6 +5,7 @@ import Cookie from "cookie-universal";
 import LoadingSubmit from "../../Loading/Loading";
 import { baseURL } from "../../../Api/Api";
 import { LOGIN } from "../../../Api/Api";
+import { saveTokens } from "../../../utils/SecureCookies";
 export default function Login({ closeForm }){
     const [phoneNumber,setPhoneNumber] =useState("");
     const [password,setPassword]=useState("");
@@ -25,8 +26,9 @@ export default function Login({ closeForm }){
                 const token  =res.data.token;
                 setLoading(false)
                 navigate("/dashboard"); 
-                cookie.set("token",token)
-                cookie.set("refreshToken",refreshToken);
+                
+                saveTokens(token, refreshToken);
+                
                 // console.log("the token is :"+token);
                 //console.log("the login is done");
                 }catch(error){

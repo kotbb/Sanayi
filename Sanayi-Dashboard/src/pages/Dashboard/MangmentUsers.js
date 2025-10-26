@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import Cookie from "cookie-universal";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare,faTrash} from "@fortawesome/free-solid-svg-icons";
 import UpdateUsers from "./UpdateUsers";
+import { getTokens } from "../../utils/SecureCookies";
 
 export default function MangmentUsers() {
   // حالات (States)
@@ -15,10 +15,7 @@ export default function MangmentUsers() {
   const [refreshUseEffecr,setRefreshUseEffect] = useState(0)
   const [selectedUser, setSelectedUser] = useState(null); // المستخدم الذي سنعدله
   const [isEditing, setIsEditing] = useState(false); // هل الفورم مفتوحة أم لا
-
-  const cookie = Cookie();
-  const token = cookie.get("token");
-
+  const { token } = getTokens();
   //get All users
   useEffect(() => {
     axios

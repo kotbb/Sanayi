@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookie from "cookie-universal";
 import { baseURL, CREATEUSERS } from "../../Api/Api";
-
+ import { getTokens } from "../../utils/SecureCookies";
 export default function CreateUsers() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("");
   const [error, setError] = useState(false);
-
-  const cookie = Cookie();
-  const token = cookie.get("token");
+  const { token } = getTokens();;
   const navigate = useNavigate();
 
   const handleChangeRadio = (e) => setRole(e.target.value);

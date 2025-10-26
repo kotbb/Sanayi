@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Cookie from "cookie-universal";
 import { baseURL, BOOKINGS } from "../../Api/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { getTokens } from "../../utils/SecureCookies";
+
 
 export default function Bookings() {
   const [allBookings, setAllBookings] = useState([]);
   const [loading, setLoading] = useState(false);
-  const cookie = Cookie();
-  const token = cookie.get("token");
+  const { token } = getTokens();
 
   // 🔹 getData
   useEffect(() => {

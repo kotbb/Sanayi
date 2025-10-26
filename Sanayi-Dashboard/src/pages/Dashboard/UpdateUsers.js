@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookie from "cookie-universal";
+import { getTokens } from "../../utils/SecureCookies";
 
 export default function UpdateUsers({
   selectedUser,
@@ -7,8 +7,7 @@ export default function UpdateUsers({
   setIsEditing,
   setRefreshUseEffect,
 }) {
-  const cookie = Cookie();
-  const token = cookie.get("token");
+  const { token } = getTokens();
 
   // function save update
   async function handleSave() {
