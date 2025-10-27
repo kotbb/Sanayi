@@ -5,6 +5,7 @@ const AppError = require("../utils/appError");
 const Category = require("../models/categoryModel");
 const craftsmanService = require("./craftsmanService");
 
+// Register a user and a craftsman
 const registerUserTransaction = async (userData, phoneNumber) => {
   const { role, name, location, specializations, hourlyRate, profilePicture } =
     userData;

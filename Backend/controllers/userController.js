@@ -1,14 +1,10 @@
 const catchAsync = require("../middlewares/catchAsync");
 const User = require("../models/userModel");
-const Craftsman = require("../models/craftsmanModel");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");
-const filterObj = require("../utils/filterObject");
-const flattenObject = require("../utils/flattenObject");
 const verifyOTP = require("../utils/verifyOTP");
-const { createSendTokens, signToken } = require("../utils/jwtUtils");
+const { createSendTokens} = require("../utils/jwtUtils");
 const createOTP = require("../utils/createOTP");
-const craftsmanService = require("../services/craftsmanService");
 
 //---------------------------------------------------
 // Send the update phone number OTP

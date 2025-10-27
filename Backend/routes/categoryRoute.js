@@ -1,26 +1,24 @@
 const express = require("express");
 const categoryController = require("../controllers/categoryController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
 const craftsmanRoute = require("./craftsmanRoute");
 const router = express.Router();
 
 //------------------------------------------------------
-router.use(authController.protect);
+router.use(protect);
 
 router.use("/:categoryId/craftsmen", craftsmanRoute);
 
 router
   .route("/")
   .get(categoryController.getAllCategories)
-  .post(authController.restrictTo("admin"), categoryController.createCategory);
+  .post(restrictTo("admin"), categoryController.createCategory);
 
 router
   .route("/:id")
   .get(categoryController.getCategory)
-  .patch(authController.restrictTo("admin"), categoryController.updateCategory)
-  .delete(
-    authController.restrictTo("admin"),
-    categoryController.deleteCategory
-  );
+  .patch(restrictTo("admin"), categoryController.updateCategory)
+  .delete(restrictTo("admin"), categoryController.deleteCategory);
 
 module.exports = router;

@@ -1,6 +1,6 @@
-const redisClient = require("./redisClient");
+const { redisClient } = require("../config/redis");
 const jwt = require("jsonwebtoken");
-const AppError = require("./appError");
+const AppError = require("../utils/appError");
 
 const blacklistToken = async (token, ttlSeconds = null) => {
   try {
@@ -43,7 +43,17 @@ const isTokenBlacklisted = async (token) => {
   }
 };
 
+const clearBlacklistedTokens = async () => {
+  const pattern = "blacklist:*";
+  const keys = await redisClient.keys(pattern);
+
+  if (keys.length > 0) {
+    await redisClient.del(keys);
+  }
+};
+
 module.exports = {
   blacklistToken,
   isTokenBlacklisted,
+  clearBlacklistedTokens,
 };

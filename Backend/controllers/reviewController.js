@@ -1,53 +1,21 @@
-const catchAsync = require("../middlewares/catchAsync");
 const Review = require("../models/reviewModel");
-const AppError = require("../utils/appError");
+const catchAsync = require("../middlewares/catchAsync");
 const factory = require("./handlerFactory");
-const Booking = require("../models/bookingModel");
+const reviewService = require("../services/reviewService");
+const {
+  reviewCraftsmanPopOptions,
+  reviewClientPopOptions,
+  reviewPopOptions,
+} = require("../utils/popOptions");
 
 //---------------------------------------------------
-let popOptions = [
-  {
-    path: "craftsman",
-    select: "user",
-    populate: { path: "user", select: "name phoneNumber" },
-  },
-  {
-    path: "client",
-    select: "name phoneNumber",
-  },
-];
 
 const createBookingReview = catchAsync(async (req, res, next) => {
-  const { comment, rating } = req.body;
-  const bookingId = req.params.bookingId;
-  const clientId = req.user.id;
-
-  const booking = await Booking.findById(bookingId);
-  if (!booking) {
-    return next(new AppError("This booking does not exist.", 404));
-  }
-  console.log(booking);
-
-  if (booking.client._id.toString() !== clientId) {
-    return next(
-      new AppError("You can only write a review for your own bookings.", 403)
-    );
-  }
-
-  const existingReview = await Review.findOne({ booking: bookingId });
-  if (existingReview) {
-    return next(
-      new AppError("You have already submitted a review for this booking.", 400)
-    );
-  }
-
-  const newReview = await Review.create({
-    comment,
-    rating,
-    booking: bookingId,
-    client: clientId,
-    craftsman: booking.craftsman,
-  });
+  const newReview = await reviewService.createBookingReview(
+    req.body,
+    req.params.bookingId,
+    req.user.id
+  );
 
   res.status(201).json({
     status: "success",
@@ -57,8 +25,14 @@ const createBookingReview = catchAsync(async (req, res, next) => {
   });
 });
 
-const getAllReviews = factory.getAll(Review, popOptions);
-const getReview = factory.getOne(Review, popOptions);
+const getAllReviews = factory.getAll(
+  Review,
+  reviewPopOptions
+);
+const getReview = factory.getOne(
+  Review,
+  reviewPopOptions
+);
 
 const getMyReviews = catchAsync(async (req, res, next) => {
   let filter = {};
@@ -66,17 +40,10 @@ const getMyReviews = catchAsync(async (req, res, next) => {
 
   if (req.user.role === "client") {
     filter.client = req.user.id;
-    popOptions = {
-      path: "craftsman",
-      select: "user",
-      populate: { path: "user", select: "name phoneNumber" },
-    };
+    popOptions = reviewCraftsmanPopOptions;
   } else if (req.user.role === "craftsman") {
     filter.craftsman = req.craftsman.id;
-    popOptions = {
-      path: "client",
-      select: "name phoneNumber",
-    };
+    popOptions = reviewClientPopOptions;
   }
   const reviews = await Review.find(filter).populate(popOptions);
 

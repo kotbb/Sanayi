@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const parseTimeToMS = require("./parseTimeToMS");
-const redisClient = require("./redisClient");
+const { redisClient } = require("../config/redis");
 //------------------------------------------------------
 
 const createOTP = async (phoneNumber) => {

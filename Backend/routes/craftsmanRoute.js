@@ -1,31 +1,26 @@
 const express = require("express");
 const craftsmanController = require("../controllers/craftsmanController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
 const reviewRoute = require("./reviewRoute");
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
-router.use(authController.protect);
+router.use(protect);
 
 router.use("/:craftsmanId/reviews", reviewRoute);
 
 router
   .route("/")
   .get(craftsmanController.getAllCraftsmen)
-  .post(
-    authController.restrictTo("admin"),
-    craftsmanController.createCraftsman
-  );
+  .post(restrictTo("craftsman", "admin"), craftsmanController.createCraftsman);
 
 router
   .route("/:id")
   .get(craftsmanController.getCraftsman)
-  .patch(
-    authController.restrictTo("admin"),
-    craftsmanController.updateCraftsman
-  )
+  .patch(restrictTo("craftsman", "admin"), craftsmanController.updateCraftsman)
   .delete(
-    authController.restrictTo("admin"),
+    restrictTo("craftsman", "admin"),
     craftsmanController.deleteCraftsman
   );
 

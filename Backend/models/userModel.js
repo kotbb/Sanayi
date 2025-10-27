@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
-const isObject = require("../utils/validators/isObject");
+const isValidPhoneNumber = require("../middlewares/validation/isValidPhoneNumber");
+const isObject = require("../middlewares/validation/isObject");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
@@ -79,6 +79,9 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.index({ role: 1 });
+userSchema.index({ isActive: 1 }); // For filtering active users
+userSchema.index({ isVerified: 1 }); // For filtering verified users
+userSchema.index({ role: 1, isActive: 1 }); // Compound index for role + active filtering
 
 userSchema.virtual("craftsman", {
   ref: "Craftsman",

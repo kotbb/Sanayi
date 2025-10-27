@@ -1,6 +1,8 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
 const bookingRoute = require("./bookingRoute");
 const router = express.Router();
 
@@ -12,11 +14,11 @@ router
   .route("/update-phone/verify-otp")
   .patch(userController.verifyUpdatePhoneOTP);
 
-router.use(authController.protect);
+router.use(protect);
 router.route("/:id").get(userController.getUser);
 
 //--- Admin Routes ---
-router.use(authController.restrictTo("admin"));
+router.use(restrictTo("admin"));
 router
   .route("/")
   .get(userController.getAllUsers)

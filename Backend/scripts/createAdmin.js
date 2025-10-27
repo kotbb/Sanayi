@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import readline from "readline";
-import User from "../models/userModel.js";
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const readline = require("readline");
+const User = require("../models/userModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -10,15 +10,16 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-await mongoose.connect(DB).then(() => console.log("DB connection successful!"));
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 const createAdmin = async () => {
   try {
+    await mongoose.connect(DB);
+    console.log("DB connection successful!");
+
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
     const name = await new Promise((resolve) =>
       rl.question("Enter admin name: ", resolve)
     );

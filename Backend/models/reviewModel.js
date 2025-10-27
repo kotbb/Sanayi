@@ -41,6 +41,11 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 reviewSchema.index({ craftsman: 1, createdAt: -1 });
+reviewSchema.index({ client: 1, createdAt: -1 }); // For client reviews
+reviewSchema.index({ booking: 1 }); // For booking-specific reviews
+reviewSchema.index({ rating: -1 }); // For sorting by rating
+reviewSchema.index({ craftsman: 1, rating: -1 }); // Compound: craftsman + rating
+reviewSchema.index({ createdAt: -1 }); // For sorting by newest reviews
 
 reviewSchema.statics.calcAverageRatings = async function (craftsmanId) {
   const stats = await this.aggregate([

@@ -1,6 +1,6 @@
 const AppError = require("./appError");
 const crypto = require("crypto");
-const redisClient = require("./redisClient");
+const { redisClient } = require("../config/redis");
 //------------------------------------------------------
 
 const verifyOTP = async (otp, phoneNumber) => {

@@ -34,6 +34,8 @@ const companySchema = new mongoose.Schema({
   },
 });
 
+companySchema.index({ isActive: 1 }); // For filtering active companies
+
 const Company = mongoose.model("Company", companySchema);
 
 module.exports = Company;

@@ -64,13 +64,12 @@ const getOne = (Model, popOptions) =>
 const getAll = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
     let filter = {};
-    if (req.user.role !== "admin") {
-      if (req.params.clientId) filter.client = req.params.clientId;
-      if (req.params.craftsmanId) filter.craftsman = req.params.craftsmanId;
-      if (req.params.bookingId) filter.booking = req.params.bookingId;
-      if (req.params.categoryId) {
-        filter.specializations = { $in: [req.params.categoryId] };
-      }
+
+    if (req.params.clientId) filter.client = req.params.clientId;
+    if (req.params.craftsmanId) filter.craftsman = req.params.craftsmanId;
+    if (req.params.bookingId) filter.booking = req.params.bookingId;
+    if (req.params.categoryId) {
+      filter.specializations = { $in: [req.params.categoryId] };
     }
 
     let query = Model.find(filter);

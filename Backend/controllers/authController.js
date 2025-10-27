@@ -4,23 +4,14 @@ const authService = require("../services/authService");
 const createOTP = require("../utils/createOTP");
 const verifyOTP = require("../utils/verifyOTP");
 const User = require("../models/userModel");
-const Craftsman = require("../models/craftsmanModel");
 const jwt = require("jsonwebtoken");
-const {
-  createAccessToken,
-  createSendTokens,
-  getUserTokens,
-} = require("../utils/jwtUtils");
+const jwtUtils = require("../utils/jwtUtils");
 const { promisify } = require("util");
-const isValidPhoneNumber = require("../utils/validators/isValidPhoneNumber");
-const {
-  blacklistToken,
-  isTokenBlacklisted,
-} = require("../utils/tokenBlacklist");
-const rateLimit = require("express-rate-limit");
-
+const isValidPhoneNumber = require("../middlewares/validation/isValidPhoneNumber");
+const tokenService = require("../services/tokenService");
 //------------------------------------------------------
 
+// Get new refresh access tokens
 const getNewRefreshAccessTokens = catchAsync(async (req, res, next) => {
   const inputRefreshToken = req.body.refreshToken;
   const inputAccessToken = req.headers.authorization.split(" ")[1];
@@ -49,10 +40,10 @@ const getNewRefreshAccessTokens = catchAsync(async (req, res, next) => {
   }
 
   // Blacklist the old access token for extra security
-  await blacklistToken(inputAccessToken);
+  await tokenService.blacklistToken(inputAccessToken);
 
   // Generate new tokens
-  const { accessToken, refreshToken } = await getUserTokens(user);
+  const { accessToken, refreshToken } = await jwtUtils.getUserTokens(user);
 
   res.status(200).json({
     status: "success",
@@ -61,6 +52,7 @@ const getNewRefreshAccessTokens = catchAsync(async (req, res, next) => {
   });
 });
 
+// Send the register OTP
 const sendRegisterOTP = catchAsync(async (req, res, next) => {
   const { phoneNumber } = req.body;
   if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
@@ -82,11 +74,12 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
   });
 });
 
+// Verify the register OTP
 const verifyRegisterOTP = catchAsync(async (req, res, next) => {
   const { otp, phoneNumber } = req.body;
   await verifyOTP(otp, phoneNumber);
 
-  const registerationToken = createAccessToken(
+  const registerationToken = jwtUtils.createAccessToken(
     phoneNumber,
     process.env.JWT_ACCESS_EXPIRES_IN
   );
@@ -97,6 +90,7 @@ const verifyRegisterOTP = catchAsync(async (req, res, next) => {
   });
 });
 
+// Complete the register
 const completeRegister = catchAsync(async (req, res, next) => {
   const registerationToken = req.headers.authorization.split(" ")[1];
   if (!registerationToken) {
@@ -117,9 +111,10 @@ const completeRegister = catchAsync(async (req, res, next) => {
     req.body,
     phoneNumber
   );
-  createSendTokens(newUser, 201, res);
+  jwtUtils.createSendTokens(newUser, 201, res);
 });
 
+// Login
 const login = catchAsync(async (req, res, next) => {
   const phoneNumber = req.body.phoneNumber;
   if (!phoneNumber) {
@@ -135,9 +130,10 @@ const login = catchAsync(async (req, res, next) => {
   if (user.role === "admin") {
     return next(new AppError("Admin login here not allowed", 400));
   }
-  createSendTokens(user, 200, res);
+  jwtUtils.createSendTokens(user, 200, res);
 });
 
+// Login admin
 const loginAdmin = catchAsync(async (req, res, next) => {
   const { phoneNumber, password } = req.body;
   if (!phoneNumber || !password) {
@@ -150,19 +146,22 @@ const loginAdmin = catchAsync(async (req, res, next) => {
     return next(new AppError("Invalid phone number or password", 401));
   }
 
-  if(user.role !== "admin") {
-    return next(new AppError("You are not authorized to access this resource", 403));
+  if (user.role !== "admin") {
+    return next(
+      new AppError("You are not authorized to access this resource", 403)
+    );
   }
 
-  createSendTokens(user, 200, res);
+  jwtUtils.createSendTokens(user, 200, res);
 });
 
+// Logout
 const logout = catchAsync(async (req, res, next) => {
   const user = req.user;
   const token = req.headers.authorization.split(" ")[1];
 
   // Blacklist the current access token
-  await blacklistToken(token);
+  await tokenService.blacklistToken(token);
 
   // Clear user's refresh token and expiry from database
   user.refreshToken = null;
@@ -175,135 +174,12 @@ const logout = catchAsync(async (req, res, next) => {
   });
 });
 
-// Stricter rate limiting for login endpoints
-const loginLimiter = rateLimit({
-  max: 50, // 50 attempts
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  message:
-    "Too many login attempts from this IP, please try again after 15 minutes",
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
-  if (req.user.role !== "craftsman") {
-    return next();
-  }
-
-  const craftsman = await Craftsman.findOne({ user: req.user.id });
-
-  req.craftsman = craftsman;
-  next();
-});
-
-// Set the logged in user id in the req.params
-const setLoggedId = (req, res, next) => {
-  if (req.user.role === "client") {
-    req.params.clientId = req.user.id;
-  } else if (req.user.role === "craftsman") {
-    req.params.craftsmanId = req.craftsman.id;
-  }
-  next();
-};
-
-//------------------------------------------------------
-
-const restrictTo = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError("You do not have permission to perform this action", 403)
-      );
-    }
-    next();
-  };
-};
-
-const protect = catchAsync(async (req, res, next) => {
-  // 1) Get token and check if it's there
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  }
-  if (!token) {
-    return next(
-      new AppError("You are not logged in! Please log in to get access.", 401)
-    );
-  }
-
-  // 2) Check if token is blacklisted
-  const isBlacklisted = await isTokenBlacklisted(token);
-  if (isBlacklisted) {
-    return next(
-      new AppError("This token has been invalidated. Please log in again.", 401)
-    );
-  }
-
-  // 3) Verify token
-  const decoded = await promisify(jwt.verify)(
-    token,
-    process.env.JWT_ACCESS_SECRET
-  );
-
-  // 4) Check if user exists, data is the user's id
-  const currentUser = await User.findById(decoded.data);
-  if (!currentUser) {
-    return next(
-      new AppError(
-        "The user belonging to this token does no longer exist.",
-        401
-      )
-    );
-  }
-  req.user = currentUser;
-  next();
-});
-
-const checkOwnerShip = (Model, userFieldNames) => {
-  return catchAsync(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id);
-    if (!doc) {
-      return next(new AppError("No document found with that ID", 404));
-    }
-
-    // Check if the document belongs to the admin
-    if (req.user.role === "admin") {
-      req.doc = doc;
-      return next();
-    }
-    let isOwner = false;
-    if (req.user.role === "craftsman" && userFieldNames.includes("craftsman")) {
-      const craftsman = await Craftsman.findOne({ user: req.user.id });
-      isOwner = doc.craftsman?.toString() === craftsman.id;
-    } else {
-      isOwner = doc.client?.toString() === req.user.id;
-    }
-    if (!isOwner) {
-      return next(
-        new AppError("You do not have permission to perform this action", 403)
-      );
-    }
-
-    req.doc = doc;
-    next();
-  });
-};
-
 module.exports = {
   login,
   loginAdmin,
-  loginLimiter,
-  protect,
-  restrictTo,
   sendRegisterOTP,
   verifyRegisterOTP,
   completeRegister,
-  checkOwnerShip,
-  loadCraftsmanProfile,
-  setLoggedId,
   getNewRefreshAccessTokens,
   logout,
 };

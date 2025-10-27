@@ -1,5 +1,6 @@
 const Category = require("../models/categoryModel");
 const factory = require("./handlerFactory");
+const categoryService = require("../services/categoryService");
 
 const getAllCategories = factory.getAll(Category);
 const getCategory = factory.getOne(Category);

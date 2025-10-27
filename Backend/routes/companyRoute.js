@@ -1,18 +1,19 @@
 const express = require("express");
 const companyController = require("../controllers/companyController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
 const router = express.Router();
 
-router.use(authController.protect);
+router.use(protect);
 router
   .route("/")
   .get(companyController.getAllCompanies)
-  .post(authController.restrictTo("admin"), companyController.createCompany);
+  .post(restrictTo("admin"), companyController.createCompany);
 
 router
   .route("/:id")
   .get(companyController.getCompany)
-  .patch(authController.restrictTo("admin"), companyController.updateCompany)
-  .delete(authController.restrictTo("admin"), companyController.deleteCompany);
+  .patch(restrictTo("admin"), companyController.updateCompany)
+  .delete(restrictTo("admin"), companyController.deleteCompany);
 
 module.exports = router;

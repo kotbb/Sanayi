@@ -23,6 +23,8 @@ const categorySchema = new mongoose.Schema(
   }
 );
 
+categorySchema.index({ isActive: 1 }); // For filtering active categories
+
 categorySchema.pre(/^find/, function (next) {
   this.select("-__v");
   this.find({ isActive: { $ne: false } });

@@ -1,6 +1,9 @@
 const express = require("express");
 const profileController = require("../controllers/profileController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
+const loadCraftsmanProfile = require("../middlewares/auth/loadCraftsmanProfile");
+const setLoggedId = require("../middlewares/auth/setLoggedId");
 const reviewController = require("../controllers/reviewController");
 const bookingController = require("../controllers/bookingController");
 const {
@@ -12,47 +15,41 @@ const {
 
 const router = express.Router();
 
-router.use(authController.protect);
+router.use(protect);
 
 // --- Profile Management ---
 router
   .route("/me")
-  .get(
-    authController.restrictTo("client", "craftsman"),
-    profileController.getMe
-  );
+  .get(restrictTo("client", "craftsman"), profileController.getMe);
 router
   .route("/updateMe")
   .patch(
-    authController.restrictTo("client", "craftsman"),
+    restrictTo("client", "craftsman"),
     uploadUserPhoto,
     resizeUserPhoto,
     profileController.updateMe
   );
 router
   .route("/deleteMe")
-  .patch(
-    authController.restrictTo("client", "craftsman"),
-    profileController.deleteMe
-  );
+  .patch(restrictTo("client", "craftsman"), profileController.deleteMe);
 
 // --- Craftsman-Specific Profile Management ---
 router.patch(
   "/craftsman-profile",
-  authController.restrictTo("craftsman"),
-  authController.loadCraftsmanProfile,
+  restrictTo("craftsman"),
+  loadCraftsmanProfile,
   profileController.updateMyCraftsmanProfile
 );
 router.patch(
   "/craftsman-portfolio",
-  authController.restrictTo("craftsman"),
+  restrictTo("craftsman"),
   uploadPortfolioImages,
   resizePortfolioImages,
   profileController.updateMyPortfolio
 );
 router.delete(
   "/portfolio/:portfolioId",
-  authController.restrictTo("craftsman"),
+  restrictTo("craftsman"),
   profileController.removePortfolioItem
 );
 
@@ -60,8 +57,8 @@ router.delete(
 router
   .route("/my-reviews")
   .get(
-    authController.restrictTo("client", "craftsman"),
-    authController.loadCraftsmanProfile,
+    restrictTo("client", "craftsman"),
+    loadCraftsmanProfile,
     reviewController.getMyReviews
   );
 
@@ -69,9 +66,9 @@ router
 router
   .route("/my-bookings")
   .get(
-    authController.restrictTo("client", "craftsman"),
-    authController.loadCraftsmanProfile,
-    authController.setLoggedId,
+    restrictTo("client", "craftsman"),
+    loadCraftsmanProfile,
+    setLoggedId,
     bookingController.getAllBookings
   );
 

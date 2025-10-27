@@ -1,31 +1,24 @@
 const express = require("express");
 const reviewController = require("../controllers/reviewController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
+const checkOwnership = require("../middlewares/auth/checkOwnership");
 const Review = require("../models/reviewModel");
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
 
-router.use(authController.protect);
+router.use(protect);
 
 router
   .route("/")
   .get(reviewController.getAllReviews)
-  .post(
-    authController.restrictTo("client"),
-    reviewController.createBookingReview
-  );
+  .post(restrictTo("client"), reviewController.createBookingReview);
 
 router
   .route("/:id")
   .get(reviewController.getReview)
-  .patch(
-    authController.checkOwnerShip(Review, ["client"]),
-    reviewController.updateReview
-  )
-  .delete(
-    authController.checkOwnerShip(Review, ["client"]),
-    reviewController.deleteReview
-  );
+  .patch(checkOwnership(Review, ["client"]), reviewController.updateReview)
+  .delete(checkOwnership(Review, ["client"]), reviewController.deleteReview);
 
 module.exports = router;

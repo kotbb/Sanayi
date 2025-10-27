@@ -93,10 +93,60 @@ const craftsmanSchema = new mongoose.Schema(
 
 craftsmanSchema.index({ specializations: 1 });
 craftsmanSchema.index({ hourlyRate: 1 });
+craftsmanSchema.index({ user: 1 });
+craftsmanSchema.index({ ratingsAverage: -1 }); // For sorting by rating (descending)
+craftsmanSchema.index({ ratingsQuantity: -1 }); // For sorting by number of reviews
+craftsmanSchema.index({ specializations: 1, ratingsAverage: -1 }); // Compound: category + rating
+craftsmanSchema.index({ specializations: 1, hourlyRate: 1 }); // Compound: category + price
+craftsmanSchema.index({ createdAt: -1 }); // For sorting by newest craftsmen
 
 craftsmanSchema.pre(/^find/, function (next) {
   this.select("-__v");
+  const selectOptions = this.getOptions().select;
+  if (selectOptions && selectOptions.includes("-specializations")) {
+    return next();
+  }
   this.populate({ path: "specializations", select: "name" });
+  next();
+});
+
+// Simple post-hook to filter out craftsmen with null users
+craftsmanSchema.post(/^find/, function (docs, next) {
+  if (Array.isArray(docs)) {
+    const filteredDocs = docs.filter((doc) => doc.user !== null);
+    docs.splice(0, docs.length, ...filteredDocs);
+  } else if (docs && docs.user === null) {
+    docs = null;
+  }
+  next();
+});
+
+// Pre-save validation to ensure user exists and has craftsman role
+craftsmanSchema.pre("save", async function (next) {
+  if (this.isNew) {
+    const user = await User.findById(this.user);
+    if (!user) {
+      return next(new Error("User not found"));
+    }
+    if (user.role !== "craftsman") {
+      return next(new Error("User must have craftsman role"));
+    }
+  }
+  next();
+});
+
+// Pre-findOneAndUpdate validation
+craftsmanSchema.pre("findOneAndUpdate", async function (next) {
+  const update = this.getUpdate();
+  if (update.user) {
+    const user = await User.findById(update.user);
+    if (!user) {
+      return next(new Error("User not found"));
+    }
+    if (user.role !== "craftsman") {
+      return next(new Error("User must have craftsman role"));
+    }
+  }
   next();
 });
 
@@ -111,8 +161,6 @@ craftsmanSchema.pre("findOneAndDelete", async function (next) {
     next(err);
   }
 });
-
-craftsmanSchema.index({ user: 1 });
 
 const Craftsman = mongoose.model("Craftsman", craftsmanSchema);
 

@@ -1,16 +1,14 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const app = require("./app");
-const mongoose = require("mongoose");
+const connectDB = require("./config/database");
+const { connectRedis } = require("./config/redis");
 
 // Database connection
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
-mongoose.connect(DB).then(() => {
-  console.log("DB connection successful");
-});
+connectDB();
+
+// Redis connection
+connectRedis();
 
 // Listen to the port
 const PORT = process.env.PORT || 3000;

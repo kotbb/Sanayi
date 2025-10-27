@@ -38,6 +38,11 @@ const bookingSchema = new mongoose.Schema(
 
 bookingSchema.index({ craftsman: 1, date: -1 });
 bookingSchema.index({ client: 1, date: -1 });
+bookingSchema.index({ status: 1 }); // For filtering by booking status
+bookingSchema.index({ craftsman: 1, status: 1, date: -1 }); // Compound: craftsman + status + date
+bookingSchema.index({ client: 1, status: 1, date: -1 }); // Compound: client + status + date
+bookingSchema.index({ date: 1, time: 1 }); // For date/time range queries
+bookingSchema.index({ createdAt: -1 }); // For sorting by newest bookings
 
 bookingSchema.virtual("review", {
   ref: "Review",

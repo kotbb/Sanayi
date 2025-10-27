@@ -1,35 +1,34 @@
 const express = require("express");
 const bookingController = require("../controllers/bookingController");
-const authController = require("../controllers/authController");
+const protect = require("../middlewares/auth/protect");
+const restrictTo = require("../middlewares/auth/restrictTo");
+const checkOwnership = require("../middlewares/auth/checkOwnership");
 const reviewRoute = require("./reviewRoute");
 const Booking = require("../models/bookingModel");
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
-router.use(authController.protect);
+router.use(protect);
 
 router.use("/:bookingId/reviews", reviewRoute);
 
 router
   .route("/")
-  .get(authController.restrictTo("admin"), bookingController.getAllBookings)
-  .post(
-    authController.restrictTo("client", "admin"),
-    bookingController.createBooking
-  );
+  .get(restrictTo("admin"), bookingController.getAllBookings)
+  .post(restrictTo("client", "admin"), bookingController.createBooking);
 
 router
   .route("/:id")
   .get(
-    authController.checkOwnerShip(Booking, ["client", "craftsman"]),
+    checkOwnership(Booking, ["client", "craftsman"]),
     bookingController.getBooking
   )
   .patch(
-    authController.checkOwnerShip(Booking, ["client", "craftsman"]),
+    checkOwnership(Booking, ["client", "craftsman"]),
     bookingController.updateBooking
   )
   .delete(
-    authController.checkOwnerShip(Booking, ["client", "craftsman"]),
+    checkOwnership(Booking, ["client", "craftsman"]),
     bookingController.deleteBooking
   );
 
