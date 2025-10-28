@@ -1,0 +1,121 @@
+.img{
+    text-align: center;
+}
+.img img{
+    width: 600px;
+    height: 600px;
+}
+.splash-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.content{
+    text-align:center;
+    
+}
+
+.content h1{
+ font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: fadeIn 2s ease;
+}
+.content h3{
+margin-top: 8px;
+font-size: 32px;
+font-weight: 300;
+font-size: 32px;
+color: #1951c0;
+animation: fadeIn 3s ease;
+}
+.content h5{
+margin-top: 6px;
+font-size: 22px;
+width: 600px;
+font-weight: 300;
+}
+/* ✨ الأساس */
+.splash-content {
+  position: relative;
+  text-align: center;
+  padding: 60px;
+  transition: filter 0.3s ease;
+}
+
+/* ✨ عند ظهور واجهة تسجيل الدخول */
+.splash-content.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ✅ خلفية Overlay لواجهة تسجيل الدخول */
+.login-overlay {
+ position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* شفافية أقل للخلفية */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ✅ تصميم نافذة تسجيل الدخول */
+.login-popup {
+  background: rgba(255, 255, 255, 0.3); /* شفاف قليلاً */
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  max-width: 90%;
+  position: relative;
+  backdrop-filter: blur(5px); /* بلور خفيف للفورم */
+  animation: popup 0.3s ease-in-out;
+}
+.login-popup input:focus {
+  outline: none;
+  border: 2px solid #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* ✨ حركة ناعمة عند الظهور */
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ✅ زر Login في الـ Splash */
+.btn-show-login {
+  margin-top: 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-show-login:hover {
+  background-color: #357abd;
+  transform: scale(1.05);
+}
+
+/* animation */
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

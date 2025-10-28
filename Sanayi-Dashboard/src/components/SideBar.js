@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus, faUsers, faUsersGear, faArrowRightFromBracket, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { themModeContext } from "../pages/WebSite/Context/ThemeModeContext";
+import "../styles/AsideBar.css"
 
 export default function SideBar() {
   const { darkMode } = useContext(themModeContext);

@@ -1,0 +1,99 @@
+/* ✅ خلفية الصفحة العامة لتسجيل الدخول */
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 28px; /* أكبر */
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: 0.3s;
+}
+.close-btn:hover {
+  color: #ff0000;
+}
+
+/* ✅ صندوق تسجيل الدخول الأساسي */
+.login-content {
+
+  animation: fadeIn 0.8s ease; /* ✅ تأثير دخول ناعم */
+}
+
+.login-content h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1e3a8a; /* ✅ لون رئيسي متناسق مع الهيدر */
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* ✅ تصميم موحد لكل مجموعة إدخال */
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* ✅ تنسيق حقول الإدخال */
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+/* ✅ عند التركيز على الحقل */
+.input-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+/* ✅ تنسيق الخطأ في الإدخال */
+.error-field {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+}
+
+/* ✅ نص الخطأ */
+.error-text {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* ✅ زر تسجيل الدخول */
+.btn-login-form {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ✅ تأثير عند المرور */
+.btn-login-form:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}

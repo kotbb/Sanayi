@@ -5,6 +5,7 @@ import {
   CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from "recharts";
 import { FaUsers, FaMoneyBillWave, FaClipboardCheck, FaStar } from "react-icons/fa";
+import "../../styles/Reborts.css"
 
 
 export default function Reports() {

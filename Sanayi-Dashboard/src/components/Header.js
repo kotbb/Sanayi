@@ -1,23 +1,21 @@
-import "../style.css"
+import "../styles/header.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon,faSun } from "@fortawesome/free-solid-svg-icons";
-import Cookie from "cookie-universal";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { themModeContext } from "../pages/WebSite/Context/ThemeModeContext";
 import { login } from "../pages/WebSite/Context/LoginContext";
+import { AuthContext } from "../pages/WebSite/Context/AuthContext";
 
-export default function Header(){
-  const {darkMode,setDarkMode}=useContext(themModeContext)
-  const {showLogin,setShowLogin}=useContext(login);
-    const cookie=Cookie()
-     const token=cookie.get("token")
-     console.log(token,"header");
-     console.log("the state show login:",showLogin);
-    return(
-     <header className={`header ${darkMode ? "dark" : ""}`}>
+export default function Header() {
+  const { darkMode, setDarkMode } = useContext(themModeContext);
+  const { showLogin, setShowLogin } = useContext(login);
+  const { token } = useContext(AuthContext); // ✅ استخدم الـ Context
+
+  return (
+    <header className={`header ${darkMode ? "dark" : ""}`}>
       <nav className="navbar">
-        {/* webSite Logo*/}
+        {/* شعار الموقع */}
         <div className="logo">
           <img
             src={require("../Assest/logo.png")}
@@ -26,9 +24,9 @@ export default function Header(){
           />
         </div>
 
-        {/* الجهة اليمنى */}
+        {/* الجانب الأيمن */}
         <div className="right-space">
-          {/* DarkMode*/}
+          {/* تبديل الوضع الليلي */}
           <button
             className="icon-btn"
             onClick={() => setDarkMode(!darkMode)}
@@ -37,25 +35,23 @@ export default function Header(){
             <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
           </button>
 
-          {/* ✅ شرط عرض الأزرار حسب حالة التوكن */}
-{!token ? (
-  // 🔹 إذا لا يوجد توكن → أظهر زر تسجيل الدخول
-  <Link
-    onClick={() => setShowLogin(true)}
-    to=""
-    className={`btn-login ${darkMode ? "dark" : ""}`}
-  >
-    Login
-  </Link>
-) : (
-  // 🔹 إذا يوجد توكن → أظهر زر الذهاب للموقع
-  <Link
-    to="/"
-    className={`btn-login ${darkMode ? "dark" : ""}`}
-  >
-    Go To Website
-  </Link>
-)}
+          {/* عرض الأزرار حسب حالة التوكن */}
+          {!token ? (
+            <Link
+              onClick={() => setShowLogin(true)}
+              to=""
+              className={`btn-login ${darkMode ? "dark" : ""}`}
+            >
+              Login
+            </Link>
+          ) : (
+            <Link
+              to="/"
+              className={`btn-login ${darkMode ? "dark" : ""}`}
+            >
+              Go To Website
+            </Link>
+          )}
         </div>
       </nav>
     </header>

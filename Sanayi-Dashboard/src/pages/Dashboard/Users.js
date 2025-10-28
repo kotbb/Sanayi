@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { getTokens, setEncryptedCookie } from "../../utils/SecureCookies";
 import Footer from "../../components/Footer";
+import "../../styles/Users.css"
 
 export default function Users() {
   const [allUsers, setAllUsers] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [updatingIds, setUpdatingIds] = useState(new Set());
 
   const { token, refreshToken } = getTokens();
 
@@ -77,7 +79,7 @@ export default function Users() {
 
   // 🔄 كل 9 دقائق يتم التجديد تلقائيًا
   useEffect(() => {
-    const interval = setInterval(refreshTokens, 9 * 60 * 1000);
+    const interval = setInterval(refreshTokens, 10 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 

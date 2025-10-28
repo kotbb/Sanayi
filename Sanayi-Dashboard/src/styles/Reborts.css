@@ -1,0 +1,140 @@
+/* 🌙 تنسيق عام للصفحة */
+.reports-page {
+  padding: 40px;
+  background: #f8f9fa;
+  min-height: 100vh;
+  color: #333;
+  font-family: "Cairo", sans-serif;
+  transition: background 0.3s ease-in-out;
+}
+
+/* 🔹 العنوان */
+.reports-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #007bff;
+  position: relative;
+}
+
+.reports-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #007bff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* 🔹 الكروت */
+.reports-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.report-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.report-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.icon.users {
+  color: #007bff;
+}
+.icon.revenue {
+  color: #28a745;
+}
+.icon.completed {
+  color: #17a2b8;
+}
+.icon.ratings {
+  color: #ffc107;
+}
+
+.report-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.report-card p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* 🔹 قسم الشارت */
+.chart-section {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.chart-section h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* ✨ تحسين التجاوب */
+@media (max-width: 768px) {
+  .reports-page {
+    padding: 20px;
+  }
+
+  .report-card {
+    padding: 20px;
+  }
+
+  .chart-section {
+    width: 100%;
+  }
+}
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 25px;
+  padding: 0 10px;
+}
+
+.chart-section {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.chart-section:hover {
+  transform: scale(1.02);
+}
+
+.chart-section h2 {
+  font-size: 1.3rem;
+  color: #007bff;
+  margin-bottom: 15px;
+  font-weight: 600;
+}

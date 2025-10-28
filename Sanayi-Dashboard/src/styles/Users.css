@@ -1,0 +1,124 @@
+.table-container {
+  padding: 20px 25px;
+  overflow-x: auto;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-color, #fff); /* يدعم Dark Mode */
+  color: var(--text-color, #000);
+  transition: all 0.3s ease;
+}
+
+.table-container.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f5f5f5;
+}
+
+/* ==============================
+   التابات والفلاتر
+   ============================== */
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--tab-bg, #fff);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 0.1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.title.dark {
+  --tab-bg: #2b2b2b;
+  border-color: #444;
+}
+
+/* التابات */
+.tabs button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #f2f4f7;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.title.dark .tabs button {
+  background: #3a3a3a;
+  color: #ccc;
+}
+
+.tabs button.active {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: #fff;
+}
+
+/* البحث */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #f2f4f7;
+  padding: 6px 12px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+.title.dark .search-box {
+  background: #3a3a3a;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: inherit; /* اللون يتغير حسب Dark Mode */
+}
+
+/* ==============================
+   الجدول
+   ============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+table.dark th {
+  background: #555;
+  color: #fff;
+}
+
+table.dark td {
+  background: #2b2b2b;
+  color: #f5f5f5;
+  border-color: #444;
+}
+
+/* ==============================
+   زر تجديد التوكن
+   ============================== */
+.refresh-btn {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}

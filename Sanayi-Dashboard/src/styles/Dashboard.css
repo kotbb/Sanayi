@@ -1,0 +1,36 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.dashboard.dark {
+  background-color: #0f172a;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 20px; /* نفس عرض السايدبار */
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* تحسينات للعرض على الشاشات المختلفة */
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .dashboard.sidebar-collapsed .dashboard-content {
+    margin-left: 0;
+  }
+}
+
+/* تحسينات عامة للمحتوى */
+.dashboard-content > * {
+  animation: fadeInUp 0.5s ease;
+}

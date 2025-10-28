@@ -6,6 +6,7 @@ import LoadingSubmit from "../../Loading/Loading";
 import { baseURL } from "../../../Api/Api";
 import { LOGIN } from "../../../Api/Api";
 import { saveTokens } from "../../../utils/SecureCookies";
+import "../../../styles/Login.css"
 export default function Login({ closeForm }){
     const [phoneNumber,setPhoneNumber] =useState("");
     const [password,setPassword]=useState("");

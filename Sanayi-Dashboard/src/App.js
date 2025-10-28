@@ -16,6 +16,11 @@ import UpdateUsers from "./pages/Dashboard/UpdateUsers";
 import Bookings from "./pages/Dashboard/Bookings";
 import LogOut from "./pages/WebSite/Auth/LogOut";
 import Reborts from "./pages/Dashboard/Reborts";
+import "react-toastify/dist/ReactToastify.css";
+import "./styles/ToastifyCustom.css";
+
+
+
 
 function App() {
   return ( 

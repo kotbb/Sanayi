@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare,faTrash} from "@fortawesome/free-solid-svg-icons";
 import UpdateUsers from "./UpdateUsers";
 import { getTokens } from "../../utils/SecureCookies";
+import { toast } from "react-toastify"; // اختياري لإشعارات جميلة
+import { baseURL } from "../../Api/Api";
+
 
 export default function MangmentUsers() {
   // حالات (States)
@@ -15,6 +18,8 @@ export default function MangmentUsers() {
   const [refreshUseEffecr,setRefreshUseEffect] = useState(0)
   const [selectedUser, setSelectedUser] = useState(null); // المستخدم الذي سنعدله
   const [isEditing, setIsEditing] = useState(false); // هل الفورم مفتوحة أم لا
+  const [updatingIds, setUpdatingIds] = useState(new Set());
+
   const { token } = getTokens();
   //get All users
   useEffect(() => {
@@ -25,6 +30,7 @@ export default function MangmentUsers() {
         },
       })
       .then((res) => {
+        console.log(res);
         const allUsersArray = res.data.data.data
         console.log(allUsersArray);
         setAllUsers(allUsersArray);
@@ -91,6 +97,60 @@ function handleEdit(user) {
   setSelectedUser(user);
   setIsEditing(true);
 }
+async function toggleActive(userId, currentStatus) {
+  const updatedStatus = !currentStatus;
+
+  // منع النقرات المتكررة: إذا يتم تحديث هذا الـ id الآن، تجاهل الطلب
+  if (updatingIds.has(userId)) return;
+
+  // أضف id لمجموعة التحديث
+  setUpdatingIds(prev => new Set(prev).add(userId));
+
+  // احفظ نسخة قديمة للقيام بالـ rollback لو فشل
+  const prevUsers = [...allUsers];
+
+  // 1) تحديث فوري (optimistic)
+  setAllUsers(prev => prev.map(u => u._id === userId ? { ...u, isActive: updatedStatus } : u));
+
+  try {
+    // 2) إرسال الطلب للباك
+    const res = await axios.patch(
+      `${baseURL}/users/${userId}`,
+      { isActive: updatedStatus },
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+
+    // 3) في حال رَدّ الباك بيانات محدثة: استبدال محليًا (أمنيّة أعلى)
+    if (res.data && res.data.data && res.data.data.user) {
+      const serverUser = res.data.data.user;
+      setAllUsers(prev => prev.map(u => u._id === userId ? serverUser : u));
+    }
+
+    toast && toast.success("تم تحديث حالة المستخدم بنجاح");
+  } catch (err) {
+    // 4) rollback: إعادة الحالة القديمة
+    setAllUsers(prevUsers);
+
+    // عرض رسالة خطأ مناسبة
+    console.error("خطأ في تحديث الحالة:", err);
+    if (err.response) {
+      // خطأ من السيرفر
+      toast && toast.error(err.response.data?.message || "فشل تحديث الحالة");
+    } else {
+      // خطأ شبكة
+      toast && toast.error("خطأ في الشبكة. حاول مرة أخرى.");
+    }
+  } finally {
+    // 5) إزالة الـ id من حالة التحديث
+    setUpdatingIds(prev => {
+      const s = new Set(prev);
+      s.delete(userId);
+      return s;
+    });
+  }
+}
 
 
   return (
@@ -140,7 +200,7 @@ function handleEdit(user) {
             <th>Name</th>
             <th>Phone Number</th>
             <th>Role</th>
-            <th>Delete</th>
+            <th>Action</th>
             
           </tr>
         </thead>
@@ -152,7 +212,37 @@ function handleEdit(user) {
                 <td>{i.name}</td>
                 <td>{i.phoneNumber}</td>
                 <td>{i.role}</td>
-                <td><span onClick={()=>deleteCraftMan(i.id)}><FontAwesomeIcon icon={faTrash}style={{color:"red",cursor:"pointer",fontSize:"22px"}}/></span><span onClick={() => handleEdit(i)}><FontAwesomeIcon icon={faPenToSquare}style={{color:"blue",cursor:"pointer",fontSize:"22px"}} /></span></td>
+                
+                <td>
+  {/* ✅ Switch حالة المستخدم */}
+  <label className="switch">
+    <input
+      type="checkbox"
+      checked={i.isActive}
+      onChange={() => toggleActive(i._id, i.isActive)}
+
+      
+    />
+    <span className="slider"></span>
+  </label>
+
+  {/* 🗑️ حذف */}
+  <span onClick={() => deleteCraftMan(i.id)}>
+    <FontAwesomeIcon
+      icon={faTrash}
+      style={{ color: "red", cursor: "pointer", fontSize: "22px", marginRight: "10px" }}
+    />
+  </span>
+
+  {/* ✏️ تعديل */}
+  <span onClick={() => handleEdit(i)}>
+    <FontAwesomeIcon
+      icon={faPenToSquare}
+      style={{ color: "blue", cursor: "pointer", fontSize: "22px" }}
+    />
+  </span>
+</td>
+
               </tr>
             ))
           ) : (

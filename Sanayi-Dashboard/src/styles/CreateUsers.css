@@ -1,0 +1,114 @@
+/* 🧭 الصفحة بالكامل */
+.create-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #dfe1e4, #6b21a8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* 🏷️ العنوان */
+.create-title {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* 🧾 الفورم */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 🎯 كل مجموعة */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 🏷️ اللابل */
+.form-group label {
+  font-weight: 500;
+  font-size: 15px;
+  color: #f0f0f0;
+}
+
+/* ✏️ الحقول */
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+/* ✨ تأثير التركيز */
+.form-group input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+
+/* 👥 الراديو */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* 🔘 زر الإرسال */
+.submit-btn {
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #4338ca;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
+  transform: translateY(-2px);
+}
+
+/* ✨ الحركات */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { themModeContext } from "./WebSite/Context/ThemeModeContext";
 import Login from "./WebSite/Auth/Login";
 import { login } from "./WebSite/Context/LoginContext";
-
+import "../styles/Splash.css"
 export default function Splash() {
   const { darkMode } = useContext(themModeContext);
   const { showLogin, setShowLogin } = useContext(login); // نحتاج setShowLogin للزر X

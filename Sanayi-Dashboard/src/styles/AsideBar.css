@@ -1,0 +1,84 @@
+.aside-bar-contaner{
+  height: 100vh;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  
+}
+
+.aside-bar-contaner.dark {
+  background: #1f1f1f;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  height: 100vh;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.sidebar.dark {
+  background: #2b2b2b;
+  border-color: #444;
+}
+/* Dashboard Container */
+
+/* Dashboard Content */
+
+
+/* القائمة */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin: 10px;
+  border-radius: 12px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: transparent;
+  text-decoration: none;
+}
+
+/* Hover */
+.menu li:hover {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+  transform: translateY(-1px);
+}
+a{
+  text-decoration: none;
+}
+
+/* العنصر النشط */
+.menu li.active {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+/* Dark Mode Hover & Active */
+.aside-bar-contaner.dark .menu li:hover {
+  background: #357abd;
+  color: #fff;
+}
+
+.aside-bar-contaner.dark .menu li.active {
+  background: #4a90e2;
+  color: #fff;
+}

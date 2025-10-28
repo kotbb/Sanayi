@@ -1,0 +1,37 @@
+/* ToastifyCustom.css */
+
+/* تعديل مظهر الصندوق */
+.Toastify__toast {
+  border-radius: 12px;
+  font-family: "Cairo", sans-serif;
+  font-size: 15px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* لون التوست الناجح */
+.Toastify__toast--success {
+  background: linear-gradient(90deg, #28a745, #4caf50);
+  color: #fff;
+}
+
+/* لون التوست الخاص بالأخطاء */
+.Toastify__toast--error {
+  background: linear-gradient(90deg, #dc3545, #ff4757);
+  color: #fff;
+}
+
+/* لون التوست التحذيري */
+.Toastify__toast--warning {
+  background: linear-gradient(90deg, #ffc107, #ffb347);
+  color: #000;
+}
+
+/* تحسين شكل الزر × للإغلاق */
+.Toastify__close-button {
+  color: #fff;
+  opacity: 0.9;
+}
+.Toastify__close-button:hover {
+  opacity: 1;
+}

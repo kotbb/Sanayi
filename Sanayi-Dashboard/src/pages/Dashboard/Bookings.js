@@ -45,6 +45,7 @@ export default function Bookings() {
           Authorization: `Bearer ${token}`,
         },
       });
+      
 
       //update list for delete
       setAllBookings((prev) => prev.filter((item) => item._id !== id));
@@ -59,7 +60,7 @@ export default function Bookings() {
 
   return (
     <div className="bookings-page">
-      <h2>قائمة الطلبات</h2>
+      <h2>Bookings List</h2>
       {loading && <p>The operation is in progress...</p>}
 
       <table>

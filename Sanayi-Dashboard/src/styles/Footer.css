@@ -1,0 +1,51 @@
+.footer {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.footer-content h1 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.socialMedia-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.socialMedia-icons .icon {
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* Hover effect */
+.socialMedia-icons .icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Individual color accents */
+.socialMedia-icons .whatsapp:hover { color: #25D366; }
+.socialMedia-icons .telegram:hover { color: #0088cc; }
+.socialMedia-icons .github:hover { color: #fff; background: #333; }
+.socialMedia-icons .gmail:hover { color: #D44638; }
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

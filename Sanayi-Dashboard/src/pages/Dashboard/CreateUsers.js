@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseURL, CREATEUSERS } from "../../Api/Api";
- import { getTokens } from "../../utils/SecureCookies";
+import { getTokens } from "../../utils/SecureCookies";
+import "../../styles/CreateUsers.css"
 export default function CreateUsers() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");

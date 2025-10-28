@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getTokens } from "../../utils/SecureCookies";
+import "../../styles/UpdateUsers.css"
 
 export default function UpdateUsers({
   selectedUser,
