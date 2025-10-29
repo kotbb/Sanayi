@@ -1,4 +1,4 @@
-const createOTP = require("../utils/createOTP");
+const otpService = require("./otpService");
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
 //------------------------------------------------------
@@ -9,7 +9,7 @@ const initiatePhoneUpdate = async (newPhoneNumber) => {
     throw new AppError("Phone number already in use", 400);
   }
 
-  const { otp } = await createOTP(newPhoneNumber);
+  const { otp } = await otpService.createOTPDev(newPhoneNumber);
   return { otp };
 };
 

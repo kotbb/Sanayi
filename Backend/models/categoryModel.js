@@ -24,9 +24,14 @@ const categorySchema = new mongoose.Schema(
 );
 
 categorySchema.index({ isActive: 1 }); // For filtering active categories
+categorySchema.index({ name: 1 }); // For filtering categories by name
 
 categorySchema.pre(/^find/, function (next) {
   this.select("-__v");
+  // # for ADMINS only: If includeInactive is true, include inactive categories
+  if (this.getOptions() && this.getOptions().includeInactive) {
+    return next();
+  }
   this.find({ isActive: { $ne: false } });
   next();
 });

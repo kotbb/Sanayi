@@ -13,6 +13,11 @@ const bookingSchema = new mongoose.Schema(
       ref: "Craftsman",
       required: [true, "Booking must belong to a craftsman."],
     },
+    price: {
+      type: Number,
+      required: [true, "Booking must have a price."],
+      min: [0, "Price must be greater than 0"],
+    },
     date: {
       type: Date,
       required: [true, "Booking must have a date."],

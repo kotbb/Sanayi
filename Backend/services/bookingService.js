@@ -2,23 +2,12 @@ const Booking = require("../models/bookingModel");
 const AppError = require("../utils/appError");
 const filterObj = require("../utils/filterObject");
 
-const createBooking = async (bookingData, userId, userRole) => {
-  if (userRole === "client") {
-    if (bookingData.client !== userId) {
-      throw new AppError("You cannot create bookings for other clients", 400);
-    }
-  }
-
+const createBooking = async (bookingData) => {
   const newBooking = await Booking.create(bookingData);
   return newBooking;
 };
 
-const updateBooking = async (bookingId, updateData, allowedFields) => {
-  const booking = await Booking.findById(bookingId);
-  if (!booking) {
-    throw new AppError("No booking found with that ID", 404);
-  }
-
+const updateBooking = async (booking, updateData, allowedFields) => {
   const filteredBody = filterObj(updateData, ...allowedFields);
   Object.assign(booking, filteredBody);
 
@@ -26,11 +15,8 @@ const updateBooking = async (bookingId, updateData, allowedFields) => {
   return updatedBooking;
 };
 
-const deleteBooking = async (bookingId) => {
-  const booking = await Booking.findByIdAndDelete(bookingId);
-  if (!booking) {
-    throw new AppError("No booking found with that ID", 404);
-  }
+const deleteBooking = async (booking) => {
+  await booking.deleteOne();
   return booking;
 };
 

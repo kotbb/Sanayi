@@ -11,11 +11,18 @@ const {
 //---------------------------------------------------
 
 const createBookingReview = catchAsync(async (req, res, next) => {
-  const newReview = await reviewService.createBookingReview(
-    req.body,
-    req.params.bookingId,
-    req.user.id
-  );
+  let newReview;
+  if (req.user.role === "admin") {
+    // For admin: need to provide craftsmanId, clientId, bookingId in request body
+    newReview = await reviewService.createReviewAdmin(req.body);
+  } else {
+    // For client: bookingId comes from URL params, clientId from authenticated user
+    newReview = await reviewService.createReviewClient(
+      req.body,
+      req.params.bookingId,
+      req.user.id
+    );
+  }
 
   res.status(201).json({
     status: "success",
@@ -25,14 +32,8 @@ const createBookingReview = catchAsync(async (req, res, next) => {
   });
 });
 
-const getAllReviews = factory.getAll(
-  Review,
-  reviewPopOptions
-);
-const getReview = factory.getOne(
-  Review,
-  reviewPopOptions
-);
+const getAllReviews = factory.getAll(Review, reviewPopOptions);
+const getReview = factory.getOne(Review, reviewPopOptions);
 
 const getMyReviews = catchAsync(async (req, res, next) => {
   let filter = {};

@@ -112,13 +112,17 @@ craftsmanSchema.pre(/^find/, function (next) {
 
 // Simple post-hook to filter out craftsmen with null users
 craftsmanSchema.post(/^find/, function (docs, next) {
-  if (Array.isArray(docs)) {
-    const filteredDocs = docs.filter((doc) => doc.user !== null);
-    docs.splice(0, docs.length, ...filteredDocs);
-  } else if (docs && docs.user === null) {
-    docs = null;
+  // # for ADMINS only: If includeInactive is true, include inactive craftsmen 
+  if (this.getOptions() && this.getOptions().includeInactive) {
+    return next();
   }
-  next();
+  if (Array.isArray(docs)) {
+     const filteredDocs = docs.filter((doc) => doc.user !== null);
+     docs.splice(0, docs.length, ...filteredDocs);
+   } else if (docs && docs.user === null) {
+     docs = null;
+   }
+   next();
 });
 
 // Pre-save validation to ensure user exists and has craftsman role

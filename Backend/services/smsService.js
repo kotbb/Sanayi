@@ -13,11 +13,6 @@ const sendSMS = async (params) => {
   });
 };
 
-const sendOTP = async (phoneNumber, otp) => {
-  await sendSMS({ phoneNumber, otp });
-};
-
 module.exports = {
   sendSMS,
-  sendOTP,
 };

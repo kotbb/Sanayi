@@ -18,6 +18,7 @@ const reviewRoute = require("./routes/reviewRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const authRoute = require("./routes/authRoute");
 const companyRoute = require("./routes/companyRoute");
+const reportRoute = require("./routes/reportRoute");
 //----------------------------------------------------------------------
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -73,6 +74,7 @@ app.use("/api/bookings", bookingRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/companies", companyRoute);
+app.use("/api/reports", reportRoute);
 
 // Global Route Handler
 app.all("*", globalRouteHandler);

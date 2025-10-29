@@ -2,7 +2,40 @@ const Review = require("../models/reviewModel");
 const Booking = require("../models/bookingModel");
 const AppError = require("../utils/appError");
 
-const createBookingReview = async (reviewData, bookingId, clientId) => {
+const createReviewAdmin = async (reviewData) => {
+  const { craftsmanId, clientId, bookingId, rating, comment } = reviewData;
+
+  const booking = await Booking.findById(bookingId);
+  if (!booking) {
+    throw new AppError("This booking does not exist.", 404);
+  }
+  if (booking.client._id.toString() !== clientId) {
+    throw new AppError("This client is not associated with this booking.", 403);
+  }
+  if (booking.craftsman._id.toString() !== craftsmanId) {
+    throw new AppError(
+      "This craftsman is not associated with this booking.",
+      403
+    );
+  }
+  const existingReview = await Review.findOne({ booking: bookingId });
+  if (existingReview) {
+    throw new AppError(
+      "You have already submitted a review for this booking.",
+      400
+    );
+  }
+  const newReview = await Review.create({
+    comment,
+    rating,
+    booking: bookingId,
+    client: clientId,
+    craftsman: craftsmanId,
+  });
+  return newReview;
+};
+
+const createReviewClient = async (reviewData, bookingId, clientId) => {
   const { comment, rating } = reviewData;
 
   const booking = await Booking.findById(bookingId);
@@ -87,7 +120,8 @@ const deleteReview = async (reviewId) => {
 };
 
 module.exports = {
-  createBookingReview,
+  createReviewAdmin,
+  createReviewClient,
   getReviewById,
   getAllReviews,
   getReviewsByCraftsman,

@@ -1,8 +1,7 @@
 const AppError = require("../utils/appError");
 const catchAsync = require("../middlewares/catchAsync");
 const authService = require("../services/authService");
-const createOTP = require("../utils/createOTP");
-const verifyOTP = require("../utils/verifyOTP");
+const otpService = require("../services/otpService");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const jwtUtils = require("../utils/jwtUtils");
@@ -65,7 +64,7 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
   }
 
   // Create OTP
-  const otp = await createOTP(phoneNumber);
+  const otp = await otpService.createOTPDev(phoneNumber);
 
   res.status(200).json({
     status: "success",
@@ -77,7 +76,7 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
 // Verify the register OTP
 const verifyRegisterOTP = catchAsync(async (req, res, next) => {
   const { otp, phoneNumber } = req.body;
-  await verifyOTP(otp, phoneNumber);
+  await otpService.verifyOTP(otp, phoneNumber);
 
   const registerationToken = jwtUtils.createAccessToken(
     phoneNumber,

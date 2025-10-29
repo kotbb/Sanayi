@@ -27,7 +27,6 @@ const createCraftsman = async (craftsmanData, userId) => {
   if (!user) {
     throw new AppError("User not found", 404);
   }
-  console.log(user);
 
   if (user.role !== "craftsman") {
     throw new AppError(
@@ -43,12 +42,13 @@ const createCraftsman = async (craftsmanData, userId) => {
   }
 
   // Convert specializations to IDs if provided
+  console.log("specializations before conversion", craftsmanData.specializations);
   if (craftsmanData.specializations) {
     craftsmanData.specializations = await convertSpecializationsToIds(
       craftsmanData.specializations
     );
   }
-
+  console.log("specializations after conversion", craftsmanData.specializations);
   // Ensure user field is set correctly
   craftsmanData.user = userId;
 

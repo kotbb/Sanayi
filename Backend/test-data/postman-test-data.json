@@ -1,0 +1,164 @@
+{
+  "bookings": [
+    {
+      "client": "69013ec49ee4157451caf5c6",
+      "craftsman": "690141d2723d446525d7d77c",
+      "date": "2024-10-15",
+      "time": "10:00",
+      "status": "completed",
+      "price": 750
+    },
+    {
+      "client": "69013ec49ee4157451caf5c5",
+      "craftsman": "690141d2723d446525d7d77c",
+      "date": "2024-11-16",
+      "time": "14:00",
+      "status": "completed",
+      "price": 600
+    },
+    {
+      "client": "69013ec49ee4157451caf5c7",
+      "craftsman": "690141cc723d446525d7d775",
+      "date": "2024-12-17",
+      "time": "09:00",
+      "status": "completed",
+      "price": 480
+    },
+    {
+      "client": "69013ec49ee4157451caf5c7",
+      "craftsman": "690141cc723d446525d7d775",
+      "date": "2025-01-18",
+      "time": "11:00",
+      "status": "completed",
+      "price": 360
+    },
+    {
+      "client": "69013ec49ee4157451caf5c8",
+      "craftsman": "690141c4723d446525d7d76e",
+      "date": "2025-02-19",
+      "time": "08:00",
+      "status": "completed",
+      "price": 1000
+    },
+    {
+      "client": "69013ec49ee4157451caf5c4",
+      "craftsman": "690141c4723d446525d7d76e",
+      "date": "2025-03-20",
+      "time": "13:00",
+      "status": "completed",
+      "price": 800
+    },
+    {
+      "client": "69013ec49ee4157451caf5c8",
+      "craftsman": "690141be723d446525d7d767",
+      "date": "2025-04-21",
+      "time": "15:00",
+      "status": "completed",
+      "price": 400
+    },
+    {
+      "client": "69013ec49ee4157451caf5c5",
+      "craftsman": "690141be723d446525d7d767",
+      "date": "2025-05-22",
+      "time": "10:00",
+      "status": "completed",
+      "price": 500
+    },
+    {
+      "client": "68ab8ffe92810d3a7bff38a5",
+      "craftsman": "690141ad723d446525d7d760",
+      "date": "2025-06-23",
+      "time": "12:00",
+      "status": "confirmed",
+      "price": 900
+    },
+    {
+      "client": "68ab8148bda4dd999f13b779",
+      "craftsman": "690141ad723d446525d7d760",
+      "date": "2025-07-24",
+      "time": "16:00",
+      "status": "confirmed",
+      "price": 720
+    },
+    {
+      "client": "68ab8ffe92810d3a7bff38a5",
+      "craftsman": "690141cc723d446525d7d775",
+      "date": "2025-08-25",
+      "time": "09:00",
+      "status": "pending",
+      "price": 600
+}
+  ],
+  "reviews": [
+    {
+      "craftsmanId": "690141c4723d446525d7d76e",
+      "clientId": "69013ec49ee4157451caf5c8",
+      "bookingId": "6901546096696e0ca8e59a0d",
+      "rating": 5,
+      "comment": "Excellent work! Very professional and completed the job on time. Highly recommended."
+    },
+    {
+      "craftsmanId": "690141d2723d446525d7d77c",
+      "clientId": "69013ec49ee4157451caf5c6",
+      "bookingId": "6901546096696e0ca8e59a09",
+      "rating": 4,
+      "comment": "Good quality work, but took a bit longer than expected. Still satisfied with the result."
+    },
+    {
+      "craftsmanId": "690141d2723d446525d7d77c",
+      "clientId": "69013ec49ee4157451caf5c5",
+      "bookingId": "6901546096696e0ca8e59a0a",
+      "rating": 5,
+      "comment": "Amazing craftsmanship! The wooden cabinet looks beautiful and fits perfectly."
+    },
+    {
+      "craftsmanId": "690141cc723d446525d7d775",
+      "clientId": "69013ec49ee4157451caf5c7",
+      "bookingId": "6901546096696e0ca8e59a0b",
+      "rating": 5,
+      "comment": "Perfect painting job! The colors look exactly as requested and the finish is smooth."
+    },
+    {
+      "craftsmanId": "690141cc723d446525d7d775",
+      "clientId": "69013ec49ee4157451caf5c7",
+      "bookingId": "6901546096696e0ca8e59a0c",
+      "rating": 4,
+      "comment": "Great HVAC installation. The system works perfectly and the house is much cooler now."
+    },
+    {
+      "craftsmanId": "690141be723d446525d7d767",
+      "clientId": "69013ec49ee4157451caf5c5",
+      "bookingId": "6901546096696e0ca8e59a10",
+      "rating": 5,
+      "comment": "Outstanding roof repair work! Fixed all the leaks and the roof looks brand new."
+    },
+    {
+      "craftsmanId": "690141ad723d446525d7d760",
+      "clientId": "68ab8ffe92810d3a7bff38a5",
+      "bookingId": "6901546096696e0ca8e59a11",
+      "rating": 3,
+      "comment": "Decent work, but communication could be better. The job was completed as requested."
+    },
+    {
+      "craftsmanId": "690141ad723d446525d7d760",
+      "clientId": "68ab8148bda4dd999f13b779",
+      "bookingId": "6901546096696e0ca8e59a12",
+      "rating": 4,
+      "comment": "Good bathroom renovation. The plumbing and carpentry work is solid."
+    },
+    {
+      "craftsmanId": "690141cc723d446525d7d775",
+      "clientId": "68ab8ffe92810d3a7bff38a5",
+      "bookingId": "6901546096696e0ca8e59a13",
+      "rating": 5,
+      "comment": "Fantastic smart home installation! Everything works perfectly and the setup was professional."
+    },
+    {
+      "craftsmanId": "690141c4723d446525d7d76e",
+      "clientId": "69013ec49ee4157451caf5c4",
+      "bookingId": "6901546096696e0ca8e59a0e",
+      "rating": 1,
+      "comment": "Great exterior painting job. The house looks fresh and the paint quality is excellent."
+    }
+  ]
+}

@@ -2,9 +2,8 @@ const catchAsync = require("../middlewares/catchAsync");
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");
-const verifyOTP = require("../utils/verifyOTP");
-const { createSendTokens} = require("../utils/jwtUtils");
-const createOTP = require("../utils/createOTP");
+const otpService = require("../services/otpService");
+const jwtUtils = require("../utils/jwtUtils");
 
 //---------------------------------------------------
 // Send the update phone number OTP
@@ -15,7 +14,7 @@ const sendUpdatePhoneOTP = catchAsync(async (req, res, next) => {
     return next(new AppError("New phone number is required", 400));
   }
 
-  await createOTP(newPhoneNumber);
+  await otpService.createOTPDev(newPhoneNumber);
   //await sendSMS({ phoneNumber: newPhoneNumber, otp });
 
   res.status(200).json({
@@ -28,7 +27,7 @@ const sendUpdatePhoneOTP = catchAsync(async (req, res, next) => {
 // Verify the update phone number OTP
 const verifyUpdatePhoneOTP = catchAsync(async (req, res, next) => {
   const { newPhoneNumber, otp } = req.body;
-  await verifyOTP(otp, newPhoneNumber);
+  await otpService.verifyOTP(otp, newPhoneNumber);
 
   const updatedUser = await User.findByIdAndUpdate(
     req.user._id,
@@ -42,7 +41,7 @@ const verifyUpdatePhoneOTP = catchAsync(async (req, res, next) => {
     }
   );
 
-  createSendTokens(updatedUser, 200, res);
+  jwtUtils.createSendTokens(updatedUser, 200, res);
 });
 
 //---------------------------------------------------

@@ -13,7 +13,7 @@ router.use(protect);
 router
   .route("/")
   .get(reviewController.getAllReviews)
-  .post(restrictTo("client"), reviewController.createBookingReview);
+  .post(restrictTo("client", "admin"), reviewController.createBookingReview);
 
 router
   .route("/:id")

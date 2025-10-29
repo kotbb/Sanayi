@@ -92,7 +92,10 @@ userSchema.virtual("craftsman", {
 
 userSchema.pre(/^find/, function (next) {
   this.select("-__v");
-  this.find({ isActive: { $ne: false } });
+  const options = this.getOptions ? this.getOptions() : {};
+  if (!options.includeInactive) {
+    this.find({ isActive: { $ne: false } });
+  }
   next();
 });
 
