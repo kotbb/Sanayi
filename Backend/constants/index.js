@@ -9,7 +9,6 @@ const USER_ROLES = {
 const BOOKING_STATUS = {
   PENDING: "pending",
   CONFIRMED: "confirmed",
-  IN_PROGRESS: "in-progress",
   COMPLETED: "completed",
   CANCELLED: "cancelled",
 };

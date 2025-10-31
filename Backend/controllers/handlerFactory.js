@@ -23,10 +23,14 @@ const updateOne = (Model) =>
       Object.assign(req.doc, req.body);
       doc = await req.doc.save();
     } else {
-      doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
+      let query = Model.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
       });
+      if (req.user && req.user.role === "admin") {
+        query = query.setOptions({ includeInactive: true });
+      }
+      doc = await query;
       if (!doc) {
         return next(new AppError("No document found with that ID", 404));
       }
@@ -46,8 +50,12 @@ const deleteOne = (Model) =>
     if (req.doc) {
       await req.doc.deleteOne();
     } else {
-      const doc = await Model.findByIdAndDelete(req.params.id);
-      if (!doc) {
+      let query = Model.findByIdAndDelete(req.params.id);
+      if(req.user && req.user.role === "admin") {
+        query = query.setOptions({ includeInactive: true });
+      }
+      const deletedDoc = await query;
+      if (!deletedDoc) {
         return next(new AppError("No document found with that ID", 404));
       }
     }
@@ -74,7 +82,6 @@ const getOne = (Model, popOptions) =>
 
       // If requesting Users or Craftsmen and requester is admin, include inactive users or craftsmen as well
       if (
-        (Model.modelName === "User" || Model.modelName === "Craftsman") &&
         req.user &&
         req.user.role === "admin"
       ) {
