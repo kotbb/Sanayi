@@ -1,8 +1,8 @@
-const catchAsync = require("../middlewares/catchAsync");
-const Booking = require("../models/bookingModel");
-const factory = require("./handlerFactory");
-const bookingService = require("../services/bookingService");
-const { bookingPopOptions } = require("../utils/popOptions");
+import catchAsync from "../middlewares/catchAsync.js";
+import Booking from "../models/bookingModel.js";
+import factory from "./handlerFactory.js";
+import bookingService from "../services/bookingService.js";
+import { bookingPopOptions } from "../utils/popOptions.js";
 //---------------------------------------------------
 
 /* Note: All the endpoints are protected by the checkOwnership middleware (update, delete, getById) 
@@ -49,7 +49,7 @@ const deleteBooking = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = {
+export default {
   getAllBookings,
   getBooking,
   createBooking,

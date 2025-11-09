@@ -1,6 +1,6 @@
-const AppError = require("../utils/appError");
+import AppError from "../utils/appError.js";
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   const err = new AppError(
     `Can't find ${req.originalUrl} on this server!`,
     404

@@ -1,9 +1,9 @@
-const express = require("express");
-const reviewController = require("../controllers/reviewController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const checkOwnership = require("../middlewares/auth/checkOwnership");
-const Review = require("../models/reviewModel");
+import express from "express";
+import reviewController from "../controllers/reviewController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import checkOwnership from "../middlewares/auth/checkOwnership.js";
+import Review from "../models/reviewModel.js";
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
@@ -21,4 +21,4 @@ router
   .patch(checkOwnership(Review, ["client"]), reviewController.updateReview)
   .delete(checkOwnership(Review, ["client"]), reviewController.deleteReview);
 
-module.exports = router;
+export default router;

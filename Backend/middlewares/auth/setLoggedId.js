@@ -7,4 +7,4 @@ const setLoggedId = (req, res, next) => {
   next();
 };
 
-module.exports = setLoggedId;
+export default setLoggedId;

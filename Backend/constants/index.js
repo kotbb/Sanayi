@@ -65,7 +65,7 @@ const REDIS_KEYS = {
   OTP_PREFIX: "otp:",
 };
 
-module.exports = {
+export {
   USER_ROLES,
   BOOKING_STATUS,
   API_STATUS,

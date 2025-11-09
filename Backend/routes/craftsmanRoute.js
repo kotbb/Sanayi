@@ -1,8 +1,8 @@
-const express = require("express");
-const craftsmanController = require("../controllers/craftsmanController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const reviewRoute = require("./reviewRoute");
+import express from "express";
+import craftsmanController from "../controllers/craftsmanController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import reviewRoute from "./reviewRoute.js";
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
@@ -24,4 +24,4 @@ router
     craftsmanController.deleteCraftsman
   );
 
-module.exports = router;
+export default router;

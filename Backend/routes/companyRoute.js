@@ -1,7 +1,7 @@
-const express = require("express");
-const companyController = require("../controllers/companyController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
+import express from "express";
+import companyController from "../controllers/companyController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
 const router = express.Router();
 
 router.use(protect);
@@ -16,4 +16,4 @@ router
   .patch(restrictTo("admin"), companyController.updateCompany)
   .delete(restrictTo("admin"), companyController.deleteCompany);
 
-module.exports = router;
+export default router;

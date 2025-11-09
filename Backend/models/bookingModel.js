@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Craftsman = require("./craftsmanModel");
+import mongoose from "mongoose";
+import Craftsman from "./craftsmanModel.js";
 
 const bookingSchema = new mongoose.Schema(
   {
@@ -79,4 +79,4 @@ bookingSchema.pre(/^find/, function (next) {
 
 const Booking = mongoose.model("Booking", bookingSchema);
 
-module.exports = Booking;
+export default Booking;

@@ -1,6 +1,6 @@
-const catchAsync = require("../middlewares/catchAsync");
-const AppError = require("../utils/appError");
-const APIFeatures = require("../middlewares/apiFeatures");
+import catchAsync from "../middlewares/catchAsync.js";
+import AppError from "../utils/appError.js";
+import APIFeatures from "../middlewares/apiFeatures.js";
 //---------------------------------------------------
 
 const createOne = (Model) =>
@@ -51,7 +51,7 @@ const deleteOne = (Model) =>
       await req.doc.deleteOne();
     } else {
       let query = Model.findByIdAndDelete(req.params.id);
-      if(req.user && req.user.role === "admin") {
+      if (req.user && req.user.role === "admin") {
         query = query.setOptions({ includeInactive: true });
       }
       const deletedDoc = await query;
@@ -81,10 +81,7 @@ const getOne = (Model, popOptions) =>
       let query = Model.findById(req.params.id);
 
       // If requesting Users or Craftsmen and requester is admin, include inactive users or craftsmen as well
-      if (
-        req.user &&
-        req.user.role === "admin"
-      ) {
+      if (req.user && req.user.role === "admin") {
         query = query.setOptions({ includeInactive: true });
       }
       if (popOptions) query = query.populate(popOptions);
@@ -141,10 +138,4 @@ const getAll = (Model, popOptions) =>
     });
   });
 
-module.exports = {
-  createOne,
-  getOne,
-  getAll,
-  updateOne,
-  deleteOne,
-};
+export default { createOne, getOne, getAll, updateOne, deleteOne };

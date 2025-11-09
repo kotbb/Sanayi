@@ -16,4 +16,4 @@ const flattenObject = (obj, parentKey = "", result = {}) => {
   return result;
 };
 
-module.exports = flattenObject;
+export default flattenObject;

@@ -1,7 +1,7 @@
-const express = require("express");
-const reportController = require("../controllers/reportController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
+import express from "express";
+import reportController from "../controllers/reportController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
 
 const router = express.Router();
 
@@ -23,4 +23,4 @@ router.get("/users/:period", reportController.getUserRegistrations);
 // Get total bookings by time period
 router.get("/bookings/:period", reportController.getTotalBookings);
 
-module.exports = router;
+export default router;

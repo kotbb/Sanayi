@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
-const parseTimeToMS = require("./parseTimeToMS");
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
+import parseTimeToMs from "./parseTimeToMs.js";
 
 //------------------------------------------------------
 
@@ -16,7 +16,7 @@ const createAccessToken = (
 const createRefreshToken = () => {
   const refreshToken = crypto.randomBytes(32).toString("hex");
   const refreshTokenExpiresAt = new Date(
-    Date.now() + parseTimeToMS(process.env.JWT_REFRESH_EXPIRES_IN)
+    Date.now() + parseTimeToMs(process.env.JWT_REFRESH_EXPIRES_IN)
   );
   return { refreshToken, refreshTokenExpiresAt };
 };
@@ -29,9 +29,9 @@ const getUserTokens = async (user) => {
   user.refreshTokenExpiresAt = refreshTokenExpiresAt;
   await user.save({ validateBeforeSave: false });
 
-
   return { user, accessToken, refreshToken };
 };
+
 const createSendTokens = async (user, statusCode, res) => {
   const {
     user: updatedUser,
@@ -51,9 +51,4 @@ const createSendTokens = async (user, statusCode, res) => {
   });
 };
 
-module.exports = {
-  createAccessToken,
-  createRefreshToken,
-  createSendTokens,
-  getUserTokens,
-};
+export default { createAccessToken, createRefreshToken, getUserTokens, createSendTokens };

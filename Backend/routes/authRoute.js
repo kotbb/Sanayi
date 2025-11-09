@@ -1,7 +1,7 @@
-const express = require("express");
-const authController = require("../controllers/authController");
-const protect = require("../middlewares/auth/protect");
-const { loginLimiter } = require("../middlewares/rateLimiter");
+import express from "express";
+import authController from "../controllers/authController.js";
+import protect from "../middlewares/auth/protect.js";
+import { loginLimiter } from "../middlewares/rateLimiter.js";
 const router = express.Router();
 
 router.route("/login").post(loginLimiter, authController.login);
@@ -14,4 +14,4 @@ router.route("/register/complete").post(authController.completeRegister);
 
 router.route("/refresh-token").post(authController.getNewRefreshAccessTokens);
 
-module.exports = router;
+export default router;

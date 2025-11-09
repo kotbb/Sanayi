@@ -1,6 +1,6 @@
-const ReportService = require("../services/reportService");
-const catchAsync = require("../middlewares/catchAsync");
-const AppError = require("../utils/appError");
+import ReportService from "../services/reportService.js";
+import catchAsync from "../middlewares/catchAsync.js";
+import AppError from "../utils/appError.js";
 
 // Helper function to validate period and timeBack parameters
 const validatePeriodAndTimeBack = (period, timeBack) => {
@@ -154,7 +154,7 @@ const getAllReports = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = {
+export default {
   getBestCraftsmen,
   getUserRegistrations,
   getTotalBookings,

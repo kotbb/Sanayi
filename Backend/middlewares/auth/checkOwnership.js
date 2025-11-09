@@ -1,6 +1,6 @@
-const catchAsync = require("../catchAsync");
-const AppError = require("../../utils/appError");
-const Craftsman = require("../../models/craftsmanModel");
+import catchAsync from "../catchAsync.js";
+import AppError from "../../utils/appError.js";
+import Craftsman from "../../models/craftsmanModel.js";
 
 const checkOwnerShip = (Model, userFieldNames) => {
   return catchAsync(async (req, res, next) => {
@@ -32,4 +32,4 @@ const checkOwnerShip = (Model, userFieldNames) => {
   });
 };
 
-module.exports = checkOwnerShip;
+export default checkOwnerShip;

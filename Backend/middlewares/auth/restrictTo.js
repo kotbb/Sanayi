@@ -1,4 +1,4 @@
-const AppError = require("../../utils/appError");
+import AppError from "../../utils/appError.js";
 
 const restrictTo = (...roles) => {
   return (req, res, next) => {
@@ -11,4 +11,4 @@ const restrictTo = (...roles) => {
   };
 };
 
-module.exports = restrictTo;
+export default restrictTo;

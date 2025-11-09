@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema(
   {
@@ -24,7 +24,6 @@ const categorySchema = new mongoose.Schema(
 );
 
 categorySchema.index({ isActive: 1 }); // For filtering active categories
-categorySchema.index({ name: 1 }); // For filtering categories by name
 
 categorySchema.pre(/^find/, function (next) {
   this.select("-__v");
@@ -38,4 +37,4 @@ categorySchema.pre(/^find/, function (next) {
 
 const Category = mongoose.model("Category", categorySchema);
 
-module.exports = Category;
+export default Category;

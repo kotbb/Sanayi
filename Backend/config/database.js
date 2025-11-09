@@ -1,4 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { fileURLToPath } from "url";
+import path from "path";
+import dotenv from "dotenv";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.join(__dirname, "../config.env") });
 
 const connectDB = async () => {
   try {
@@ -7,12 +14,19 @@ const connectDB = async () => {
       process.env.DATABASE_PASSWORD
     );
 
-    await mongoose.connect(DB);
+    await mongoose.connect(DB, {
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+    });
     console.log("DB connection successful!");
   } catch (error) {
-    console.error("Database connection error:", error);
-    process.exit(1);
+    if (process.env.NODE_ENV === "production") {
+      console.error("Continuing without database connection in serverless environment");
+    } else {
+      console.error("Database connection error:", error);
+      process.exit(1);
+    }
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

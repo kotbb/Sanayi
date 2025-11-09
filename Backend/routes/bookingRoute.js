@@ -1,10 +1,10 @@
-const express = require("express");
-const bookingController = require("../controllers/bookingController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const checkOwnership = require("../middlewares/auth/checkOwnership");
-const reviewRoute = require("./reviewRoute");
-const Booking = require("../models/bookingModel");
+import express from "express";
+import bookingController from "../controllers/bookingController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import checkOwnership from "../middlewares/auth/checkOwnership.js";
+import reviewRoute from "./reviewRoute.js";
+import Booking from "../models/bookingModel.js";
 const router = express.Router({ mergeParams: true });
 
 //------------------------------------------------------
@@ -32,4 +32,4 @@ router
     bookingController.deleteBooking
   );
 
-module.exports = router;
+export default router;

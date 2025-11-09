@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const readline = require("readline");
-const User = require("../models/userModel");
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import readline from "readline";
+import User from "../models/userModel.js";
 
 dotenv.config({ path: "./config.env" });
 

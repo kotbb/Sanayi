@@ -1,8 +1,8 @@
-const catchAsync = require("../middlewares/catchAsync");
-const Craftsman = require("../models/craftsmanModel");
-const factory = require("./handlerFactory");
-const craftsmanService = require("../services/craftsmanService");
-const { craftsmanPopOptions } = require("../utils/popOptions");
+import catchAsync from "../middlewares/catchAsync.js";
+import Craftsman from "../models/craftsmanModel.js";
+import factory from "./handlerFactory.js";
+import craftsmanService from "../services/craftsmanService.js";
+import { craftsmanPopOptions } from "../utils/popOptions.js";
 
 //---------------------------------------------------
 const getAllCraftsmen = factory.getAll(Craftsman, craftsmanPopOptions);
@@ -42,7 +42,7 @@ const deleteCraftsman = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = {
+export default {
   getAllCraftsmen,
   getCraftsman,
   createCraftsman,

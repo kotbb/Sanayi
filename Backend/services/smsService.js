@@ -1,6 +1,6 @@
-const twilio = require("twilio");
+import twilio from "twilio";
 
-const sendSMS = async (params) => {
+export const sendSMS = async (params) => {
   const client = new twilio(
     process.env.TWILIO_SID,
     process.env.TWILIO_AUTH_TOKEN
@@ -11,8 +11,4 @@ const sendSMS = async (params) => {
     from: process.env.TWILIO_PHONE_NUMBER,
     to: params.phoneNumber,
   });
-};
-
-module.exports = {
-  sendSMS,
 };

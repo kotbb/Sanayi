@@ -1,4 +1,3 @@
-
 const formatDate = (date, separator = "/") => {
   if (!date || !(date instanceof Date)) {
     return null;
@@ -19,7 +18,4 @@ const formatDateRange = (startDate, endDate, separator = "/") => {
   };
 };
 
-module.exports = {
-  formatDate,
-  formatDateRange,
-};
+export { formatDate, formatDateRange };

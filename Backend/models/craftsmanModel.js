@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const User = require("./userModel");
+import mongoose from "mongoose";
+import User from "./userModel.js";
 
 const portfolioSchema = new mongoose.Schema({
   title: {
@@ -112,17 +112,17 @@ craftsmanSchema.pre(/^find/, function (next) {
 
 // Simple post-hook to filter out craftsmen with null users
 craftsmanSchema.post(/^find/, function (docs, next) {
-  // # for ADMINS only: If includeInactive is true, include inactive craftsmen 
+  // # for ADMINS only: If includeInactive is true, include inactive craftsmen
   if (this.getOptions() && this.getOptions().includeInactive) {
     return next();
   }
   if (Array.isArray(docs)) {
-     const filteredDocs = docs.filter((doc) => doc.user !== null);
-     docs.splice(0, docs.length, ...filteredDocs);
-   } else if (docs && docs.user === null) {
-     docs = null;
-   }
-   next();
+    const filteredDocs = docs.filter((doc) => doc.user !== null);
+    docs.splice(0, docs.length, ...filteredDocs);
+  } else if (docs && docs.user === null) {
+    docs = null;
+  }
+  next();
 });
 
 // Pre-save validation to ensure user exists and has craftsman role
@@ -168,4 +168,4 @@ craftsmanSchema.pre("findOneAndDelete", async function (next) {
 
 const Craftsman = mongoose.model("Craftsman", craftsmanSchema);
 
-module.exports = Craftsman;
+export default Craftsman;

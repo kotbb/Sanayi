@@ -1,9 +1,9 @@
-const catchAsync = require("../middlewares/catchAsync");
-const User = require("../models/userModel");
-const AppError = require("../utils/appError");
-const factory = require("./handlerFactory");
-const otpService = require("../services/otpService");
-const jwtUtils = require("../utils/jwtUtils");
+import catchAsync from "../middlewares/catchAsync.js";
+import User from "../models/userModel.js";
+import AppError from "../utils/appError.js";
+import factory from "./handlerFactory.js";
+import otpService from "../services/otpService.js";
+import jwtUtils from "../utils/jwtUtils.js";
 
 //---------------------------------------------------
 // Send the update phone number OTP
@@ -51,7 +51,7 @@ const getUser = factory.getOne(User, { path: "craftsman" });
 const updateUser = factory.updateOne(User);
 const deleteUser = factory.deleteOne(User);
 
-module.exports = {
+export default {
   sendUpdatePhoneOTP,
   verifyUpdatePhoneOTP,
   createUser,

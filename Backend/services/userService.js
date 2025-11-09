@@ -1,6 +1,6 @@
-const otpService = require("./otpService");
-const User = require("../models/userModel");
-const AppError = require("../utils/appError");
+import otpService from "./otpService.js";
+import User from "../models/userModel.js";
+import AppError from "../utils/appError.js";
 //------------------------------------------------------
 
 const initiatePhoneUpdate = async (newPhoneNumber) => {
@@ -13,6 +13,4 @@ const initiatePhoneUpdate = async (newPhoneNumber) => {
   return { otp };
 };
 
-module.exports = {
-  initiatePhoneUpdate,
-};
+export default initiatePhoneUpdate ;

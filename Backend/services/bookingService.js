@@ -1,6 +1,6 @@
-const Booking = require("../models/bookingModel");
-const AppError = require("../utils/appError");
-const filterObj = require("../utils/filterObject");
+import Booking from "../models/bookingModel.js";
+import AppError from "../utils/appError.js";
+import filterObj from "../utils/filterObject.js";
 
 const createBooking = async (bookingData) => {
   const newBooking = await Booking.create(bookingData);
@@ -48,7 +48,7 @@ const getBookingsByCraftsman = async (craftsmanId, popOptions) => {
   return getAllBookings({ craftsman: craftsmanId }, popOptions);
 };
 
-module.exports = {
+export default {
   createBooking,
   updateBooking,
   deleteBooking,

@@ -1,10 +1,10 @@
-const catchAsync = require("../middlewares/catchAsync");
-const User = require("../models/userModel");
-const Craftsman = require("../models/craftsmanModel");
-const AppError = require("../utils/appError");
-const filterObj = require("../utils/filterObject");
-const flattenObject = require("../utils/flattenObject");
-const craftsmanService = require("../services/craftsmanService");
+import catchAsync from "../middlewares/catchAsync.js";
+import User from "../models/userModel.js";
+import Craftsman from "../models/craftsmanModel.js";
+import AppError from "../utils/appError.js";
+import filterObj from "../utils/filterObject.js";
+import flattenObject from "../utils/flattenObject.js";
+import craftsmanService from "../services/craftsmanService.js";
 
 //---------------------------------------------------
 // Get the logged in user data
@@ -147,7 +147,7 @@ const deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = {
+export default {
   getMe,
   updateMe,
   updateMyCraftsmanProfile,

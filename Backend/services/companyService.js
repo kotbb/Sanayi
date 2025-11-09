@@ -1,5 +1,5 @@
-const Company = require("../models/companyModel");
-const AppError = require("../utils/appError");
+import Company from "../models/companyModel.js";
+import AppError from "../utils/appError.js";
 
 const createCompany = async (companyData) => {
   const newCompany = await Company.create(companyData);
@@ -48,7 +48,7 @@ const deleteCompany = async (companyId) => {
   return company;
 };
 
-module.exports = {
+export {
   createCompany,
   getCompanyById,
   getAllCompanies,

@@ -1,13 +1,13 @@
-const AppError = require("../utils/appError");
-const catchAsync = require("../middlewares/catchAsync");
-const authService = require("../services/authService");
-const otpService = require("../services/otpService");
-const User = require("../models/userModel");
-const jwt = require("jsonwebtoken");
-const jwtUtils = require("../utils/jwtUtils");
-const { promisify } = require("util");
-const isValidPhoneNumber = require("../middlewares/validation/isValidPhoneNumber");
-const tokenService = require("../services/tokenService");
+import AppError from "../utils/appError.js";
+import catchAsync from "../middlewares/catchAsync.js";
+import authService from "../services/authService.js";
+import otpService from "../services/otpService.js";
+import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
+import jwtUtils from "../utils/jwtUtils.js";
+import { promisify } from "util";
+import isValidPhoneNumber from "../middlewares/validation/isValidPhoneNumber.js";
+import tokenService from "../services/tokenService.js";
 //------------------------------------------------------
 
 // Get new refresh access tokens
@@ -173,7 +173,7 @@ const logout = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = {
+export default {
   login,
   loginAdmin,
   sendRegisterOTP,

@@ -1,8 +1,8 @@
-const express = require("express");
-const categoryController = require("../controllers/categoryController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const craftsmanRoute = require("./craftsmanRoute");
+import express from "express";
+import categoryController from "../controllers/categoryController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import craftsmanRoute from "./craftsmanRoute.js";
 const router = express.Router();
 
 //------------------------------------------------------
@@ -21,4 +21,4 @@ router
   .patch(restrictTo("admin"), categoryController.updateCategory)
   .delete(restrictTo("admin"), categoryController.deleteCategory);
 
-module.exports = router;
+export default router;

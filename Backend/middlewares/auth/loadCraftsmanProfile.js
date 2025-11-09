@@ -1,5 +1,5 @@
-const catchAsync = require("../catchAsync");
-const Craftsman = require("../../models/craftsmanModel");
+import catchAsync from "../catchAsync.js";
+import Craftsman from "../../models/craftsmanModel.js";
 
 const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
   if (req.user.role !== "craftsman") {
@@ -12,4 +12,4 @@ const loadCraftsmanProfile = catchAsync(async (req, res, next) => {
   next();
 });
 
-module.exports = loadCraftsmanProfile;
+export default loadCraftsmanProfile;

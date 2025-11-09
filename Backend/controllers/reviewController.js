@@ -1,12 +1,12 @@
-const Review = require("../models/reviewModel");
-const catchAsync = require("../middlewares/catchAsync");
-const factory = require("./handlerFactory");
-const reviewService = require("../services/reviewService");
-const {
+import Review from "../models/reviewModel.js";
+import catchAsync from "../middlewares/catchAsync.js";
+import factory from "./handlerFactory.js";
+import reviewService from "../services/reviewService.js";
+import {
   reviewCraftsmanPopOptions,
   reviewClientPopOptions,
   reviewPopOptions,
-} = require("../utils/popOptions");
+} from "../utils/popOptions.js";
 
 //---------------------------------------------------
 
@@ -61,7 +61,7 @@ const createReview = factory.createOne(Review);
 const updateReview = factory.updateOne(Review);
 const deleteReview = factory.deleteOne(Review);
 
-module.exports = {
+export default {
   createBookingReview,
   getAllReviews,
   getReview,

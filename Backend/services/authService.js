@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-const User = require("../models/userModel");
-const Craftsman = require("../models/craftsmanModel");
-const AppError = require("../utils/appError");
-const Category = require("../models/categoryModel");
-const craftsmanService = require("./craftsmanService");
+import mongoose from "mongoose";
+import User from "../models/userModel.js";
+import Craftsman from "../models/craftsmanModel.js";
+import AppError from "../utils/appError.js";
+import Category from "../models/categoryModel.js";
+import craftsmanService from "./craftsmanService.js";
 
 // Register a user and a craftsman
 const registerUserTransaction = async (userData, phoneNumber) => {
@@ -55,6 +55,4 @@ const registerUserTransaction = async (userData, phoneNumber) => {
   }
 };
 
-module.exports = {
-  registerUserTransaction,
-};
+export default registerUserTransaction ;

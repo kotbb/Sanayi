@@ -1,8 +1,8 @@
-const User = require("../models/userModel");
-const Craftsman = require("../models/craftsmanModel");
-const Booking = require("../models/bookingModel");
-const Review = require("../models/reviewModel");
-const { formatDateRange } = require("../utils/dateFormatter");
+import User from "../models/userModel.js";
+import Craftsman from "../models/craftsmanModel.js";
+import Booking from "../models/bookingModel.js";
+import Review from "../models/reviewModel.js";
+import { formatDateRange } from "../utils/dateFormatter.js";
 
 class ReportService {
   // Get best craftsmen based on rating
@@ -231,4 +231,4 @@ class ReportService {
     }
   }
 }
-module.exports = ReportService;
+export default ReportService;

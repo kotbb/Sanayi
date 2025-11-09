@@ -1,17 +1,17 @@
-const express = require("express");
-const profileController = require("../controllers/profileController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const loadCraftsmanProfile = require("../middlewares/auth/loadCraftsmanProfile");
-const setLoggedId = require("../middlewares/auth/setLoggedId");
-const reviewController = require("../controllers/reviewController");
-const bookingController = require("../controllers/bookingController");
-const {
+import express from "express";
+import profileController from "../controllers/profileController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import loadCraftsmanProfile from "../middlewares/auth/loadCraftsmanProfile.js";
+import setLoggedId from "../middlewares/auth/setLoggedId.js";
+import reviewController from "../controllers/reviewController.js";
+import bookingController from "../controllers/bookingController.js";
+import {
   uploadUserPhoto,
   resizeUserPhoto,
   uploadPortfolioImages,
   resizePortfolioImages,
-} = require("../middlewares/uploadMiddleware");
+} from "../middlewares/uploadMiddleware.js";
 
 const router = express.Router();
 
@@ -72,4 +72,4 @@ router
     bookingController.getAllBookings
   );
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const AppError = require("../utils/appError");
-const crypto = require("crypto");
-const { redisClient } = require("../config/redis");
-const { sendSMS } = require("./smsService");
+import AppError from "../utils/appError.js";
+import crypto from "crypto";
+import { redisClient } from "../config/redis.js";
+import { sendSMS } from "./smsService.js";
 
 const generateOTP = (length = 6) => {
   const digits = "0123456789";
@@ -78,7 +78,7 @@ const createOTPDev = async (phoneNumber) => {
   return otp;
 };
 
-module.exports = {
+export default {
   generateOTP,
   createOTPHash,
   sendOTP,

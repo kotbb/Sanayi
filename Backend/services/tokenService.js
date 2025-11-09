@@ -1,6 +1,6 @@
-const { redisClient } = require("../config/redis");
-const jwt = require("jsonwebtoken");
-const AppError = require("../utils/appError");
+import { redisClient } from "../config/redis.js";
+import jwt from "jsonwebtoken";
+import AppError from "../utils/appError.js";
 
 const blacklistToken = async (token, ttlSeconds = null) => {
   try {
@@ -39,6 +39,7 @@ const isTokenBlacklisted = async (token) => {
     const result = await redisClient.get(`blacklist:${tokenId}`);
     return result !== null;
   } catch (error) {
+    console.log("ERROR", error);
     return true; // On error, consider token blacklisted for security
   }
 };
@@ -52,8 +53,4 @@ const clearBlacklistedTokens = async () => {
   }
 };
 
-module.exports = {
-  blacklistToken,
-  isTokenBlacklisted,
-  clearBlacklistedTokens,
-};
+export default { blacklistToken, isTokenBlacklisted, clearBlacklistedTokens };

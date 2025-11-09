@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Craftsman = require("./craftsmanModel");
+import mongoose from "mongoose";
+import Craftsman from "./craftsmanModel.js";
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -87,4 +87,4 @@ reviewSchema.post(/^findOneAnd/, async function (doc) {
 
 const Review = mongoose.model("Review", reviewSchema);
 
-module.exports = Review;
+export default Review;

@@ -1,6 +1,6 @@
-const Review = require("../models/reviewModel");
-const Booking = require("../models/bookingModel");
-const AppError = require("../utils/appError");
+import Review from "../models/reviewModel.js";
+import Booking from "../models/bookingModel.js";
+import AppError from "../utils/appError.js";
 
 const createReviewAdmin = async (reviewData) => {
   const { craftsmanId, clientId, bookingId, rating, comment } = reviewData;
@@ -119,7 +119,7 @@ const deleteReview = async (reviewId) => {
   return review;
 };
 
-module.exports = {
+export default {
   createReviewAdmin,
   createReviewClient,
   getReviewById,

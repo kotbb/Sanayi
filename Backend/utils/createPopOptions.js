@@ -26,8 +26,4 @@ const bookingPopOptions = () => {
   ];
 };
 
-module.exports = {
-  reviewPopOptions,
-  bookingPopOptions,
-  craftsmanPopOptions,
-};
+export { reviewPopOptions, bookingPopOptions, craftsmanPopOptions };

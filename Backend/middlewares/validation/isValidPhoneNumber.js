@@ -1,4 +1,4 @@
-const validator = require("validator");
+import validator from "validator";
 
 const isValidPhoneNumber = (phoneNumber) => {
   const regex = /^(?:\+9705[69]\d{7}|05[69]\d{7})$/;
@@ -7,4 +7,4 @@ const isValidPhoneNumber = (phoneNumber) => {
   );
 };
 
-module.exports = isValidPhoneNumber;
+export default isValidPhoneNumber;

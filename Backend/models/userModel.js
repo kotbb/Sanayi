@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const isValidPhoneNumber = require("../middlewares/validation/isValidPhoneNumber");
-const isObject = require("../middlewares/validation/isObject");
-const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+import isValidPhoneNumber from "../middlewares/validation/isValidPhoneNumber.js";
+import isObject from "../middlewares/validation/isObject.js";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema(
   {
@@ -133,4 +133,4 @@ userSchema.methods.correctRefreshToken = async function (
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;

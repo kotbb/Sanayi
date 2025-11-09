@@ -1,9 +1,9 @@
-const catchAsync = require("../catchAsync");
-const AppError = require("../../utils/appError");
-const User = require("../../models/userModel");
-const jwt = require("jsonwebtoken");
-const { promisify } = require("util");
-const tokenService = require("../../services/tokenService");
+import catchAsync from "../catchAsync.js";
+import AppError from "../../utils/appError.js";
+import User from "../../models/userModel.js";
+import jwt from "jsonwebtoken";
+import { promisify } from "util";
+import tokenService from "../../services/tokenService.js";
 
 const protect = catchAsync(async (req, res, next) => {
   // 1) Get token and check if it's there
@@ -19,7 +19,6 @@ const protect = catchAsync(async (req, res, next) => {
       new AppError("You are not logged in! Please log in to get access.", 401)
     );
   }
-
 
   // 2) Check if token is blacklisted
   const isBlacklisted = await tokenService.isTokenBlacklisted(token);
@@ -49,4 +48,4 @@ const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-module.exports = protect;
+export default protect;

@@ -1,7 +1,7 @@
-const Craftsman = require("../models/craftsmanModel");
-const User = require("../models/userModel");
-const categoryService = require("./categoryService");
-const AppError = require("../utils/appError");
+import Craftsman from "../models/craftsmanModel.js";
+import User from "../models/userModel.js";
+import categoryService from "./categoryService.js";
+import AppError from "../utils/appError.js";
 
 // Convert specializations to category IDs
 const convertSpecializationsToIds = async (specializations) => {
@@ -42,13 +42,19 @@ const createCraftsman = async (craftsmanData, userId) => {
   }
 
   // Convert specializations to IDs if provided
-  console.log("specializations before conversion", craftsmanData.specializations);
+  console.log(
+    "specializations before conversion",
+    craftsmanData.specializations
+  );
   if (craftsmanData.specializations) {
     craftsmanData.specializations = await convertSpecializationsToIds(
       craftsmanData.specializations
     );
   }
-  console.log("specializations after conversion", craftsmanData.specializations);
+  console.log(
+    "specializations after conversion",
+    craftsmanData.specializations
+  );
   // Ensure user field is set correctly
   craftsmanData.user = userId;
 
@@ -109,7 +115,7 @@ const deleteCraftsman = async (craftsmanId, userId) => {
   return craftsman;
 };
 
-module.exports = {
+export default {
   convertSpecializationsToIds,
   createCraftsman,
   getCraftsmanByUserId,

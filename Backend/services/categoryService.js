@@ -1,5 +1,5 @@
-const Category = require("../models/categoryModel");
-const AppError = require("../utils/appError");
+import Category from "../models/categoryModel.js";
+import AppError from "../utils/appError.js";
 
 const createCategory = async (categoryData) => {
   const newCategory = await Category.create(categoryData);
@@ -53,7 +53,7 @@ const getCategoriesByName = async (categoryNames) => {
   return categories;
 };
 
-module.exports = {
+export default {
   createCategory,
   getCategoryById,
   getAllCategories,

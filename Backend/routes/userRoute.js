@@ -1,9 +1,9 @@
-const express = require("express");
-const userController = require("../controllers/userController");
-const authController = require("../controllers/authController");
-const protect = require("../middlewares/auth/protect");
-const restrictTo = require("../middlewares/auth/restrictTo");
-const bookingRoute = require("./bookingRoute");
+import express from "express";
+import userController from "../controllers/userController.js";
+import authController from "../controllers/authController.js";
+import protect from "../middlewares/auth/protect.js";
+import restrictTo from "../middlewares/auth/restrictTo.js";
+import bookingRoute from "./bookingRoute.js";
 const router = express.Router();
 
 router.use("/:clientId/bookings", bookingRoute);
@@ -30,4 +30,4 @@ router
 
 //------------------------------------------------------
 
-module.exports = router;
+export default router;

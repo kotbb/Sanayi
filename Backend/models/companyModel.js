@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const companySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -38,4 +38,4 @@ companySchema.index({ isActive: 1 }); // For filtering active companies
 
 const Company = mongoose.model("Company", companySchema);
 
-module.exports = Company;
+export default Company;
