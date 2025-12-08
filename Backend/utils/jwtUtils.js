@@ -39,9 +39,9 @@ const createSendTokens = async (user, statusCode, res) => {
     refreshToken,
   } = await getUserTokens(user);
 
-  user.refreshToken = undefined;
-
-  user.refreshTokenExpiresAt = undefined;
+  updatedUser.password = undefined;
+  updatedUser.refreshToken = undefined;
+  updatedUser.refreshTokenExpiresAt = undefined;
 
   res.status(statusCode).json({
     status: "success",
@@ -51,4 +51,9 @@ const createSendTokens = async (user, statusCode, res) => {
   });
 };
 
-export default { createAccessToken, createRefreshToken, getUserTokens, createSendTokens };
+export default {
+  createAccessToken,
+  createRefreshToken,
+  getUserTokens,
+  createSendTokens,
+};

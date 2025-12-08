@@ -139,6 +139,10 @@ const loginAdmin = catchAsync(async (req, res, next) => {
     return next(new AppError("Phone number and password are required", 400));
   }
 
+  if (process.env.NODE_ENV === "production") {
+    return next(new AppError("Admin login is disabled in production", 403));
+  }
+
   const user = await User.findOne({ phoneNumber }).select("+password");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
