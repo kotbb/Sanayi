@@ -8,13 +8,9 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../config.env") });
 
 const redisClient = createClient({
-  username: "default",
-  password: process.env.REDIS_PASSWORD,
+  url: process.env.REDIS_URL,
   socket: {
-    host: "redis-19383.crce176.me-central-1-1.ec2.redns.redis-cloud.com",
-    port: 19383,
     connectTimeout: 5000,
-    commandTimeout: 5000,
   },
 });
 
