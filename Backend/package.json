@@ -4,9 +4,11 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
-    "start:prod": "set NODE_ENV=production&&nodemon server.js",
-    "debug": "ndb server.js"
+    "dev": "nodemon server.js",
+    "prod": "set NODE_ENV=production&&nodemon server.js",
+    "debug": "ndb server.js",
+    "data:import": "node scripts/import-dev-data.js --import",
+    "data:delete": "node scripts/import-dev-data.js --delete"
   },
   "author": "Kotb",
   "license": "ISC",

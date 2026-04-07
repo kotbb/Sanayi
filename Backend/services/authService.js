@@ -7,11 +7,21 @@ import craftsmanService from "./craftsmanService.js";
 
 // Register a user and a craftsman
 const registerUserTransaction = async (userData, phoneNumber) => {
-  const { role, name, location, specializations, hourlyRate, profilePicture } =
-    userData;
+  const {
+    role,
+    name,
+    location,
+    specializations,
+    hourlyRate,
+    profilePicture,
+    password,
+  } = userData;
 
   if (role === "admin") {
     throw new AppError("Admin registration is not allowed", 400);
+  }
+  if (!password || password.length < 8) {
+    throw new AppError("Password is required and must be at least 8 characters", 400);
   }
   const session = await mongoose.startSession();
 
@@ -25,6 +35,7 @@ const registerUserTransaction = async (userData, phoneNumber) => {
           name,
           location,
           profilePicture,
+          password,
           isVerified: true,
         },
       ],

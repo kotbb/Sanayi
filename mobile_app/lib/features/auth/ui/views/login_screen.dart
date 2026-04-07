@@ -123,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, Routes.signupScreen);
+                            Navigator.pushNamed(context, Routes.createAccountClient);
                           },
                           child: Text(
                             "Sign Up",

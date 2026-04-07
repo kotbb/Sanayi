@@ -69,6 +69,7 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     message: "OTP sent successfully",
+    otp,
     // TODO: Send OTP to user
   });
 });
@@ -76,6 +77,9 @@ const sendRegisterOTP = catchAsync(async (req, res, next) => {
 // Verify the register OTP
 const verifyRegisterOTP = catchAsync(async (req, res, next) => {
   const { otp, phoneNumber } = req.body;
+  if (!otp || !phoneNumber) {
+    return next(new AppError("OTP and phone number are required", 400));
+  }
   await otpService.verifyOTP(otp, phoneNumber);
 
   const registerationToken = jwtUtils.createAccessToken(
@@ -115,15 +119,14 @@ const completeRegister = catchAsync(async (req, res, next) => {
 
 // Login
 const login = catchAsync(async (req, res, next) => {
-  const phoneNumber = req.body.phoneNumber;
-  if (!phoneNumber) {
-    return next(new AppError("Phone number is required", 400));
+  const { phoneNumber, password } = req.body;
+  if (!phoneNumber || !password) {
+    return next(new AppError("Phone number and password are required", 400));
   }
+  const user = await User.findOne({ phoneNumber }).select("+password");
 
-  const user = await User.findOne({ phoneNumber });
-
-  if (!user) {
-    return next(new AppError("User not found", 404));
+  if (!user || !(await user.correctPassword(password, user.password))) {
+    return next(new AppError("Invalid phone number or password", 401));
   }
 
   if (user.role === "admin") {
@@ -137,10 +140,6 @@ const loginAdmin = catchAsync(async (req, res, next) => {
   const { phoneNumber, password } = req.body;
   if (!phoneNumber || !password) {
     return next(new AppError("Phone number and password are required", 400));
-  }
-
-  if (process.env.NODE_ENV === "production") {
-    return next(new AppError("Admin login is disabled in production", 403));
   }
 
   const user = await User.findOne({ phoneNumber }).select("+password");

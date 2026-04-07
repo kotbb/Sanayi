@@ -111,6 +111,7 @@ userSchema.methods.correctPassword = async function (
   inputPassword,
   userPassword
 ) {
+  if (!inputPassword || !userPassword) return false;
   return await bcrypt.compare(inputPassword, userPassword);
 };
 
@@ -128,6 +129,7 @@ userSchema.methods.correctRefreshToken = async function (
   inputRefreshToken,
   userRefreshToken
 ) {
+  if (!inputRefreshToken || !userRefreshToken) return false;
   return await bcrypt.compare(inputRefreshToken, userRefreshToken);
 };
 

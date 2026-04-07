@@ -25,7 +25,7 @@ const sendOTP = async (phoneNumber, otp) => {
 
 const storeOTP = async (phoneNumber, otp, expirationTime = 300) => {
   const hashedOTP = createOTPHash(otp);
-  await redisClient.setex(`otp:${phoneNumber}`, expirationTime, hashedOTP);
+  await redisClient.setEx(`otp:${phoneNumber}`, expirationTime, hashedOTP);
 };
 
 const generateAndSendOTP = async (
